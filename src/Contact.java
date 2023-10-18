@@ -1,7 +1,6 @@
 import java.util.Date;
-import java.util.Locale;
 
-public class Contact implements Comparable<Contact> {
+public class Contact implements Comparable<Contact>, textColors {
     private Date creationTime = new Date();
     private String firstName, lastName;
     private String phoneNum;
@@ -10,6 +9,7 @@ public class Contact implements Comparable<Contact> {
     public Contact() {
         firstName = "N/A";
         lastName = "N/A";
+        phoneNum = "N/A";
     }
 
     public Date getCreationTime() {
