@@ -61,7 +61,12 @@ public class Contact implements Comparable<Contact>, textColors {
 
     @Override
     public int compareTo(Contact o) {
-        return String.CASE_INSENSITIVE_ORDER.compare(this.lastName, o.lastName);
+        if (String.CASE_INSENSITIVE_ORDER.compare(this.lastName, o.lastName) == 0) {
+            return String.CASE_INSENSITIVE_ORDER.compare(this.firstName, o.firstName);
+        }
+        else {
+            return String.CASE_INSENSITIVE_ORDER.compare(this.lastName, o.lastName);
+        }
     }
 
     private static String firstCharToUpper(String str) {

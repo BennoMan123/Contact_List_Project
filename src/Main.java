@@ -16,7 +16,7 @@ public class Main implements textColors {
         sleep(1000);
 
         Contact contact2 = new Contact();
-        contact2.setFirstName("john");
+        contact2.setFirstName("beth");
         contact2.setLastName("Cena");
         sleep(1000);
 
@@ -50,11 +50,12 @@ public class Main implements textColors {
 
     private static void printContacts() {
         if (arrayList.isEmpty()) {
-            System.out.println("Contact list is empty.");
+            System.out.println(RED_UNDERLINED + "Contact list is empty." + RESET);
+            return;
         }
 
         for (int i = 0; i < arrayList.size(); i++) {
-            System.out.println(arrayList.get(i));
+            System.out.println(YELLOW_UNDERLINED + arrayList.get(i) + RESET);
         }
     }
 
