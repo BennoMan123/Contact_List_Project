@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.Objects;
 
 public class Contact implements Comparable<Contact>, textColors {
     private Date creationTime = new Date();
@@ -25,6 +26,15 @@ public class Contact implements Comparable<Contact>, textColors {
     }
 
     public void setFirstName(String firstName) {
+        if (Objects.isNull(firstName)) {
+            throw new NullPointerException("First Name given is null.");
+        }
+
+        if (firstName.isEmpty()) {
+            this.firstName = "";
+            return;
+        }
+
         if (!Character.isUpperCase(firstName.charAt(0))) {
             firstName = firstCharToUpper(firstName);
         }
@@ -37,6 +47,15 @@ public class Contact implements Comparable<Contact>, textColors {
     }
 
     public void setLastName(String lastName) {
+        if (Objects.isNull(lastName)) {
+            throw new NullPointerException("Last Name given is null.");
+        }
+
+        if (lastName.isEmpty()) {
+            this.lastName = "";
+            return;
+        }
+
         if (!Character.isUpperCase(lastName.charAt(0))) {
             lastName = firstCharToUpper(lastName);
         }
@@ -70,11 +89,15 @@ public class Contact implements Comparable<Contact>, textColors {
     }
 
     private static String firstCharToUpper(String str) {
+        if (str.isBlank()) {
+            return null;
+        }
+
         char[] word = str.toCharArray();
         String char0 = "" + word[0];
         char0 = char0.toUpperCase();
         word[0] = char0.charAt(0);
-        return str = new String(word);
+        return new String(word);
     }
 
     @Override

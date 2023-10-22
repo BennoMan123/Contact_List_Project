@@ -64,7 +64,7 @@ public class Main implements textColors {
             Thread.sleep(milliSec);
         }
         catch (Exception e) {
-            System.out.println(RED + e.toString() + RESET);
+            System.out.println(RED + e + RESET);
         }
     }
 }
