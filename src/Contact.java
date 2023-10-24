@@ -1,24 +1,58 @@
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
-public class Contact implements Comparable<Contact>, textColors {
+public class Contact implements contactsInterface, Comparable<Contact>, textColors {
     private Date creationTime = new Date();
     private String firstName, lastName;
     private String phoneNum;
+    private Date birthday = null;
+    private StringBuffer notes = new StringBuffer();
+    private String Address = "N/A";
 
 
     public Contact() {
-        firstName = "N/A";
-        lastName = "N/A";
+        firstName = "";
+        lastName = "";
         phoneNum = "N/A";
+    }
+
+    public Contact(String firstName, String lastName) {
+        setName(firstName, lastName);
+    }
+
+    public Contact(String firstName, String lastName, String phoneNum) {
+        this(firstName, lastName);
+        setPhoneNum(phoneNum);
+    }
+
+    public Contact(String firstName, String lastName, String phoneNum, Date birthday) {
+        this(firstName, lastName, phoneNum);
+        setBirthday(birthday);
+    }
+
+    public Contact(String firstName, String lastName, String phoneNum, int birthdayMonth, int birthdayDay, int birthdayYear) {
+        this(firstName, lastName, phoneNum);
+        setBirthday(birthdayMonth, birthdayDay, birthdayYear);
+    }
+
+    public Contact(String firstName, String lastName, String phoneNum,
+                   int birthdayMonth, int birthdayDay, int birthdayYear, String note) {
+        this(firstName, lastName, phoneNum, birthdayMonth, birthdayDay, birthdayYear);
+        setNotes(note);
     }
 
     public Date getCreationTime() {
         return creationTime;
     }
 
-    public void setCreationTime(Date creationTime) {
-        this.creationTime = creationTime;
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
     }
 
     public String getFirstName() {
@@ -26,7 +60,7 @@ public class Contact implements Comparable<Contact>, textColors {
     }
 
     public void setFirstName(String firstName) {
-        if (Objects.isNull(firstName)) {
+        if (isNull(firstName)) {
             throw new NullPointerException("First Name given is null.");
         }
 
@@ -47,7 +81,7 @@ public class Contact implements Comparable<Contact>, textColors {
     }
 
     public void setLastName(String lastName) {
-        if (Objects.isNull(lastName)) {
+        if (isNull(lastName)) {
             throw new NullPointerException("Last Name given is null.");
         }
 
@@ -64,8 +98,8 @@ public class Contact implements Comparable<Contact>, textColors {
     }
 
     public void setName(String firstName, String lastName) {
-        setLastName(lastName);
         setFirstName(firstName);
+        setLastName(lastName);
     }
 
     public String getPhoneNum() {
@@ -75,16 +109,71 @@ public class Contact implements Comparable<Contact>, textColors {
     public void setPhoneNum(String phoneNum) {
         //check if it contains dashes and also if the length of the number is 10 to add dashes
         //check if it contains the dashes, if not, add them by changing string to char array and adding them in
-        //this.phoneNum = phoneNum;
+        this.phoneNum = phoneNum;
+    }
+
+    @Override
+    public void setBirthday(Date bDayDate) {
+        if (!isNull(bDayDate)) {
+            birthday = bDayDate;
+        }
+    }
+
+    public void setBirthday(int month, int day, int year) {
+        Calendar myCal = Calendar.getInstance();
+        /*
+        *****Check if everything is in range!!!***
+         */
+        myCal.set(Calendar.YEAR, year);
+        myCal.set(Calendar.MONTH, month-1);
+        myCal.set(Calendar.DAY_OF_MONTH, day);
+        setBirthday(myCal.getTime());
+    }
+
+    @Override
+    public String getBirthday() {
+        if (isNull(birthday)) {
+            return RED_BOLD + "No birthday given." + RESET;
+        }
+
+        return new SimpleDateFormat("MM/dd/yy").format(birthday);
+    }
+
+    @Override
+    public void setNotes(String note) {
+        if (isNull(note)) {
+            throw new NullPointerException("Note sent in is null.");
+        }
+        notes = new StringBuffer(note + "\n");
+    }
+
+    @Override
+    public void addToNotes(String note) {
+        if (isNull(note)) {
+            throw new NullPointerException("Note sent in is null.");
+        }
+
+        notes.append(note + "\n");
+    }
+
+    @Override
+    public String getNotes() {
+        String Notes = "Notes:\n";
+
+        if (notes.isEmpty()) {
+            return Notes + "No notes entered.";
+        }
+
+        return Notes + notes.toString();
     }
 
     @Override
     public int compareTo(Contact o) {
-        if (String.CASE_INSENSITIVE_ORDER.compare(this.lastName, o.lastName) == 0) {
-            return String.CASE_INSENSITIVE_ORDER.compare(this.firstName, o.firstName);
+        if (String.CASE_INSENSITIVE_ORDER.compare(this.lastName, o.getLastName()) == 0) {
+            return String.CASE_INSENSITIVE_ORDER.compare(this.firstName, o.getFirstName());
         }
         else {
-            return String.CASE_INSENSITIVE_ORDER.compare(this.lastName, o.lastName);
+            return String.CASE_INSENSITIVE_ORDER.compare(this.lastName, o.getLastName());
         }
     }
 
@@ -100,11 +189,16 @@ public class Contact implements Comparable<Contact>, textColors {
         return new String(word);
     }
 
+    private static boolean isNull(Object o) {
+        return Objects.isNull(o);
+    }
+
+
     @Override
     public String toString() {
-        return "Contact{" +
+        return GREEN_BRIGHT + "Contact{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                '}' + "Created on " + creationTime.toString();
+                '}' + "Created on " + creationTime.toString() + RESET;
     }
 }
