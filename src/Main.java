@@ -7,7 +7,7 @@ public class Main implements textColors {
    public static void main(String[] args) {
       // Print colored text to the console
       System.out.println(GREEN + "This text is green." + RESET);
-      System.out.println(YELLOW + "This text is yellow." + RESET);
+      //System.out.println(YELLOW + "This text is yellow." + RESET);
       System.out.println(RED + "This text is red." + RESET);
 
 
@@ -26,17 +26,17 @@ public class Main implements textColors {
       Contact contact4 = new Contact();
       contact4.setFirstName("michael");
       contact4.setLastName("Dal");
-      contactList.add(contact4);
+      addContact(contact4);
       sleep(1000);
 
       Contact contact3 = new Contact();
       contact3.setFirstName("michael");
       contact3.setLastName("jackson");
-      contactList.add(contact1);
-      contactList.add(contact2);
-      contactList.add(contact3);
+      addContact(contact1);
+      addContact(contact2);
+      addContact(contact3);
 
-      sortList();
+      //sortList();
       printContacts();
    }
 
@@ -49,9 +49,58 @@ public class Main implements textColors {
 
     */
 
+   /**
+    * method to handle the add choice
+    */
+   private static void add() {
+
+   }
+
    private static void addContact(Contact x) {
       contactList.add(x);
-      sortList();
+      Collections.sort(contactList);
+   }
+
+   /**
+    * method to handle the edit choice
+    */
+   private static void edit() {
+
+   }
+
+   /**
+    * method to handle the remove choice
+    */
+   private static void remove() {
+
+   }
+
+   /**
+    * method to handle the range choice
+    */
+   private static void range() {
+
+   }
+
+   private static void printInRange(char start, char end) {
+
+   }
+
+   /*
+   maybe have it return an int, -1 for not having it or returning the first instance of it
+    */
+   private static Contact returnContact(String nameType, String lastName) {
+      if (nameType.equalsIgnoreCase("first")) {
+
+      }
+      else if (nameType.equalsIgnoreCase("last")) {
+
+      }
+      else {
+         throw new IllegalArgumentException("Invalid name type.");
+      }
+
+      return new Contact();
    }
 
    private static void printContacts() {
@@ -65,12 +114,11 @@ public class Main implements textColors {
       }
    }
 
-   private static void sortList() {
-      Collections.sort(contactList);
-   }
-
-
    private static void sleep(long milliSec) {
+      if (milliSec < 0) {
+         return;
+      }
+
       try {
          Thread.sleep(milliSec);
       }

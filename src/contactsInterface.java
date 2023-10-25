@@ -21,7 +21,7 @@ public interface contactsInterface {
 
     public void setPhoneNum(String phoneNum);
 
-    public void setBirthday(Date bDayDate);
+    public void setBirthday(Date birthdayDate);
 
     public void setBirthday(int month, int day, int year);
 

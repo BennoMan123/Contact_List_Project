@@ -21,3 +21,9 @@
 * Removed set Creation Time method
 * Added address, birthday, and notes variables and added setters and getters for those
 * Fixed the compareTo method to better sort the list, ie checks the first name if the last names are the same
+
+10/25/23 Part 1:
+* Commented unneeded variables in the textColor interface
+* Changed some variable names in the contactInterface and reflected it in the contact class
+* Touched up the constructors in the contact class and a few text color changes
+* Added the method structures of the needed methods in the main class and adjusted the class as such

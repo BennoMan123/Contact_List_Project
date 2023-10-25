@@ -20,26 +20,24 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
 
     public Contact(String firstName, String lastName) {
         setName(firstName, lastName);
-    }
-
-    public Contact(String firstName, String lastName, String phoneNum) {
-        this(firstName, lastName);
-        setPhoneNum(phoneNum);
-    }
-
-    public Contact(String firstName, String lastName, String phoneNum, Date birthday) {
-        this(firstName, lastName, phoneNum);
-        setBirthday(birthday);
+        phoneNum = "N/A";
     }
 
     public Contact(String firstName, String lastName, String phoneNum, int birthdayMonth, int birthdayDay, int birthdayYear) {
-        this(firstName, lastName, phoneNum);
-        setBirthday(birthdayMonth, birthdayDay, birthdayYear);
+        this(firstName, lastName, birthdayMonth, birthdayDay, birthdayYear);
+        setPhoneNum(phoneNum);
     }
 
-    public Contact(String firstName, String lastName, String phoneNum,
+    public Contact(String firstName, String lastName, int birthdayMonth, int birthdayDay, int birthdayYear) {
+        setName(firstName, lastName);
+        setBirthday(birthdayMonth, birthdayDay, birthdayYear);
+        phoneNum = "N/A";
+    }
+
+    public Contact(String firstName, String lastName,
                    int birthdayMonth, int birthdayDay, int birthdayYear, String note) {
-        this(firstName, lastName, phoneNum, birthdayMonth, birthdayDay, birthdayYear);
+        this(firstName, lastName, birthdayMonth, birthdayDay, birthdayYear);
+
         setNotes(note);
     }
 
@@ -113,9 +111,9 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     }
 
     @Override
-    public void setBirthday(Date bDayDate) {
-        if (!isNull(bDayDate)) {
-            birthday = bDayDate;
+    public void setBirthday(Date birthdayDate) {
+        if (!isNull(birthdayDate)) {
+            this.birthday = birthdayDate;
         }
     }
 
@@ -133,7 +131,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     @Override
     public String getBirthday() {
         if (isNull(birthday)) {
-            return RED_BOLD + "No birthday given." + RESET;
+            return RED_BOLD_BRIGHT + "No birthday given." + RESET;
         }
 
         return new SimpleDateFormat("MM/dd/yy").format(birthday);
