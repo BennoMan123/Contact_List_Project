@@ -27,3 +27,6 @@
 * Changed some variable names in the contactInterface and reflected it in the contact class
 * Touched up the constructors in the contact class and a few text color changes
 * Added the method structures of the needed methods in the main class and adjusted the class as such
+
+10/25/23 Part 2:
+* Added the javadocs of the project
