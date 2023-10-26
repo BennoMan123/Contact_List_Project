@@ -30,3 +30,7 @@
 
 10/25/23 Part 2:
 * Added the javadocs of the project
+
+10/26/23 Part 1:
+* Removed a constructor in contact
+* Removed an unneeded comment in main.java

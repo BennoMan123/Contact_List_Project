@@ -7,7 +7,6 @@ public class Main implements textColors {
    public static void main(String[] args) {
       // Print colored text to the console
       System.out.println(GREEN + "This text is green." + RESET);
-      //System.out.println(YELLOW + "This text is yellow." + RESET);
       System.out.println(RED + "This text is red." + RESET);
 
 

@@ -23,11 +23,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         phoneNum = "N/A";
     }
 
-    public Contact(String firstName, String lastName, String phoneNum, int birthdayMonth, int birthdayDay, int birthdayYear) {
-        this(firstName, lastName, birthdayMonth, birthdayDay, birthdayYear);
-        setPhoneNum(phoneNum);
-    }
-
     public Contact(String firstName, String lastName, int birthdayMonth, int birthdayDay, int birthdayYear) {
         setName(firstName, lastName);
         setBirthday(birthdayMonth, birthdayDay, birthdayYear);
@@ -37,7 +32,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     public Contact(String firstName, String lastName,
                    int birthdayMonth, int birthdayDay, int birthdayYear, String note) {
         this(firstName, lastName, birthdayMonth, birthdayDay, birthdayYear);
-
         setNotes(note);
     }
 
