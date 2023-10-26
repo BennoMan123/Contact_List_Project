@@ -34,3 +34,4 @@
 10/26/23 Part 1:
 * Removed a constructor in contact
 * Removed an unneeded comment in main.java
+* Updated javadoc
