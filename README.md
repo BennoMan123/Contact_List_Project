@@ -43,3 +43,9 @@
 
 10/26/23 Part 3:
 * Removed some unneeded comments
+
+10/26/23 Part 4:
+* Added comments in the contactsInterface class and added get name method
+* Implemented the get name method in the contact class
+* Switched the format of the return of the birthdate from mm/dd/yy to mm/dd/yyyy in contact class
+* Updated javadocs

@@ -96,6 +96,12 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         setLastName(lastName);
     }
 
+    @Override
+    public String getName() {
+        return String.format("%s %s", firstName, lastName);
+    }
+
+
     public String getPhoneNum() {
         return phoneNum;
     }
@@ -164,7 +170,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
             return RED_BOLD_BRIGHT + "No birthday given." + RESET;
         }
 
-        return new SimpleDateFormat("MM/dd/yy").format(birthday);
+        return new SimpleDateFormat("MM/dd/yyyy").format(birthday);
     }
 
     @Override
