@@ -59,3 +59,7 @@
 10/26/23 Part 6:
 * Added comments in main class
 * Updated javadocs
+
+10/26/23 Part 7:
+* Added phase 2 doc
+* Moved all project docs to project docs/ folder
