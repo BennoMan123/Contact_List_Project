@@ -55,3 +55,7 @@
 * Added a check in firstChartoUpper to see if it's null, have it return null and see if string to see if it's empty and return ""
 * Also removed some more unneeded comments
 * Updated javadocs
+
+10/26/23 Part 6:
+* Added comments in main class
+* Updated javadocs
