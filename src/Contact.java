@@ -1,4 +1,6 @@
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Year;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -113,9 +115,43 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
 
     public void setBirthday(int month, int day, int year) {
         Calendar myCal = Calendar.getInstance();
-        /*
-        *****Check if everything is in range!!!***
-         */
+
+        //Checks if the month given is in range
+        if (month < 1 || month > 12) {
+            throw new IllegalArgumentException("Invalid month inputted; Month given is less than 1 or more than 12.");
+        }
+
+        //Checks if the day is not less than 1
+        if (day < 1) {
+            throw new IllegalArgumentException("Day inputted is less than 1.");
+        }
+
+        //Checks if the day is in range of February (and if it's leap year)
+        if (month == 2 && day > 28 && !isLeapYear(year)) {
+            throw new IllegalArgumentException("Invalid day inputted.");
+        }
+        if (month == 2 && day > 29 && isLeapYear(year)) {
+            throw new IllegalArgumentException("Invalid day inputted.");
+        }
+
+        //Checks if the day is in range of the month (months having 31 days and then 30 days)
+        if ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) &&
+                (day > 31)) {
+            throw new IllegalArgumentException("Invalid day inputted; Day is greater than the last day of the month. Must be 1-31");
+        }
+        if ((month == 4 || month == 6 || month == 9 || month == 11) && (day > 30)) {
+            throw new IllegalArgumentException("Invalid day inputted; Day is greater than the last day of the month. Must be 1-30");
+        }
+
+        //Checks if the year, day, month is later than the current
+        if (year > Year.now().getValue()) {
+            throw new IllegalArgumentException("Year can not be later than current year.");
+        }
+        if (year == Year.now().getValue() && (month > LocalDate.now().getMonth().getValue() || LocalDate.now().getDayOfMonth() < day)) {
+            throw new IllegalArgumentException("Day or month can not be later than current time.");
+        }
+
+        //Sets the birthday date
         myCal.set(Calendar.YEAR, year);
         myCal.set(Calendar.MONTH, month-1);
         myCal.set(Calendar.DAY_OF_MONTH, day);
@@ -181,6 +217,14 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         return new String(word);
     }
 
+    private static boolean isLeapYear(int year) {
+//        boolean isLeapYear = (year % 4 == 0);// divisible by 4
+//
+//        // divisible by 4, not by 100, or divisible by 400
+//        isLeapYear = isLeapYear (year % 4 == 0)&& (year % 100 != 0 || year % 400 == 0);
+        return (year % 4 == 0)&& (year % 100 != 0 || year % 400 == 0);//;]isLeapYear;
+    }
+
     private static boolean isNull(Object o) {
         return Objects.isNull(o);
     }
@@ -191,6 +235,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         return GREEN_BRIGHT + "Contact{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                '}' + "Created on " + creationTime.toString() + RESET;
+                '}' +"Birthday: " + getBirthday() + "\tCreated on " + creationTime.toString() + RESET;
     }
 }

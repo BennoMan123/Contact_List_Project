@@ -35,3 +35,8 @@
 * Removed a constructor in contact
 * Removed an unneeded comment in main.java
 * Updated javadoc
+
+10/26/23 Part 2:
+* Added conditions in the set birthday method
+* Consolidated the boolean in the isLeapYear method
+* Updated javadocs
