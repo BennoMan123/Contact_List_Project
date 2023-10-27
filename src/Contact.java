@@ -218,17 +218,12 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     }
 
     private static boolean isLeapYear(int year) {
-//        boolean isLeapYear = (year % 4 == 0);// divisible by 4
-//
-//        // divisible by 4, not by 100, or divisible by 400
-//        isLeapYear = isLeapYear (year % 4 == 0)&& (year % 100 != 0 || year % 400 == 0);
         return (year % 4 == 0)&& (year % 100 != 0 || year % 400 == 0);//;]isLeapYear;
     }
 
     private static boolean isNull(Object o) {
         return Objects.isNull(o);
     }
-
 
     @Override
     public String toString() {

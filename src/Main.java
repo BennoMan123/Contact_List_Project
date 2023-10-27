@@ -34,8 +34,7 @@ public class Main implements textColors {
       addContact(contact1);
       addContact(contact2);
       addContact(contact3);
-
-      //sortList();
+      
       printContacts();
    }
 

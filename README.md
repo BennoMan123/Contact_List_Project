@@ -40,3 +40,6 @@
 * Added conditions in the set birthday method
 * Consolidated the boolean in the isLeapYear method
 * Updated javadocs
+
+10/26/23 Part 3:
+* Removed some unneeded comments
