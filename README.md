@@ -45,7 +45,13 @@
 * Removed some unneeded comments
 
 10/26/23 Part 4:
-* Added comments in the contactsInterface class and added get name method
+* Added comments in the contactsInterface class and added getName() method
 * Implemented the get name method in the contact class
 * Switched the format of the return of the birthdate from mm/dd/yy to mm/dd/yyyy in contact class
+* Updated javadocs
+
+10/26/23 Part 5:
+* Added comments in the text colors interface and contact class
+* Added a check in firstChartoUpper to see if it's null, have it return null and see if string to see if it's empty and return ""
+* Also removed some more unneeded comments
 * Updated javadocs

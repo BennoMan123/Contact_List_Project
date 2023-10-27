@@ -6,31 +6,78 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Contact implements contactsInterface, Comparable<Contact>, textColors {
+    /**
+     * Creation time/date of contact
+     */
     private Date creationTime = new Date();
-    private String firstName, lastName;
+    /**
+     * First name of contact
+     */
+    private String firstName;
+    /**
+     * Last name of contact
+     */
+    private String lastName;
+    /**
+     * Phone number of the contact
+     */
     private String phoneNum;
+    /**
+     * Birthday of the contact
+     */
     private Date birthday = null;
+    /**
+     * Notes about the contact
+     */
     private StringBuffer notes = new StringBuffer();
+    /**
+     * Address of the contact
+     */
     private String Address = "N/A";
 
 
+    /**
+     * Default constructor; sets most to null or "" or "N/A"
+     */
     public Contact() {
         firstName = "";
         lastName = "";
         phoneNum = "N/A";
     }
 
+    /**
+     * sets first and last name; sets rest to default
+     * @param firstName first name of contact
+     * @param lastName last name of contact
+     */
     public Contact(String firstName, String lastName) {
         setName(firstName, lastName);
         phoneNum = "N/A";
     }
 
+    /**
+     * sets first and last name and the birthday given year, month, and day
+     * @param firstName first name of contact
+     * @param lastName last name of contact
+     * @param birthdayMonth birthday month of contact
+     * @param birthdayDay birthday day of contact
+     * @param birthdayYear birthday year of contact
+     */
     public Contact(String firstName, String lastName, int birthdayMonth, int birthdayDay, int birthdayYear) {
         setName(firstName, lastName);
         setBirthday(birthdayMonth, birthdayDay, birthdayYear);
         phoneNum = "N/A";
     }
 
+    /**
+     * sets first and last name, notes about the contact, and the birthday given year, month, and day
+     * @param firstName first name of contact
+     * @param lastName last name of contact
+     * @param birthdayMonth birthday month of contact
+     * @param birthdayDay birthday day of contact
+     * @param birthdayYear birthday year of contact
+     * @param note notes about the contact
+     */
     public Contact(String firstName, String lastName,
                    int birthdayMonth, int birthdayDay, int birthdayYear, String note) {
         this(firstName, lastName, birthdayMonth, birthdayDay, birthdayYear);
@@ -201,6 +248,11 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         return Notes + notes.toString();
     }
 
+    /**
+     * Compares the contacts first by last name, then by last name
+     * @param o contact to be compared to this one
+     * @return
+     */
     @Override
     public int compareTo(Contact o) {
         if (String.CASE_INSENSITIVE_ORDER.compare(this.lastName, o.getLastName()) == 0) {
@@ -211,9 +263,18 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         }
     }
 
+    /**
+     * Sets the first letter of the inputted to a capital of the letter
+     * @param str the word to have the first letter be turned to uppercase
+     * @return string with the first letter turned to an uppercase, returns null if the string is null, returns "" if empty
+     */
     private static String firstCharToUpper(String str) {
-        if (str.isBlank()) {
+        if (isNull(str)) {
             return null;
+        }
+
+        if (str.isEmpty()) {
+            return "";
         }
 
         char[] word = str.toCharArray();
@@ -223,14 +284,31 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         return new String(word);
     }
 
+    /**
+     * returns if the year given is a leap year or not
+     * @param year
+     * @return
+     */
     private static boolean isLeapYear(int year) {
-        return (year % 4 == 0)&& (year % 100 != 0 || year % 400 == 0);//;]isLeapYear;
+        return (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0);
     }
 
+    /**
+     * <pre>
+     * Returns if the object given is null or not.
+     * See similar: {@link Objects#isNull(Object)}
+     * </pre>
+     * @param o any object
+     * @return if it is null or not
+     */
     private static boolean isNull(Object o) {
         return Objects.isNull(o);
     }
 
+    /**
+     * Returns the string of the contact information
+     * @return contact information of a contact
+     */
     @Override
     public String toString() {
         return GREEN_BRIGHT + "Contact{" +
