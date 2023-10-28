@@ -2,6 +2,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
+/**
+ * Client class to run the project and to be add to the list of contacts.
+ */
 public class Main implements textColors {
    /**
     * Scanner to scan in input from user.
@@ -14,7 +17,7 @@ public class Main implements textColors {
 
    /**
     * Main method to run the program.
-    * @param args used for nothing
+    * @param args Used for nothing
     */
    public static void main(String[] args) {
       // Print colored text to the console
@@ -142,7 +145,7 @@ public class Main implements textColors {
    }
 
    /**
-    * Temp method for testing
+    * Temp method for testing.
     * @param milliSec milliseconds to sleep
     */
    private static void sleep(long milliSec) {

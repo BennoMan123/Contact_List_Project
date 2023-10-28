@@ -5,33 +5,44 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * <pre>
+ * Class to hold information about a contact.
+ * Holds information of:
+ * * First and last name
+ * * Address
+ * * Phone number
+ * * Birthday
+ * * Any notes about the contact
+ * </pre>
+ */
 public class Contact implements contactsInterface, Comparable<Contact>, textColors {
     /**
-     * Creation time/date of contact
+     * Creation time/date of contact.
      */
     private Date creationTime = new Date();
     /**
-     * First name of contact
+     * First name of contact.
      */
     private String firstName;
     /**
-     * Last name of contact
+     * Last name of contact.
      */
     private String lastName;
     /**
-     * Phone number of the contact
+     * Phone number of the contact.
      */
     private String phoneNum;
     /**
-     * Birthday of the contact
+     * Birthday of the contact.
      */
     private Date birthday = null;
     /**
-     * Notes about the contact
+     * Notes about the contact.
      */
     private StringBuffer notes = new StringBuffer();
     /**
-     * Address of the contact
+     * Address of the contact.
      */
     private String Address = "N/A";
 
@@ -251,7 +262,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     /**
      * Compares the contacts first by last name, then by last name
      * @param o contact to be compared to this one
-     * @return
+     * @return Returns if less than, equal to, or greater than the last name, then first name if equal
      */
     @Override
     public int compareTo(Contact o) {
@@ -286,8 +297,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
 
     /**
      * returns if the year given is a leap year or not
-     * @param year
-     * @return
+     * @param year Year to be checked for leap year or not
+     * @return True if a leap year, false if not
      */
     private static boolean isLeapYear(int year) {
         return (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0);
