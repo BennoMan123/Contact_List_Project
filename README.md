@@ -63,3 +63,6 @@
 10/26/23 Part 7:
 * Added phase 2 doc
 * Moved all project docs to project docs/ folder
+
+10/27/23 Part 1:
+* Fixed the javadocs comments

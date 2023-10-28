@@ -2,107 +2,123 @@ import java.util.Date;
 
 public interface contactsInterface {
     /**
-     * returns the creation time/date of the contact
-     * @return date of creation
+     * Returns the creation time/date of the contact
+     * @return Date of creation
      */
     public Date getCreationTime();
 
     /**
-     * returns the address of the contact
-     * @return address of the contact in string form
+     * Returns the address of the contact
+     * @return Address of the contact in string form
      */
     public String getAddress();
 
     /**
-     * sets address of the contact
-     * @param address the address of the contact
+     * Sets address of the contact
+     * @param address The address of the contact
      */
     public void setAddress(String address);
 
     /**
-     * returns the first name of the contact
-     * @return returns first name of the contact
+     * Returns the first name of the contact
+     * @return Returns first name of the contact
+     * @see getLastName
+     * @see getName
      */
     public String getFirstName();
 
     /**
-     * sets the first name of the contact
-     * @param firstName last name of the contact
+     * Sets the first name of the contact
+     * @param firstName First name of the contact
+     * @see setLastName(String)
+     * @see setName(String, String)
      */
     public void setFirstName(String firstName);
 
     /**
-     * returns the last name of the contact
-     * @return the last name of contact
+     * Returns the last name of the contact
+     * @return The last name of contact
+     * @see getFirstName
+     * @see getName
      */
     public String getLastName();
 
     /**
-     * sets the last name of the contact
-     * @param lastName last name of the contact
+     * Sets the last name of the contact
+     * @param lastName Last name of the contact
+     * @see setFirstName(String)
+     * @see setName(String, String)
      */
     public void setLastName(String lastName);
 
     /**
-     * sets first and last name of the contact
-     * @param firstName first name of contact
-     * @param lastName last name of contact
+     * Sets first and last name of the contact
+     * @param firstName First name of contact
+     * @param lastName Last name of contact
+     * @see setFirstName(String)
+     * @see setLastName(String)
      */
     public void setName(String firstName, String lastName);
 
     /**
-     * returns the full name of the contact
-     * @return string of the contact name
+     * Returns the full name of the contact
+     * @return First and last name of the contact
+     * @see getFirstName
+     * @see getLastName
      */
     public String getName();
 
     /**
-     * returns the phone number of the contact
-     * @return the phone number of the contact
+     * Returns the phone number of the contact
+     * @return The phone number of the contact
      */
     public String getPhoneNum();
 
     /**
-     * sets the phone number of the contact
-     * @param phoneNum the phone number of the contact
+     * Sets the phone number of the contact.
+     * @param phoneNum The phone number of the contact
      */
     public void setPhoneNum(String phoneNum);
 
     /**
-     * sets the birthday of the contact (using date parameter)
-     * @param birthdayDate birthday date of the contact in date form
+     * Sets the birthday of the contact (using date parameter)
+     * @param birthdayDate Birthday date of the contact in date form
+     * @see setBirthday(int, int, int)
      */
     public void setBirthday(Date birthdayDate);
 
     /**
-     * sets the birthday of the contact given the year, month, and day
-     * @param month month of the birthdate
-     * @param day day of the birthdate
-     * @param year year of the birthdate
+     * Sets the birthday of the contact given the year, month, and day
+     * @param month Month of the birthdate
+     * @param day Day of the birthdate
+     * @param year Year of the birthdate
+     * @see setBirthday(Date)
      */
     public void setBirthday(int month, int day, int year);
 
     /**
-     * returns the birthday of the contact in MM/dd/yyyy form
+     * Returns the birthday of the contact in MM/dd/yyyy form
      * @return birthdate of the contact in string form
      */
     public String getBirthday();
 
     /**
-     * sets the notes about the contact
-     * @param note notes about the contact
+     * Sets the notes about the contact
+     * @param note Notes about the contact
+     * @see addToNotes(String)
      */
     public void setNotes(String note);
 
     /**
-     * adds to the notes about the contact
-     * @param note notes to be added about the contact
+     * Adds to the notes about the contact
+     * @param note Notes to be added about the contact
+     * @see setNotes(String)
      */
     public void addToNotes(String note);
 
     /**
-     * returns the notes about the contact
-     * @return
+     * Returns the notes about the contact
+     * @return Returns the notes about the contact
      */
     public String getNotes();
 }

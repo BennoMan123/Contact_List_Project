@@ -1,17 +1,19 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 public class Main implements textColors {
    /**
-    * Scanner to scan in input from user
+    * Scanner to scan in input from user.
     */
    private static Scanner scan = new Scanner(System.in);
    /**
-    * Arraylist to store all of the contacts
+    * Arraylist to store all of the contacts.
     */
    private static ArrayList<Contact> contactList = new ArrayList<Contact>();
 
    /**
-    * main method to run the program
+    * Main method to run the program.
     * @param args used for nothing
     */
    public static void main(String[] args) {
@@ -57,53 +59,53 @@ public class Main implements textColors {
     */
 
    /**
-    * method to handle the add choice
+    * Method to handle the add choice.
     */
    private static void add() {
 
    }
 
    /**
-    * adds contact to arraylist and sorts it
-    * @param x contact to be added
+    * Adds contact to arraylist and sorts it.
+    * @param x Contact to be added to arraylist
     */
-   private static void addContact(Contact x) {
+   private static void addContact(@NotNull Contact x) {
       contactList.add(x);
       Collections.sort(contactList);
    }
 
    /**
-    * method to handle the edit choice
+    * Method to handle the edit choice.
     */
    private static void edit() {
 
    }
 
    /**
-    * method to handle the remove choice
+    * Method to handle the remove choice.
     */
    private static void remove() {
 
    }
 
    /**
-    * method to handle the range choice
+    * Method to handle the range choice.
     */
    private static void range() {
 
    }
 
    /**
-    * prints all of the contacts within the given char range by last name
-    * @param start beginning of range
-    * @param end end of the range
+    * Prints all of the contacts within the given char range by last name.
+    * @param start Beginning of range
+    * @param end End of the range
     */
    private static void printInRange(char start, char end) {
 
    }
 
    /**
-    * Returns first contact by first or last name
+    * Returns first contact by first or last name.
     * @param nameType
     * @param lastName
     * @return contact
@@ -126,7 +128,7 @@ public class Main implements textColors {
    }
 
    /**
-    * Prints all of the contacts in contact list
+    * Prints all of the contacts in contact list.
     */
    private static void printContacts() {
       if (contactList.isEmpty()) {
@@ -140,7 +142,7 @@ public class Main implements textColors {
    }
 
    /**
-    * temp method for testing
+    * Temp method for testing
     * @param milliSec milliseconds to sleep
     */
    private static void sleep(long milliSec) {

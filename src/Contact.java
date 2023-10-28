@@ -37,7 +37,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
 
 
     /**
-     * Default constructor; sets most to null or "" or "N/A"
+     * Default constructor; sets most to null or "" or "N/A".
      */
     public Contact() {
         firstName = "";
@@ -46,7 +46,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     }
 
     /**
-     * sets first and last name; sets rest to default
+     * Sets first and last name; sets rest to default.
      * @param firstName first name of contact
      * @param lastName last name of contact
      */
@@ -56,12 +56,12 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     }
 
     /**
-     * sets first and last name and the birthday given year, month, and day
-     * @param firstName first name of contact
-     * @param lastName last name of contact
-     * @param birthdayMonth birthday month of contact
-     * @param birthdayDay birthday day of contact
-     * @param birthdayYear birthday year of contact
+     * Sets first and last name and the birthday given year, month, and day.
+     * @param firstName First name of contact
+     * @param lastName Last name of contact
+     * @param birthdayMonth Nirthday month of contact
+     * @param birthdayDay Birthday day of contact
+     * @param birthdayYear Birthday year of contact
      */
     public Contact(String firstName, String lastName, int birthdayMonth, int birthdayDay, int birthdayYear) {
         setName(firstName, lastName);
@@ -70,13 +70,13 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     }
 
     /**
-     * sets first and last name, notes about the contact, and the birthday given year, month, and day
-     * @param firstName first name of contact
-     * @param lastName last name of contact
-     * @param birthdayMonth birthday month of contact
-     * @param birthdayDay birthday day of contact
-     * @param birthdayYear birthday year of contact
-     * @param note notes about the contact
+     * Sets first and last name, notes about the contact, and the birthday given year, month, and day.
+     * @param firstName First name of contact
+     * @param lastName Last name of contact
+     * @param birthdayMonth Birthday month of contact
+     * @param birthdayDay Birthday day of contact
+     * @param birthdayYear Birthday year of contact
+     * @param note Notes about the contact
      */
     public Contact(String firstName, String lastName,
                    int birthdayMonth, int birthdayDay, int birthdayYear, String note) {
@@ -214,7 +214,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     @Override
     public String getBirthday() {
         if (isNull(birthday)) {
-            return RED_BOLD_BRIGHT + "No birthday given." + RESET;
+            return RED_BOLD_BRIGHT + "N/A" + RESET;
         }
 
         return new SimpleDateFormat("MM/dd/yyyy").format(birthday);
