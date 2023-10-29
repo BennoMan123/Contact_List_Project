@@ -73,3 +73,8 @@
 10/28/23 Part 1:
 * Made some parameters in methods check if parameter is not null in the main and contact classes
 * Change the coloring in the toString return in Contact class
+
+10/28/23 Part 2:
+* Filled in the returnContact method in main class.
+  * Changed it from one contact to potentially multiple contacts with given name
+  * Also added a better java docs method

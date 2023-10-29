@@ -108,26 +108,44 @@ public class Main implements textColors {
    }
 
    /**
-    * Returns first contact by first or last name.
-    * @param nameType
-    * @param lastName
-    * @return contact
+    * Returns contacts by first or last name. Returns null if there's no contacts or no contacts found.
+    * @param nameType First or last name to be checked for the name.
+    * @param name First/Last name requested to be return with contacts with said name.
+    * @return Contacts with given first or last name.
     */
-   private static Contact returnContact(@NotNull String nameType, @NotNull String lastName) {
+   private static ArrayList<Contact> returnContact(@NotNull String nameType, @NotNull String name) {
       /*
    maybe have it return an int, -1 for not having it or returning the first instance of it
     */
-      if (nameType.equalsIgnoreCase("first")) {
+      if (contactList.isEmpty()) {
+         return null;
+      }
 
+      ArrayList<Contact> returnList = new ArrayList<Contact>(0);
+      if (nameType.equalsIgnoreCase("first")) {
+         for (int i = 0; i < contactList.size(); i++) {
+            if (contactList.get(i).getFirstName().equalsIgnoreCase(name)) {
+               returnList.add(contactList.get(i));
+            }
+         }
       }
       else if (nameType.equalsIgnoreCase("last")) {
-
+         for (int i = 0; i < contactList.size(); i++) {
+            if (contactList.get(i).getLastName().equalsIgnoreCase(name)) {
+               returnList.add(contactList.get(i));
+            }
+         }
       }
       else {
          throw new IllegalArgumentException("Invalid name type.");
       }
 
-      return new Contact();
+      if (returnList.size() == 0) {
+         return null;
+      }
+      else {
+         return returnList;
+      }
    }
 
    /**
