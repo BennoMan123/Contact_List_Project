@@ -103,7 +103,7 @@ public class Main implements textColors {
     * @param start Beginning of range
     * @param end End of the range
     */
-   private static void printInRange(char start, char end) {
+   private static void printInRange(@NotNull char start, @NotNull char end) {
 
    }
 
@@ -113,7 +113,7 @@ public class Main implements textColors {
     * @param lastName
     * @return contact
     */
-   private static Contact returnContact(String nameType, String lastName) {
+   private static Contact returnContact(@NotNull String nameType, @NotNull String lastName) {
       /*
    maybe have it return an int, -1 for not having it or returning the first instance of it
     */
@@ -148,7 +148,7 @@ public class Main implements textColors {
     * Temp method for testing.
     * @param milliSec milliseconds to sleep
     */
-   private static void sleep(long milliSec) {
+   private static void sleep(@NotNull long milliSec) {
       if (milliSec < 0) {
          return;
       }

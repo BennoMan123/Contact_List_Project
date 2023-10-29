@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Year;
@@ -103,7 +105,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         return Address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(@NotNull String address) {
         Address = address;
     }
 
@@ -164,7 +166,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         return phoneNum;
     }
 
-    public void setPhoneNum(String phoneNum) {
+    public void setPhoneNum(@NotNull String phoneNum) {
         //check if it contains dashes and also if the length of the number is 10 to add dashes
         //check if it contains the dashes, if not, add them by changing string to char array and adding them in
         this.phoneNum = phoneNum;
@@ -177,7 +179,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         }
     }
 
-    public void setBirthday(int month, int day, int year) {
+    public void setBirthday(@NotNull int month, @NotNull int day, @NotNull int year) {
         Calendar myCal = Calendar.getInstance();
 
         //Checks if the month given is in range
@@ -265,7 +267,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * @return Returns if less than, equal to, or greater than the last name, then first name if equal
      */
     @Override
-    public int compareTo(Contact o) {
+    public int compareTo(@NotNull Contact o) {
         if (String.CASE_INSENSITIVE_ORDER.compare(this.lastName, o.getLastName()) == 0) {
             return String.CASE_INSENSITIVE_ORDER.compare(this.firstName, o.getFirstName());
         }
@@ -300,7 +302,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * @param year Year to be checked for leap year or not
      * @return True if a leap year, false if not
      */
-    private static boolean isLeapYear(int year) {
+    private static boolean isLeapYear(@NotNull int year) {
         return (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0);
     }
 
@@ -325,6 +327,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         return GREEN_BRIGHT + "Contact{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                '}' +"Birthday: " + getBirthday() + "\tCreated on " + creationTime.toString() + RESET;
+                '}' +"Birthday: " + getBirthday() + GREEN_BRIGHT + "\tCreated on " + creationTime.toString() + RESET;
     }
 }

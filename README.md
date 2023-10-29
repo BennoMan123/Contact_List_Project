@@ -69,3 +69,7 @@
 
 10/27/23 Part 2:
 * More fixes to the javadocs comments
+
+10/28/23 Part 1:
+* Made some parameters in methods check if parameter is not null in the main and contact classes
+* Change the coloring in the toString return in Contact class
