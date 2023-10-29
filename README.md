@@ -90,3 +90,8 @@
 
 10/28/23 Part 5:
 * Fixed the javadocs folder.
+
+10/29/23 Part 1:
+* Removed the sleep method from Main class and adjusted code as such
+* Updated a few comments in main class as well
+* Updated the Javadocs files

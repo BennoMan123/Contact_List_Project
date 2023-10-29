@@ -30,18 +30,15 @@ public class Main implements textColors {
       contact1.setLastName("Cena");
       contact1.setBirthday(1, 21, 2001);
       System.out.println(contact1.getBirthday());
-      sleep(1000);
 
       Contact contact2 = new Contact();
       contact2.setFirstName("beth");
       contact2.setLastName("Cena");
-      sleep(1000);
 
       Contact contact4 = new Contact();
       contact4.setFirstName("michael");
       contact4.setLastName("Dal");
       addContact(contact4);
-      sleep(1000);
 
       Contact contact3 = new Contact();
       contact3.setFirstName("michael");
@@ -110,11 +107,11 @@ public class Main implements textColors {
    }
 
    /**
-    * Returns contacts by first or last name. Returns null if there's no contacts or no contacts found.
+    * Returns contact(s) by first or last name. Returns null if there's no contact or contacts found.
     * @param nameType First or last name to be checked for the name.
     * @param name First/Last name requested to be return with contacts with said name.
     * @return Contacts with given first or last name.
-    * @throws IllegalArgumentException if nametype parameter is invalid, (not first or last name)
+    * @throws IllegalArgumentException if nameType parameter is invalid, (not first or last name)
     * @throws NullPointerException if input is null
     */
    private static ArrayList<Contact> returnContact(@NotNull String nameType, @NotNull String name) {
@@ -164,24 +161,6 @@ public class Main implements textColors {
    
       for (int i = 0; i < contactList.size(); i++) {
          System.out.println(/*YELLOW_BOLD_BRIGHT +*/ contactList.get(i)/* + RESET*/);
-      }
-   }
-
-   /**
-    * Temp method for testing.
-    * @param milliSec milliseconds to sleep
-    * @throws NullPointerException if input is null
-    */
-   private static void sleep(@NotNull long milliSec) {
-      if (milliSec < 0) {
-         return;
-      }
-
-      try {
-         Thread.sleep(milliSec);
-      }
-      catch (Exception e) {
-         System.out.println(RED + e + RESET);
       }
    }
 }
