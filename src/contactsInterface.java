@@ -101,7 +101,7 @@ public interface contactsInterface {
 
     /**
      * Returns the birthday of the contact in MM/dd/yyyy form.
-     * @return birthdate of the contact in string form
+     * @return Birthdate of the contact in string form
      */
     public String getBirthday();
 

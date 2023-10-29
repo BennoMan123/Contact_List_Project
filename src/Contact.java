@@ -60,8 +60,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
 
     /**
      * Sets first and last name; sets rest to default.
-     * @param firstName first name of contact
-     * @param lastName last name of contact
+     * @param firstName First name of contact
+     * @param lastName Last name of contact
      */
     public Contact(String firstName, String lastName) {
         setName(firstName, lastName);
@@ -72,7 +72,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * Sets first and last name and the birthday given year, month, and day.
      * @param firstName First name of contact
      * @param lastName Last name of contact
-     * @param birthdayMonth Nirthday month of contact
+     * @param birthdayMonth Birthday month of contact
      * @param birthdayDay Birthday day of contact
      * @param birthdayYear Birthday year of contact
      */
@@ -105,6 +105,11 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         return Address;
     }
 
+    /**
+     *
+     * @param address The address of the contact
+     * @throws NullPointerException if input is null
+     */
     public void setAddress(@NotNull String address) {
         Address = address;
     }
@@ -113,6 +118,11 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         return firstName;
     }
 
+    /**
+     *
+     * @param firstName First name of the contact
+     * @throws NullPointerException if input is null
+     */
     public void setFirstName(String firstName) {
         if (isNull(firstName)) {
             throw new NullPointerException("First Name given is null.");
@@ -134,6 +144,11 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         return lastName;
     }
 
+    /**
+     *
+     * @param lastName Last name of the contact
+     * @throws NullPointerException if input is null
+     */
     public void setLastName(String lastName) {
         if (isNull(lastName)) {
             throw new NullPointerException("Last Name given is null.");
@@ -151,6 +166,12 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         this.lastName = lastName;
     }
 
+    /**
+     *
+     * @param firstName First name of contact
+     * @param lastName Last name of contact
+     * @throws NullPointerException if input is null
+     */
     public void setName(String firstName, String lastName) {
         setFirstName(firstName);
         setLastName(lastName);
@@ -179,6 +200,14 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         }
     }
 
+    /**
+     *
+     * @param month Month of the birthdate
+     * @param day Day of the birthdate
+     * @param year Year of the birthdate
+     * @throws NullPointerException if input is null
+     * @throws IllegalArgumentException if any of the inputs are out of range of a given month or day number or a date later than the current
+     */
     public void setBirthday(@NotNull int month, @NotNull int day, @NotNull int year) {
         Calendar myCal = Calendar.getInstance();
 
@@ -233,6 +262,11 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         return new SimpleDateFormat("MM/dd/yyyy").format(birthday);
     }
 
+    /**
+     *
+     * @param note Notes about the contact
+     * @throws NullPointerException if input is null
+     */
     @Override
     public void setNotes(String note) {
         if (isNull(note)) {
@@ -241,6 +275,11 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         notes = new StringBuffer(note + "\n");
     }
 
+    /**
+     *
+     * @param note Notes to be added about the contact
+     * @throws NullPointerException if input is null
+     */
     @Override
     public void addToNotes(String note) {
         if (isNull(note)) {
@@ -262,8 +301,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     }
 
     /**
-     * Compares the contacts first by last name, then by last name
-     * @param o contact to be compared to this one
+     * Compares the contacts first by last name, then by last name.
+     * @param o Contact to be compared to this one
      * @return Returns if less than, equal to, or greater than the last name, then first name if equal
      */
     @Override
@@ -277,9 +316,9 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     }
 
     /**
-     * Sets the first letter of the inputted to a capital of the letter
-     * @param str the word to have the first letter be turned to uppercase
-     * @return string with the first letter turned to an uppercase, returns null if the string is null, returns "" if empty
+     * Sets the first letter of the inputted to a capital of the letter.
+     * @param str The word to have the first letter be turned to uppercase
+     * @return String with the first letter turned to an uppercase, returns null if the string is null, returns "" if empty
      */
     private static String firstCharToUpper(String str) {
         if (isNull(str)) {
@@ -298,9 +337,10 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     }
 
     /**
-     * returns if the year given is a leap year or not
+     * Returns if the year given is a leap year or not.
      * @param year Year to be checked for leap year or not
      * @return True if a leap year, false if not
+     * @throws NullPointerException if input is null
      */
     private static boolean isLeapYear(@NotNull int year) {
         return (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0);
@@ -311,16 +351,16 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * Returns if the object given is null or not.
      * See similar: {@link Objects#isNull(Object)}
      * </pre>
-     * @param o any object
-     * @return if it is null or not
+     * @param o Any object
+     * @return If it is null or not
      */
     private static boolean isNull(Object o) {
         return Objects.isNull(o);
     }
 
     /**
-     * Returns the string of the contact information
-     * @return contact information of a contact
+     * Returns the string of the contact information.
+     * @return Contact information of a contact
      */
     @Override
     public String toString() {

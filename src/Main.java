@@ -71,6 +71,7 @@ public class Main implements textColors {
    /**
     * Adds contact to arraylist and sorts it.
     * @param x Contact to be added to arraylist
+    * @throws NullPointerException if input is null
     */
    private static void addContact(@NotNull Contact x) {
       contactList.add(x);
@@ -102,6 +103,7 @@ public class Main implements textColors {
     * Prints all of the contacts within the given char range by last name.
     * @param start Beginning of range
     * @param end End of the range
+    * @throws NullPointerException if input is null
     */
    private static void printInRange(@NotNull char start, @NotNull char end) {
 
@@ -112,24 +114,27 @@ public class Main implements textColors {
     * @param nameType First or last name to be checked for the name.
     * @param name First/Last name requested to be return with contacts with said name.
     * @return Contacts with given first or last name.
+    * @throws IllegalArgumentException if nametype parameter is invalid, (not first or last name)
+    * @throws NullPointerException if input is null
     */
    private static ArrayList<Contact> returnContact(@NotNull String nameType, @NotNull String name) {
       /*
    maybe have it return an int, -1 for not having it or returning the first instance of it
     */
+      nameType = nameType.toLowerCase(Locale.ROOT);
       if (contactList.isEmpty()) {
          return null;
       }
 
       ArrayList<Contact> returnList = new ArrayList<Contact>(0);
-      if (nameType.equalsIgnoreCase("first")) {
+      if (nameType.equalsIgnoreCase("first") || nameType.contains("first")) {
          for (int i = 0; i < contactList.size(); i++) {
             if (contactList.get(i).getFirstName().equalsIgnoreCase(name)) {
                returnList.add(contactList.get(i));
             }
          }
       }
-      else if (nameType.equalsIgnoreCase("last")) {
+      else if (nameType.equalsIgnoreCase("last") || nameType.contains("last")) {
          for (int i = 0; i < contactList.size(); i++) {
             if (contactList.get(i).getLastName().equalsIgnoreCase(name)) {
                returnList.add(contactList.get(i));
@@ -165,6 +170,7 @@ public class Main implements textColors {
    /**
     * Temp method for testing.
     * @param milliSec milliseconds to sleep
+    * @throws NullPointerException if input is null
     */
    private static void sleep(@NotNull long milliSec) {
       if (milliSec < 0) {

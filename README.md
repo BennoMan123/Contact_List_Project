@@ -78,3 +78,9 @@
 * Filled in the returnContact method in main class.
   * Changed it from one contact to potentially multiple contacts with given name
   * Also added a better java docs method
+
+10/28/23 Part 3:
+* Add @throws in the java docs in contacts and main classes.
+* Fixed up conditions in returnContact method to look more closely for "first" and "last" in first input.
+* Updated javadocs files.
+* Touched up all the javadocs comments in all classes.
