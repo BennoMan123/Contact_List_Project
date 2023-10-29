@@ -114,14 +114,18 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         Address = address;
     }
 
+    /**
+     * @see getLastName
+     * @see getName
+     */
     public String getFirstName() {
         return firstName;
     }
 
     /**
-     *
-     * @param firstName First name of the contact
      * @throws NullPointerException if input is null
+     * @see setLastName(String)
+     * @see setName(String, String)
      */
     public void setFirstName(String firstName) {
         if (isNull(firstName)) {
@@ -140,14 +144,18 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         this.firstName = firstName;
     }
 
+    /**
+     * @see getFirstName
+     * @see getName
+     */
     public String getLastName() {
         return lastName;
     }
 
     /**
-     *
-     * @param lastName Last name of the contact
      * @throws NullPointerException if input is null
+     * @see setFirstName(String)
+     * @see setName(String, String)
      */
     public void setLastName(String lastName) {
         if (isNull(lastName)) {
@@ -171,12 +179,18 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * @param firstName First name of contact
      * @param lastName Last name of contact
      * @throws NullPointerException if input is null
+     * @see setFirstName(String)
+     * @see setLastName(String)
      */
     public void setName(String firstName, String lastName) {
         setFirstName(firstName);
         setLastName(lastName);
     }
 
+    /**
+     * @see getFirstName
+     * @see getLastName
+     */
     @Override
     public String getName() {
         return String.format("%s %s", firstName, lastName);
@@ -193,6 +207,9 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         this.phoneNum = phoneNum;
     }
 
+    /**
+     * @see setBirthday(int, int, int)
+     */
     @Override
     public void setBirthday(Date birthdayDate) {
         if (!isNull(birthdayDate)) {
@@ -201,12 +218,9 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     }
 
     /**
-     *
-     * @param month Month of the birthdate
-     * @param day Day of the birthdate
-     * @param year Year of the birthdate
      * @throws NullPointerException if input is null
      * @throws IllegalArgumentException if any of the inputs are out of range of a given month or day number or a date later than the current
+     * @see setBirthday(Date)
      */
     public void setBirthday(@NotNull int month, @NotNull int day, @NotNull int year) {
         Calendar myCal = Calendar.getInstance();
@@ -263,9 +277,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     }
 
     /**
-     *
-     * @param note Notes about the contact
      * @throws NullPointerException if input is null
+     * @see addToNotes(String)
      */
     @Override
     public void setNotes(String note) {
@@ -276,9 +289,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     }
 
     /**
-     *
-     * @param note Notes to be added about the contact
      * @throws NullPointerException if input is null
+     * @see setNotes(String)
      */
     @Override
     public void addToNotes(String note) {

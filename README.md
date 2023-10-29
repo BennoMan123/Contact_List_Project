@@ -84,3 +84,6 @@
 * Fixed up conditions in returnContact method to look more closely for "first" and "last" in first input.
 * Updated javadocs files.
 * Touched up all the javadocs comments in all classes.
+
+10/28/23 Part 4:
+* Fixed comments in the contact class and interface contactInterface; switched where the @see were in all methods and got rid of unneeded overriding @param

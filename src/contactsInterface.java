@@ -25,32 +25,24 @@ public interface contactsInterface {
     /**
      * Returns the first name of the contact.
      * @return Returns first name of the contact
-     * @see getLastName
-     * @see getName
      */
     public String getFirstName();
 
     /**
      * Sets the first name of the contact.
      * @param firstName First name of the contact
-     * @see setLastName(String)
-     * @see setName(String, String)
      */
     public void setFirstName(String firstName);
 
     /**
      * Returns the last name of the contact.
      * @return The last name of contact
-     * @see getFirstName
-     * @see getName
      */
     public String getLastName();
 
     /**
      * Sets the last name of the contact.
      * @param lastName Last name of the contact
-     * @see setFirstName(String)
-     * @see setName(String, String)
      */
     public void setLastName(String lastName);
 
@@ -58,16 +50,12 @@ public interface contactsInterface {
      * Sets first and last name of the contact.
      * @param firstName First name of contact
      * @param lastName Last name of contact
-     * @see setFirstName(String)
-     * @see setLastName(String)
      */
     public void setName(String firstName, String lastName);
 
     /**
      * Returns the full name of the contact.
      * @return First and last name of the contact
-     * @see getFirstName
-     * @see getLastName
      */
     public String getName();
 
@@ -86,7 +74,6 @@ public interface contactsInterface {
     /**
      * Sets the birthday of the contact.
      * @param birthdayDate Birthday date of the contact in date form
-     * @see setBirthday(int, int, int)
      */
     public void setBirthday(Date birthdayDate);
 
@@ -95,7 +82,6 @@ public interface contactsInterface {
      * @param month Month of the birthdate
      * @param day Day of the birthdate
      * @param year Year of the birthdate
-     * @see setBirthday(Date)
      */
     public void setBirthday(int month, int day, int year);
 
@@ -108,7 +94,6 @@ public interface contactsInterface {
     /**
      * Sets the notes about the contact.
      * @param note Notes about the contact
-     * @see addToNotes(String)
      */
     public void setNotes(String note);
 
