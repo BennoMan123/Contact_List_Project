@@ -95,3 +95,7 @@
 * Removed the sleep method from Main class and adjusted code as such
 * Updated a few comments in main class as well
 * Updated the Javadocs files
+
+10/29/23 Part 2:
+* Fixed comments in contact class to inherit all of the comments from the interface
+* Updated the Javadocs files
