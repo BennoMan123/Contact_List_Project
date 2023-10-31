@@ -108,3 +108,7 @@
 10/30/23 Part 2:
 * Removed unneeded lines of code in the firstCharToUpper method in contact class.
 * Removed unneeded comments in the main class.
+
+10/30/23 Part 3:
+* Removed unneeded lines of comments/code in the textColor interface.
+* Updated the Javadocs files.
