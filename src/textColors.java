@@ -8,7 +8,6 @@ public interface textColors {
    public static final String RESET = "\033[0m";
 
    // Regular Colors
-   //public static final String BLACK = "\033[0;30m";   // BLACK
    /**
     * Changes the font to red.
     */
@@ -20,7 +19,6 @@ public interface textColors {
    //public static final String YELLOW = "\033[0;33m";  // YELLOW
 
    // Bold
-   //public static final String BLACK_BOLD = "\033[1;30m";  // BLACK
    /**
     * Changes the font to red and bold.
     */
@@ -43,7 +41,6 @@ public interface textColors {
    //public static final String YELLOW_UNDERLINED = "\033[4;33m"; // YELLOW
 
    // High Intensity
-   //public static final String BLACK_BRIGHT = "\033[0;90m";  // BLACK
    /**
     * Changes the font to bright red.
     */

@@ -112,3 +112,6 @@
 10/30/23 Part 3:
 * Removed unneeded lines of comments/code in the textColor interface.
 * Updated the Javadocs files.
+
+10/30/23 Part 4:
+* Removed unneeded lines of comments/code in the textColor interface.
