@@ -1,5 +1,3 @@
-import org.jetbrains.annotations.NotNull;
-
 import java.util.*;
 
 /**
@@ -70,7 +68,10 @@ public class Main implements textColors {
     * @param x Contact to be added to arraylist
     * @throws NullPointerException if input is null
     */
-   private static void addContact(@NotNull Contact x) {
+   private static void addContact(Contact x) {
+      if (isNull(x)) {
+         throw new NullPointerException("Contact given is null.");
+      }
       contactList.add(x);
       Collections.sort(contactList);
    }
@@ -102,7 +103,7 @@ public class Main implements textColors {
     * @param end End of the range
     * @throws NullPointerException if input is null
     */
-   private static void printInRange(@NotNull char start, @NotNull char end) {
+   private static void printInRange(char start, char end) {
 
    }
 
@@ -114,7 +115,10 @@ public class Main implements textColors {
     * @throws IllegalArgumentException if nameType parameter is invalid, (not first or last name)
     * @throws NullPointerException if input is null
     */
-   private static ArrayList<Contact> returnContact(@NotNull String nameType, @NotNull String name) {
+   private static ArrayList<Contact> returnContact(String nameType, String name) {
+      if (isNull(nameType) || isNull(name)) {
+         throw new NullPointerException("nameType or name given is null.");
+      }
       /*
    maybe have it return an int, -1 for not having it or returning the first instance of it
     */
@@ -125,16 +129,16 @@ public class Main implements textColors {
 
       ArrayList<Contact> returnList = new ArrayList<Contact>(0);
       if (nameType.equalsIgnoreCase("first") || nameType.contains("first")) {
-         for (int i = 0; i < contactList.size(); i++) {
-            if (contactList.get(i).getFirstName().equalsIgnoreCase(name)) {
-               returnList.add(contactList.get(i));
+         for (Contact contact : contactList) {
+            if (contact.getFirstName().equalsIgnoreCase(name)) {
+               returnList.add(contact);
             }
          }
       }
       else if (nameType.equalsIgnoreCase("last") || nameType.contains("last")) {
-         for (int i = 0; i < contactList.size(); i++) {
-            if (contactList.get(i).getLastName().equalsIgnoreCase(name)) {
-               returnList.add(contactList.get(i));
+         for (Contact contact : contactList) {
+            if (contact.getLastName().equalsIgnoreCase(name)) {
+               returnList.add(contact);
             }
          }
       }
@@ -158,9 +162,23 @@ public class Main implements textColors {
          System.out.println(RED_UNDERLINED + "Contact list is empty." + RESET);
          return;
       }
-   
-      for (int i = 0; i < contactList.size(); i++) {
-         System.out.println(/*YELLOW_BOLD_BRIGHT +*/ contactList.get(i)/* + RESET*/);
+
+      for (Contact contact : contactList) {
+         System.out.println("==========================================");
+         System.out.println(/*YELLOW_BOLD_BRIGHT +*/ contact/* + RESET*/);
+         System.out.println("==========================================");
       }
+   }
+
+   /**
+    * <pre>
+    * Returns if the object given is null or not.
+    * See similar: {@link Objects#isNull(Object)}
+    * </pre>
+    * @param o Any object
+    * @return If it is null or not
+    */
+   private static boolean isNull(Object o) {
+      return Objects.isNull(o);
    }
 }

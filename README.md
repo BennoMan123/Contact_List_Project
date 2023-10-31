@@ -92,10 +92,15 @@
 * Fixed the javadocs folder.
 
 10/29/23 Part 1:
-* Removed the sleep method from Main class and adjusted code as such
-* Updated a few comments in main class as well
-* Updated the Javadocs files
+* Removed the sleep method from Main class and adjusted code as such.
+* Updated a few comments in main class as well.
+* Updated the Javadocs files.
 
 10/29/23 Part 2:
-* Fixed comments in contact class to inherit all of the comments from the interface
-* Updated the Javadocs files
+* Fixed comments in contact class to inherit all of the comments from the interface.
+* Updated the Javadocs files.
+
+10/30/23 Part 1:
+* Switched all signatures that had @NotNull in them to not at all and used conditions in those methods to check if they're null.
+* Added isNull method in Main class
+* Fixed return in getNotes method in contact class

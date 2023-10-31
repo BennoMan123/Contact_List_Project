@@ -1,5 +1,3 @@
-import org.jetbrains.annotations.NotNull;
-
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Year;
@@ -115,7 +113,10 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * @param address The address of the contact
      * @throws NullPointerException if input is null
      */
-    public void setAddress(@NotNull String address) {
+    public void setAddress(String address) {
+        if (isNull(address)) {
+            throw new NullPointerException("Address given is null.");
+        }
         Address = address;
     }
 
@@ -216,7 +217,10 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     /**
      * {@inheritDoc}
      */
-    public void setPhoneNum(@NotNull String phoneNum) {
+    public void setPhoneNum(String phoneNum) {
+        if (isNull(phoneNum)) {
+            throw new NullPointerException("Phone number inputted is null.");
+        }
         //check if it contains dashes and also if the length of the number is 10 to add dashes
         //check if it contains the dashes, if not, add them by changing string to char array and adding them in
         this.phoneNum = phoneNum;
@@ -239,7 +243,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * @throws IllegalArgumentException if any of the inputs are out of range of a given month or day number or a date later than the current
      * @see setBirthday(Date)
      */
-    public void setBirthday(@NotNull int month, @NotNull int day, @NotNull int year) {
+    public void setBirthday(int month, int day, int year) {
         Calendar myCal = Calendar.getInstance();
 
         //Checks if the month given is in range
@@ -277,7 +281,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
             throw new IllegalArgumentException("Day or month can not be later than current time.");
         }
 
-        //Sets the birthday date
+        //Sets the birthdate
         myCal.set(Calendar.YEAR, year);
         myCal.set(Calendar.MONTH, month-1);
         myCal.set(Calendar.DAY_OF_MONTH, day);
@@ -335,7 +339,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
             return Notes + "No notes entered.";
         }
 
-        return Notes + notes.toString();
+        return Notes + notes.toString().trim();
     }
 
     /**
@@ -344,7 +348,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * @return Returns if less than, equal to, or greater than the last name, then first name if equal
      */
     @Override
-    public int compareTo(@NotNull Contact o) {
+    public int compareTo(Contact o) {
         if (String.CASE_INSENSITIVE_ORDER.compare(this.lastName, o.getLastName()) == 0) {
             return String.CASE_INSENSITIVE_ORDER.compare(this.firstName, o.getFirstName());
         }
@@ -380,7 +384,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * @return True if a leap year, false if not
      * @throws NullPointerException if input is null
      */
-    private static boolean isLeapYear(@NotNull int year) {
+    private static boolean isLeapYear(int year) {
         return (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0);
     }
 
