@@ -372,9 +372,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         }
 
         char[] word = str.toCharArray();
-        String char0 = "" + word[0];
-        char0 = char0.toUpperCase();
-        word[0] = char0.charAt(0);
+        word[0] = new String("" + word[0]).toUpperCase().charAt(0);
         return new String(word);
     }
 

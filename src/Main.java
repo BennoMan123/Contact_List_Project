@@ -165,7 +165,7 @@ public class Main implements textColors {
 
       for (Contact contact : contactList) {
          System.out.println("==========================================");
-         System.out.println(/*YELLOW_BOLD_BRIGHT +*/ contact/* + RESET*/);
+         System.out.println(contact);
          System.out.println("==========================================");
       }
    }

@@ -102,5 +102,9 @@
 
 10/30/23 Part 1:
 * Switched all signatures that had @NotNull in them to not at all and used conditions in those methods to check if they're null.
-* Added isNull method in Main class
-* Fixed return in getNotes method in contact class
+* Added isNull method in Main class.
+* Fixed return in getNotes method in contact class.
+
+10/30/23 Part 2:
+* Removed unneeded lines of code in the firstCharToUpper method in contact class.
+* Removed unneeded comments in the main class.
