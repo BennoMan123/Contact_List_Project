@@ -1,6 +1,3 @@
-import javax.swing.*;
-import java.awt.*;
-import java.io.File;
 import java.util.*;
 
 /**
@@ -16,11 +13,7 @@ public class Main implements textColors {
     */
    private static final ArrayList<Contact> contactList = new ArrayList<Contact>();
 
-   private static final DrawingPanel p = new DrawingPanel(new File("spongebob_squinting.jpg"));
-   private static final Graphics g = p.getGraphics();
-
    static {
-      p.setVisible(false);
       Runtime.getRuntime().addShutdownHook(new Thread(
               new Runnable() {
                  public void run() {
@@ -88,20 +81,9 @@ public class Main implements textColors {
 
             default:
                System.out.println(RED_UNDERLINED + "Invalid input." + RESET);
-               error();
                break;
          }
       }
-   }
-
-   /**
-    * Temp method. Will remove.
-    */
-   public static void error() {
-      p.setVisible(true);
-      p.toFront();
-      JOptionPane.showMessageDialog(null, "Why would you enter that?", "Invalid Input", JOptionPane.ERROR_MESSAGE);
-      p.setVisible(false);
    }
 
    /*
@@ -145,6 +127,10 @@ public class Main implements textColors {
     * Method to handle the remove choice.
     */
    private static void remove() {
+      if (contactList.isEmpty()) {
+         System.out.println(RED_BOLD_BRIGHT + "Contact list is empty, no contacts to remove." + RESET);
+         return;
+      }
       System.out.println(GREEN_BRIGHT + "Remove method." + RESET);
    }
 

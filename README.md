@@ -132,5 +132,10 @@
 11/2/23 Part 1:
 * Updated comments in the textClasses interface.
 * Updated Java docs folder.
-* Added drawingpanel and added some code to adjust to it for fun
-* Made scanner and the arraylist final in main class
+* Added drawingpanel and added some code to adjust to it for fun.
+* Made scanner and the arraylist final in main class.
+
+11/2/23 Part 2:
+* Removed Drawingpanel and any code associated with it.
+* Updated javadocs.
+* Added a condition in the remove method to see if the contact list is empty. If true, it returns saying there's no list.
