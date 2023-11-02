@@ -115,3 +115,12 @@
 
 10/30/23 Part 4:
 * Removed unneeded lines of comments/code in the textColor interface.
+
+11/1/23 Part 1:
+* Got rid of an unneeded comment in the returnContact method in main class and also changed the tolowercase.
+* Changed the return methods in the contact class to return the N/A in each variable as red and then resets it.
+* Fixed toString in Contact class.
+* Fixed getName method to return "no name given" if there's no first and last name.
+* Edited code to start taking input from user to see what they would like to do with contact list.
+* Added shut down hook to say thanks for using program.
+* Updated Java docs folder.

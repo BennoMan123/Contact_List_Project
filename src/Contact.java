@@ -20,7 +20,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     /**
      * Creation time/date of contact.
      */
-    private Date creationTime = new Date();
+    private final Date creationTime = new Date();
     /**
      * First name of contact.
      */
@@ -44,7 +44,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     /**
      * Address of the contact.
      */
-    private String Address = "N/A";
+    private String address = "N/A";
 
 
     /**
@@ -105,7 +105,10 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * {@inheritDoc}
      */
     public String getAddress() {
-        return Address;
+        if (address.equalsIgnoreCase("N/A")) {
+            return RED_BOLD_BRIGHT + address + RESET;
+        }
+        return address;
     }
 
     /**
@@ -117,7 +120,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         if (isNull(address)) {
             throw new NullPointerException("Address given is null.");
         }
-        Address = address;
+        this.address = address;
     }
 
     /**
@@ -204,6 +207,9 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      */
     @Override
     public String getName() {
+        if (getFirstName().equals("") && getLastName().equals("")) {
+            return RED_BOLD_BRIGHT + "No name given." + RESET;
+        }
         return String.format("%s %s", firstName, lastName);
     }
 
@@ -211,6 +217,9 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * {@inheritDoc}
      */
     public String getPhoneNum() {
+        if (phoneNum.equalsIgnoreCase("N/A")) {
+            return RED_BOLD_BRIGHT + phoneNum + RESET;
+        }
         return phoneNum;
     }
 
@@ -372,7 +381,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         }
 
         char[] word = str.toCharArray();
-        word[0] = new String("" + word[0]).toUpperCase().charAt(0);
+        word[0] = ("" + word[0]).toUpperCase().charAt(0);
         return new String(word);
     }
 
@@ -404,9 +413,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      */
     @Override
     public String toString() {
-        return GREEN_BRIGHT + "Contact{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}' +"Birthday: " + getBirthday() + GREEN_BRIGHT + "\tCreated on " + creationTime.toString() + RESET;
+        return String.format("%sName: %s\nPhone Number: %s\nAddress: %s\nBirthday: %s\n%s%s",
+                GREEN_BRIGHT, getName() + GREEN_BRIGHT, getPhoneNum() + GREEN_BRIGHT, getAddress() + GREEN_BRIGHT, getBirthday() + GREEN_BRIGHT, getNotes(), RESET);
     }
 }

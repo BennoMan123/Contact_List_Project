@@ -13,6 +13,16 @@ public class Main implements textColors {
     */
    private static ArrayList<Contact> contactList = new ArrayList<Contact>();
 
+   static {
+      Runtime.getRuntime().addShutdownHook(new Thread(
+              new Runnable() {
+                 public void run() {
+                    System.out.println("Thank you for using this program.");
+                 }
+              }
+              ));
+   }
+
    /**
     * Main method to run the program.
     * @param args Used for nothing
@@ -21,31 +31,59 @@ public class Main implements textColors {
       // Print colored text to the console
       System.out.println(GREEN + "This text is green." + RESET);
       System.out.println(RED + "This text is red." + RESET);
+   
+      while (true) {
+         int input = -1;
+         System.out.println("What would you like to do with your contact list?\n" +
+                 "1. Add contact\n" +
+                 "2. Remove contact\n" +
+                 "3. Edit a contact\n" +
+                 "4. Print entire contact list\n" +
+                 "5. Print contacts in range of 2 letters.\n" +
+                 "6. Clear all contacts\n" +
+                 "7. Exit");
+         try {
+            input = scan.nextInt();
+         }
+         catch (InputMismatchException e) {
+            System.out.println(RED_BOLD_BRIGHT + "***Invalid input.***\n" + RESET);
+            scan.nextLine();
+         }
 
+         switch (input) {
+            case 1:
+               add();
+               break;
 
-      Contact contact1 = new Contact();
-      contact1.setFirstName("john");
-      contact1.setLastName("Cena");
-      contact1.setBirthday(1, 21, 2001);
-      System.out.println(contact1.getBirthday());
+            case 2:
+               remove();
+               break;
 
-      Contact contact2 = new Contact();
-      contact2.setFirstName("beth");
-      contact2.setLastName("Cena");
+            case 3:
+               edit();
+               break;
 
-      Contact contact4 = new Contact();
-      contact4.setFirstName("michael");
-      contact4.setLastName("Dal");
-      addContact(contact4);
+            case 4:
+               printContacts();
+               break;
 
-      Contact contact3 = new Contact();
-      contact3.setFirstName("michael");
-      contact3.setLastName("jackson");
-      addContact(contact1);
-      addContact(contact2);
-      addContact(contact3);
+            case 5:
+               range();
+               break;
 
-      printContacts();
+            case 6:
+               contactList.clear();
+               System.out.println(GREEN_BRIGHT + "Contact list has been cleared." + RESET);
+               break;
+
+            case 7:
+               System.exit(0);
+
+            default:
+               System.out.println(RED_UNDERLINED + "Invalid input." + RESET);
+               break;
+         }
+      }
    }
 
    /*
@@ -60,7 +98,9 @@ public class Main implements textColors {
     * Method to handle the add choice.
     */
    private static void add() {
-
+      System.out.println(GREEN_BRIGHT + "Add method." + RESET);
+      addContact(new Contact());
+      System.out.println(GREEN_BRIGHT + "Added a blank contact." + RESET);
    }
 
    /**
@@ -80,21 +120,22 @@ public class Main implements textColors {
     * Method to handle the edit choice.
     */
    private static void edit() {
-
+      System.out.println(GREEN_BRIGHT + "Edit method." + RESET);
    }
 
    /**
     * Method to handle the remove choice.
     */
    private static void remove() {
-
+      System.out.println(GREEN_BRIGHT + "Remove method." + RESET);
    }
 
    /**
     * Method to handle the range choice.
     */
    private static void range() {
-
+      System.out.println(GREEN_BRIGHT + "Range method." + RESET);
+      printInRange('a', 'b');
    }
 
    /**
@@ -104,7 +145,7 @@ public class Main implements textColors {
     * @throws NullPointerException if input is null
     */
    private static void printInRange(char start, char end) {
-
+      System.out.println(GREEN_BRIGHT + "printInRange method." + RESET);
    }
 
    /**
@@ -119,14 +160,12 @@ public class Main implements textColors {
       if (isNull(nameType) || isNull(name)) {
          throw new NullPointerException("nameType or name given is null.");
       }
-      /*
-   maybe have it return an int, -1 for not having it or returning the first instance of it
-    */
-      nameType = nameType.toLowerCase(Locale.ROOT);
+   
+      nameType = nameType.toLowerCase();
       if (contactList.isEmpty()) {
          return null;
       }
-
+   
       ArrayList<Contact> returnList = new ArrayList<Contact>(0);
       if (nameType.equalsIgnoreCase("first") || nameType.contains("first")) {
          for (Contact contact : contactList) {
@@ -145,7 +184,7 @@ public class Main implements textColors {
       else {
          throw new IllegalArgumentException("Invalid name type.");
       }
-
+   
       if (returnList.size() == 0) {
          return null;
       }
@@ -162,7 +201,7 @@ public class Main implements textColors {
          System.out.println(RED_UNDERLINED + "Contact list is empty." + RESET);
          return;
       }
-
+   
       for (Contact contact : contactList) {
          System.out.println("==========================================");
          System.out.println(contact);
