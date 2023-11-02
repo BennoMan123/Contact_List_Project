@@ -1,5 +1,7 @@
 /**
- * From this website: https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
+ * See
+ * <a href="https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println">this website</a>
+ * to see where I got the code from.
  */
 public interface textColors {
    /**
@@ -57,7 +59,7 @@ public interface textColors {
     */
    public static final String RED_BOLD_BRIGHT = "\033[1;91m";
    /**
-    * Changes the font to bright green and bold
+    * Changes the font to bright green and bold.
     */
    public static final String GREEN_BOLD_BRIGHT = "\033[1;92m";
    //public static final String YELLOW_BOLD_BRIGHT = "\033[1;93m";// YELLOW

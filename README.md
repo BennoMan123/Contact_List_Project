@@ -124,3 +124,7 @@
 * Edited code to start taking input from user to see what they would like to do with contact list.
 * Added shut down hook to say thanks for using program.
 * Updated Java docs folder.
+
+11/1/23 Part 2:
+* Updated comments in the textClasses interface.
+* Updated Java docs folder.
