@@ -5,7 +5,7 @@
  */
 public interface textColors {
    /**
-    * Resets the color of the font of the println to the standard.
+    * Resets the color of the font of the println to the standard output color.
     */
    public static final String RESET = "\033[0m";
 

@@ -128,3 +128,9 @@
 11/1/23 Part 2:
 * Updated comments in the textClasses interface.
 * Updated Java docs folder.
+
+11/2/23 Part 1:
+* Updated comments in the textClasses interface.
+* Updated Java docs folder.
+* Added drawingpanel and added some code to adjust to it for fun
+* Made scanner and the arraylist final in main class

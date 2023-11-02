@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
 import java.util.*;
 
 /**
@@ -7,13 +10,17 @@ public class Main implements textColors {
    /**
     * Scanner to scan in input from user.
     */
-   private static Scanner scan = new Scanner(System.in);
+   private static final Scanner scan = new Scanner(System.in);
    /**
     * Arraylist to store all of the contacts.
     */
-   private static ArrayList<Contact> contactList = new ArrayList<Contact>();
+   private static final ArrayList<Contact> contactList = new ArrayList<Contact>();
+
+   private static final DrawingPanel p = new DrawingPanel(new File("spongebob_squinting.jpg"));
+   private static final Graphics g = p.getGraphics();
 
    static {
+      p.setVisible(false);
       Runtime.getRuntime().addShutdownHook(new Thread(
               new Runnable() {
                  public void run() {
@@ -81,9 +88,20 @@ public class Main implements textColors {
 
             default:
                System.out.println(RED_UNDERLINED + "Invalid input." + RESET);
+               error();
                break;
          }
       }
+   }
+
+   /**
+    * Temp method. Will remove.
+    */
+   public static void error() {
+      p.setVisible(true);
+      p.toFront();
+      JOptionPane.showMessageDialog(null, "Why would you enter that?", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+      p.setVisible(false);
    }
 
    /*
