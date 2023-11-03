@@ -28,20 +28,16 @@ public class Main implements textColors {
     * @param args Used for nothing
     */
    public static void main(String[] args) {
-      // Print colored text to the console
-      System.out.println(GREEN + "This text is green." + RESET);
-      System.out.println(RED + "This text is red." + RESET);
-   
       while (true) {
          int input = -1;
-         System.out.println("What would you like to do with your contact list?\n" +
+         System.out.println(YELLOW_BOLD_BRIGHT + "What would you like to do with your contact list?\n" +
                  "1. Add contact\n" +
-                 "2. Remove contact\n" +
+                 "2. Remove a contact\n" +
                  "3. Edit a contact\n" +
-                 "4. Print entire contact list\n" +
-                 "5. Print contacts in range of 2 letters.\n" +
-                 "6. Clear all contacts\n" +
-                 "7. Exit");
+                 "4. Print the entire contact list\n" +
+                 "5. Print contacts in range of 2 letters\n" +
+                 "6. Clear all of the contacts\n" +
+                 "7. Exit/Leave" + RESET);
          try {
             input = scan.nextInt();
          }
@@ -120,6 +116,10 @@ public class Main implements textColors {
     * Method to handle the edit choice.
     */
    private static void edit() {
+      if (contactList.isEmpty()) {
+         System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to edit." + RESET + "\n");
+         return;
+      }
       System.out.println(GREEN_BRIGHT + "Edit method." + RESET);
    }
 
@@ -128,7 +128,7 @@ public class Main implements textColors {
     */
    private static void remove() {
       if (contactList.isEmpty()) {
-         System.out.println(RED_BOLD_BRIGHT + "Contact list is empty, no contacts to remove." + RESET);
+         System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to remove." + RESET + "\n");
          return;
       }
       System.out.println(GREEN_BRIGHT + "Remove method." + RESET);

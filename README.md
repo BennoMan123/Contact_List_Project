@@ -80,7 +80,7 @@
   * Also added a better java docs method.
 
 10/28/23 Part 3:
-* Add @throws in the java docs in contacts and main classes.
+* Added @throws in the java docs in contacts and main classes.
 * Fixed up conditions in returnContact method to look more closely for "first" and "last" in first input.
 * Updated javadocs files.
 * Touched up all the javadocs comments in all classes.
@@ -117,7 +117,7 @@
 * Removed unneeded lines of comments/code in the textColor interface.
 
 11/1/23 Part 1:
-* Got rid of an unneeded comment in the returnContact method in main class and also changed the tolowercase.
+* Got rid of an unneeded comment in the returnContact method in main class and also changed the toLowerCase.
 * Changed the return methods in the contact class to return the N/A in each variable as red and then resets it.
 * Fixed toString in Contact class.
 * Fixed getName method to return "no name given" if there's no first and last name.
@@ -132,10 +132,18 @@
 11/2/23 Part 1:
 * Updated comments in the textClasses interface.
 * Updated Java docs folder.
-* Added drawingpanel and added some code to adjust to it for fun.
+* Added DrawingPanel and added some code to adjust to it for fun.
 * Made scanner and the arraylist final in main class.
 
 11/2/23 Part 2:
-* Removed Drawingpanel and any code associated with it.
+* Removed DrawingPanel and any code associated with it.
 * Updated javadocs.
 * Added a condition in the remove method to see if the contact list is empty. If true, it returns saying there's no list.
+
+11/2/23 Part 3:
+* Got rid of the gitIgnore since it's unneeded.
+* Changed option message in the main class to be clearer.
+* Added a check in edit method in main class to see if the contact list is empty or not. If yes, rejects the user from trying to edit a contact.
+* Added the YELLOW_BOLD_BRIGHT variable in textColors interface and implemented it in the main class in the input message.
+* Removed unneeded printlns in main method in main class.
+* Updated Java docs folder.

@@ -62,5 +62,8 @@ public interface textColors {
     * Changes the font to bright green and bold.
     */
    public static final String GREEN_BOLD_BRIGHT = "\033[1;92m";
-   //public static final String YELLOW_BOLD_BRIGHT = "\033[1;93m";// YELLOW
+   /**
+    * Changes the font to bright yellow and bold.
+    */
+   public static final String YELLOW_BOLD_BRIGHT = "\033[1;93m";
 }
