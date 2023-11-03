@@ -45,36 +45,36 @@ public class Main implements textColors {
             System.out.println(RED_BOLD_BRIGHT + "***Invalid input.***\n" + RESET);
             scan.nextLine();
          }
-
+      
          switch (input) {
             case 1:
                add();
                break;
-
+         
             case 2:
                remove();
                break;
-
+         
             case 3:
                edit();
                break;
-
+         
             case 4:
                printContacts();
                break;
-
+         
             case 5:
                range();
                break;
-
+         
             case 6:
                contactList.clear();
                System.out.println(GREEN_BRIGHT + "Contact list has been cleared." + RESET);
                break;
-
+         
             case 7:
                System.exit(0);
-
+            
             default:
                System.out.println(RED_UNDERLINED + "Invalid input." + RESET);
                break;
@@ -94,9 +94,138 @@ public class Main implements textColors {
     * Method to handle the add choice.
     */
    private static void add() {
-      System.out.println(GREEN_BRIGHT + "Add method." + RESET);
-      addContact(new Contact());
-      System.out.println(GREEN_BRIGHT + "Added a blank contact." + RESET);
+      Contact contact = new Contact();
+      System.out.println();
+      while (true) {
+         int input = -1;
+         System.out.println("What would you like to add to the contact?\n" +
+                 "1. Add First and Last Name\n" +
+                 "2. Add First Name\n" +
+                 "3. Add Last Name\n" +
+                 "4. Add Address\n" +
+                 "5. Add Phone Number\n" +
+                 "6. Add Birthday\n" +
+                 "7. Add note about the contact\n" +
+                 "8. Add contact to list\n" +
+                 "9. Cancel adding a contact");
+         try {
+            input = scan.nextInt();
+         }
+         catch (InputMismatchException e) {
+            System.out.println(RED_BOLD_BRIGHT + "Invalid input. Please enter a number from list.\n" + RESET);
+            scan.nextLine();
+         }
+      
+      
+         if (input == 1) {
+            try {
+               System.out.println("Enter name:");
+               scan.nextLine();
+               String[] name = scan.nextLine().split(" ");
+               if (name.length != 2) {
+                  System.out.println(RED_BOLD_BRIGHT + "Incorrect length of name." + RESET);
+                  continue;
+               }
+               contact.setName(name[0], name[1]);
+               System.out.println(GREEN_BRIGHT + "First and last name added to contact.\n" + RESET);
+            }
+            catch (IllegalArgumentException e) {
+               System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
+            }
+         }
+         
+         else if (input == 2) {
+            System.out.println("Enter first name:");
+            try {
+               scan.nextLine();
+               contact.setFirstName(scan.nextLine());
+               System.out.println(GREEN_BRIGHT + "First name added to contact.\n" + RESET);
+            }
+            catch (IllegalArgumentException e) {
+               System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
+            }
+         }
+         
+         else if (input == 3) {
+            System.out.println("Enter last name:");
+            try {
+               scan.nextLine();
+               contact.setLastName(scan.nextLine());
+               System.out.println(GREEN_BRIGHT + "Last name added to contact.\n" + RESET);
+            }
+            catch (IllegalArgumentException e) {
+               System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
+            }
+         }
+         
+         else if (input == 4) {
+            System.out.println("Enter address:");
+            try {
+               scan.nextLine();
+               contact.setAddress(scan.nextLine());
+               System.out.println(GREEN_BRIGHT + "Address added to contact.\n" + RESET);
+            }
+            catch (IllegalArgumentException e) {
+               System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
+            }
+         }
+         
+         else if (input == 5) {
+            System.out.println("Enter phone number:");
+            try {
+               scan.nextLine();
+               contact.setPhoneNum(scan.nextLine());
+               System.out.println(GREEN_BRIGHT + "Phone number added to contact.\n" + RESET);
+            }
+            catch (IllegalArgumentException e) {
+               System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
+            }
+         }
+         
+         else if (input == 6) {
+            System.out.println("Enter month of the birthday:");
+            try {
+               int month = scan.nextInt();
+               System.out.println("Enter day of the birthday:");
+               int day = scan.nextInt();
+               System.out.println("Enter year of the birthday:");
+               int year = scan.nextInt();
+               contact.setBirthday(month, day, year);
+               System.out.println(GREEN_BRIGHT + "Birthday added to contact.\n" + RESET);
+            }
+            catch (InputMismatchException | IllegalArgumentException e) {
+               System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
+            }
+         }
+
+         else if (input == 7) {
+            System.out.println("Enter note about contact:");
+            try {
+               scan.nextLine();
+               contact.setNotes(scan.nextLine());
+               System.out.println(GREEN_BRIGHT + "Note added to contact.\n" + RESET);
+            }
+            catch (Exception e) {
+               System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
+            }
+         }
+
+         else if (input == 8) {
+            break;
+         }
+
+         else if (input == 9) {
+            System.out.println("Cancelled adding a contact.\n");
+            return;
+         }
+         
+         else {
+            System.out.println(RED_BOLD_BRIGHT + "Invalid input." + RESET);
+         }
+      }
+   
+      addContact(contact);
+      System.out.println(GREEN_BRIGHT + "Added contact to list.\n" + RESET);
    }
 
    /**

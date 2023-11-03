@@ -147,3 +147,6 @@
 * Added the YELLOW_BOLD_BRIGHT variable in textColors interface and implemented it in the main class in the input message.
 * Removed unneeded printlns in main method in main class.
 * Updated Java docs folder.
+
+11/3/23 Part 1:
+* Added functionality to the add contact method in main class
