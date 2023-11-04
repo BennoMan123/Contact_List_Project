@@ -253,7 +253,7 @@ public class Main implements textColors {
     */
    private static void edit() {
       if (contactList.isEmpty()) {
-         System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to edit." + RESET + "\n");
+         System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to edit.\n" + RESET);
          return;
       }
       System.out.println(GREEN_BRIGHT + "Edit method." + RESET);
@@ -264,7 +264,7 @@ public class Main implements textColors {
     */
    private static void remove() {
       if (contactList.isEmpty()) {
-         System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to remove." + RESET + "\n");
+         System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to remove.\n" + RESET);
          return;
       }
       System.out.println(GREEN_BRIGHT + "Remove method." + RESET);
@@ -274,6 +274,10 @@ public class Main implements textColors {
     * Method to handle the range choice.
     */
    private static void range() {
+      if (contactList.isEmpty()) {
+         System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to print.\n" + RESET);
+         return;
+      }
       System.out.println(GREEN_BRIGHT + "Range method." + RESET);
       //scan.nextLine().charAt(0);
       printInRange('a', 'b');

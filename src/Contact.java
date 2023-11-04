@@ -225,6 +225,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
 
     /**
      * {@inheritDoc}
+     * @throws NullPointerException if input is null
      */
     public void setPhoneNum(String phoneNum) {
         if (isNull(phoneNum)) {
@@ -370,7 +371,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * {@inheritDoc}
      */
     public boolean isContactEmpty() {
-        return address.equals("N/A") && phoneNum.equals("N/A") && notes.isEmpty() && firstName.equals("") && lastName.equals("") && isNull(birthday);
+        return (address.equals("N/A") && phoneNum.equals("N/A") && notes.isEmpty() && firstName.equals("") && lastName.equals("") && isNull(birthday));
     }
 
     /**
@@ -396,7 +397,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * Returns if the year given is a leap year or not.
      * @param year Year to be checked for leap year or not
      * @return True if a leap year, false if not
-     * @throws NullPointerException if input is null
      */
     private static boolean isLeapYear(int year) {
         return (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0);

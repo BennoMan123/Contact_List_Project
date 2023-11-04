@@ -162,3 +162,9 @@
 * Added the isContactEmpty method in contact class to see if all of the variables are not defined.
   * Added in interface as well.
 * Updated javadocs folder.
+
+11/4/23 Part 1:
+* Added a condition in range method option to see if the contact list is empty or not. Can't print if there's nothing in the list.
+* Fixed a few comments in contact class.
+  * Removed a @throw that wasn't actually being thrown in the method.
+  * Added a @throw in a method that was.
