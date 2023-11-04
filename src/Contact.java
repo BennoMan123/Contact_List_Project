@@ -367,6 +367,13 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public boolean isContactEmpty() {
+        return address.equals("N/A") && phoneNum.equals("N/A") && notes.isEmpty() && firstName.equals("") && lastName.equals("") && isNull(birthday);
+    }
+
+    /**
      * Sets the first letter of the inputted to a capital of the letter.
      * @param str The word to have the first letter be turned to uppercase
      * @return String with the first letter turned to an uppercase, returns null if the string is null, returns "" if empty

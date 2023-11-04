@@ -9,7 +9,7 @@ public interface textColors {
     */
    public static final String RESET = "\033[0m";
 
-   // Regular Colors
+   //Regular Colors
    /**
     * Changes the font to red.
     */
@@ -18,9 +18,8 @@ public interface textColors {
     * Changes the font to green.
     */
    public static final String GREEN = "\033[0;32m";
-   //public static final String YELLOW = "\033[0;33m";  // YELLOW
 
-   // Bold
+   //Bold
    /**
     * Changes the font to red and bold.
     */
@@ -29,9 +28,8 @@ public interface textColors {
     * Changes the font to green and bold.
     */
    public static final String GREEN_BOLD = "\033[1;32m";
-   //public static final String YELLOW_BOLD = "\033[1;33m"; // YELLOW
 
-   // Underline
+   //Underline
    /**
     * Changes the font to red and underlined.
     */
@@ -40,9 +38,8 @@ public interface textColors {
     * Changes the font to green and underlined.
     */
    public static final String GREEN_UNDERLINED = "\033[4;32m";
-   //public static final String YELLOW_UNDERLINED = "\033[4;33m"; // YELLOW
 
-   // High Intensity
+   //High Intensity
    /**
     * Changes the font to bright red.
     */
@@ -51,9 +48,8 @@ public interface textColors {
     * Changes the font to bright green.
     */
    public static final String GREEN_BRIGHT = "\033[0;92m";
-   //public static final String YELLOW_BRIGHT = "\033[0;93m"; // YELLOW
 
-   // Bold High Intensity
+   //Bold High Intensity
    /**
     * Changes the font to bright red and bold.
     */

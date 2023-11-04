@@ -109,4 +109,10 @@ public interface contactsInterface {
      * @return Returns the notes about the contact
      */
     public String getNotes();
+
+    /**
+     * Checks to make sure that the contact created has nothing set in the instance.
+     * @return true if nothing was set in the contact, false if something is set
+     */
+    public boolean isContactEmpty();
 }

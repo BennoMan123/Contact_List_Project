@@ -114,6 +114,7 @@ public class Main implements textColors {
          catch (InputMismatchException e) {
             System.out.println(RED_BOLD_BRIGHT + "Invalid input. Please enter a number from list.\n" + RESET);
             scan.nextLine();
+            continue;
          }
       
       
@@ -223,14 +224,19 @@ public class Main implements textColors {
             System.out.println(RED_BOLD_BRIGHT + "Invalid input." + RESET);
          }
       }
-   
-      addContact(contact);
-      System.out.println(GREEN_BRIGHT + "Added contact to list.\n" + RESET);
+
+      if (contact.isContactEmpty()) {
+         System.out.println(RED_BOLD_BRIGHT + "Contact not added to list since no input was given for the contact.\n" + RESET);
+      }
+      else {
+         addContact(contact);
+         System.out.println(GREEN_BRIGHT + "Added contact to list.\n" + RESET);
+      }
    }
 
    /**
     * Adds contact to arraylist and sorts it.
-    * @param x Contact to be added to arraylist
+    * @param x Contact to be added to contact list
     * @throws NullPointerException if input is null
     */
    private static void addContact(Contact x) {
@@ -238,6 +244,7 @@ public class Main implements textColors {
          throw new NullPointerException("Contact given is null.");
       }
       contactList.add(x);
+      cleanList();
       Collections.sort(contactList);
    }
 
@@ -268,6 +275,7 @@ public class Main implements textColors {
     */
    private static void range() {
       System.out.println(GREEN_BRIGHT + "Range method." + RESET);
+      //scan.nextLine().charAt(0);
       printInRange('a', 'b');
    }
 
@@ -275,9 +283,11 @@ public class Main implements textColors {
     * Prints all of the contacts within the given char range by last name.
     * @param start Beginning of range
     * @param end End of the range
-    * @throws NullPointerException if input is null
     */
    private static void printInRange(char start, char end) {
+      //check if both chars are numbers or actual chars using the try catch
+      //use check if the start is actually before the end
+
       System.out.println(GREEN_BRIGHT + "printInRange method." + RESET);
    }
 
@@ -293,12 +303,11 @@ public class Main implements textColors {
       if (isNull(nameType) || isNull(name)) {
          throw new NullPointerException("nameType or name given is null.");
       }
-   
-      nameType = nameType.toLowerCase();
       if (contactList.isEmpty()) {
          return null;
       }
-   
+
+      nameType = nameType.toLowerCase();
       ArrayList<Contact> returnList = new ArrayList<Contact>(0);
       if (nameType.equalsIgnoreCase("first") || nameType.contains("first")) {
          for (Contact contact : contactList) {
@@ -331,14 +340,26 @@ public class Main implements textColors {
     */
    private static void printContacts() {
       if (contactList.isEmpty()) {
-         System.out.println(RED_UNDERLINED + "Contact list is empty." + RESET);
+         System.out.println(RED_UNDERLINED + "\nContact list is empty.\n" + RESET);
          return;
       }
-   
+
       for (Contact contact : contactList) {
-         System.out.println("==========================================");
+         System.out.println("\n==========================================");
          System.out.println(contact);
          System.out.println("==========================================");
+      }
+      System.out.println();
+   }
+
+   /**
+    * Removes any contacts with nothing defined in each instance.
+    */
+   private static void cleanList() {
+      for (int i = 0; i < contactList.size(); i++) {
+         if (contactList.get(i).isContactEmpty()) {
+            contactList.remove(i);
+         }
       }
    }
 
