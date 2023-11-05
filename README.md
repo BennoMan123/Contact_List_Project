@@ -168,3 +168,12 @@
 * Fixed a few comments in contact class.
   * Removed a @throw that wasn't actually being thrown in the method.
   * Added a @throw in a method that was.
+
+11/5/23 Part 1:
+* Added functionality to the range method in main class.
+* Created IllegalLengthException class for when there's an illegal length of input or variables and implemented in the classes.
+  * Updated javadocs to mention the throw.
+* Fixed up some javadocs comments.
+* Updated javadocs folder.
+* Renamed package name.
+* Added better funcationality to the setPhoneNumber method in contact class.

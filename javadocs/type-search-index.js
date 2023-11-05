@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"Contact"},{"p":"<Unnamed>","l":"contactsInterface"},{"p":"<Unnamed>","l":"Main"},{"p":"<Unnamed>","l":"textColors"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"Contact"},{"p":"<Unnamed>","l":"contactsInterface"},{"p":"<Unnamed>","l":"IllegalLengthException"},{"p":"<Unnamed>","l":"Main"},{"p":"<Unnamed>","l":"textColors"}];updateSearchResults();

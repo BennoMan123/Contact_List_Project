@@ -90,6 +90,7 @@ public class Main implements textColors {
    add(check if the added contact already exists and then asks user if they want to still add it anyway)/remove/edit contacts
     */
 
+
    /**
     * Method to handle the add choice.
     */
@@ -124,13 +125,13 @@ public class Main implements textColors {
                scan.nextLine();
                String[] name = scan.nextLine().split(" ");
                if (name.length != 2) {
-                  System.out.println(RED_BOLD_BRIGHT + "Incorrect length of name." + RESET);
-                  continue;
+                  throw new IllegalLengthException("Incorrect length of name; Only 2 words allowed for name.");
+
                }
                contact.setName(name[0], name[1]);
                System.out.println(GREEN_BRIGHT + "First and last name added to contact.\n" + RESET);
             }
-            catch (IllegalArgumentException e) {
+            catch (IllegalArgumentException | NullPointerException e) {
                System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
             }
          }
@@ -142,7 +143,7 @@ public class Main implements textColors {
                contact.setFirstName(scan.nextLine());
                System.out.println(GREEN_BRIGHT + "First name added to contact.\n" + RESET);
             }
-            catch (IllegalArgumentException e) {
+            catch (IllegalArgumentException | NullPointerException e) {
                System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
             }
          }
@@ -154,7 +155,7 @@ public class Main implements textColors {
                contact.setLastName(scan.nextLine());
                System.out.println(GREEN_BRIGHT + "Last name added to contact.\n" + RESET);
             }
-            catch (IllegalArgumentException e) {
+            catch (IllegalArgumentException | NullPointerException e) {
                System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
             }
          }
@@ -166,7 +167,7 @@ public class Main implements textColors {
                contact.setAddress(scan.nextLine());
                System.out.println(GREEN_BRIGHT + "Address added to contact.\n" + RESET);
             }
-            catch (IllegalArgumentException e) {
+            catch (IllegalArgumentException | NullPointerException e) {
                System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
             }
          }
@@ -178,7 +179,7 @@ public class Main implements textColors {
                contact.setPhoneNum(scan.nextLine());
                System.out.println(GREEN_BRIGHT + "Phone number added to contact.\n" + RESET);
             }
-            catch (IllegalArgumentException e) {
+            catch (IllegalArgumentException | NullPointerException e) {
                System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
             }
          }
@@ -256,6 +257,7 @@ public class Main implements textColors {
          System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to edit.\n" + RESET);
          return;
       }
+      //in check length of the name, use the Illegal length exception created
       System.out.println(GREEN_BRIGHT + "Edit method." + RESET);
    }
 
@@ -273,14 +275,44 @@ public class Main implements textColors {
    /**
     * Method to handle the range choice.
     */
+   /*
+   ********finish method
+    */
    private static void range() {
       if (contactList.isEmpty()) {
          System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to print.\n" + RESET);
          return;
       }
-      System.out.println(GREEN_BRIGHT + "Range method." + RESET);
-      //scan.nextLine().charAt(0);
-      printInRange('a', 'b');
+      scan.nextLine();
+      while (true) {
+         Character start;
+         Character end;
+         try {
+            System.out.println("What letter would you like to begin your range in? (Press 1 to escape)");
+            start = scan.nextLine().trim().toUpperCase().charAt(0);
+            if (start.equals('1')) {
+               return;
+            }
+
+            System.out.println("What letter would you like to end your range in? (Press 1 to escape)");
+            end = scan.nextLine().trim().toUpperCase().charAt(0);
+            if (end.equals('1')) {
+               return;
+            }
+            if (Character.isDigit(start) || Character.isDigit(end)) {
+               throw new InputMismatchException("Input cannot be a number, unless it is 1.");
+            }
+            if (start.compareTo(end) > 0) {
+               throw new InputMismatchException("Starting point cannot be before end point.\n");
+            }
+         }
+         catch (InputMismatchException e) {
+            System.out.println(RED_BOLD_BRIGHT + e.toString() + "\n" + RESET);
+            continue;
+         }
+         printInRange(start, end);
+         break;
+      }
    }
 
    /**
@@ -291,7 +323,7 @@ public class Main implements textColors {
    private static void printInRange(char start, char end) {
       //check if both chars are numbers or actual chars using the try catch
       //use check if the start is actually before the end
-
+      System.out.println("Characters are: " + start + " and " + end);
       System.out.println(GREEN_BRIGHT + "printInRange method." + RESET);
    }
 

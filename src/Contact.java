@@ -24,15 +24,15 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     /**
      * First name of contact.
      */
-    private String firstName;
+    private String firstName = "";
     /**
      * Last name of contact.
      */
-    private String lastName;
+    private String lastName = "";
     /**
      * Phone number of the contact.
      */
-    private String phoneNum;
+    private String phoneNum = "N/A";
     /**
      * Birthday of the contact.
      */
@@ -51,19 +51,20 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * Default constructor; sets most to null or "" or "N/A".
      */
     public Contact() {
-        firstName = "";
-        lastName = "";
-        phoneNum = "N/A";
     }
 
     /**
      * Sets first and last name; sets rest to default.
      * @param firstName First name of contact
      * @param lastName Last name of contact
+     * @throws NullPointerException if first or last name is null
      */
     public Contact(String firstName, String lastName) {
-        setName(firstName, lastName);
-        phoneNum = "N/A";
+        if (isNull(firstName) || isNull(lastName)) {
+            throw new NullPointerException("First or last name is null.");
+        }
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     /**
@@ -73,11 +74,15 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * @param birthdayMonth Birthday month of contact
      * @param birthdayDay Birthday day of contact
      * @param birthdayYear Birthday year of contact
+     * @throws NullPointerException if first or last name is null
      */
     public Contact(String firstName, String lastName, int birthdayMonth, int birthdayDay, int birthdayYear) {
-        setName(firstName, lastName);
+        if (isNull(firstName) || isNull(lastName)) {
+            throw new NullPointerException("First or last name is null.");
+        }
+        this.firstName = firstName;
+        this.lastName = lastName;
         setBirthday(birthdayMonth, birthdayDay, birthdayYear);
-        phoneNum = "N/A";
     }
 
     /**
@@ -88,6 +93,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * @param birthdayDay Birthday day of contact
      * @param birthdayYear Birthday year of contact
      * @param note Notes about the contact
+     * @throws NullPointerException if first or last name is null or notes is null
+     * @throws IllegalLengthException if there's no notes given.
      */
     public Contact(String firstName, String lastName, int birthdayMonth, int birthdayDay, int birthdayYear, String note) {
         this(firstName, lastName, birthdayMonth, birthdayDay, birthdayYear);
@@ -115,10 +122,14 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * {@inheritDoc}
      * @param address The address of the contact
      * @throws NullPointerException if input is null
+     * @throws IllegalLengthException if there's an empty string given
      */
     public void setAddress(String address) {
         if (isNull(address)) {
             throw new NullPointerException("Address given is null.");
+        }
+        if (address.isEmpty()){
+            throw new IllegalLengthException("Illegal length of address.");
         }
         this.address = address;
     }
@@ -226,13 +237,34 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     /**
      * {@inheritDoc}
      * @throws NullPointerException if input is null
+     * @throws IllegalLengthException if length of input given is equal to 0
      */
     public void setPhoneNum(String phoneNum) {
         if (isNull(phoneNum)) {
             throw new NullPointerException("Phone number inputted is null.");
         }
+        if (phoneNum.length() < 1) {
+            throw new IllegalLengthException("Illegal length of phone number.");
+        }
         //check if it contains dashes and also if the length of the number is 10 to add dashes
         //check if it contains the dashes, if not, add them by changing string to char array and adding them in
+        if (phoneNum.length() == 10) {
+            char[] number = phoneNum.toCharArray();
+            char[] finalNumber = new char[12];
+            int indexOfnumber = 0;
+            for (int i  = 0; i < finalNumber.length; i++) {
+                if (i == 3 || i == 7) {
+                    finalNumber[i] = '-';
+                }
+                else {
+                    finalNumber[i] = number[indexOfnumber];
+                    indexOfnumber++;
+                }
+
+            }
+            this.phoneNum = new String(finalNumber);
+            return;
+        }
         this.phoneNum = phoneNum;
     }
 
@@ -249,7 +281,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
 
     /**
      * {@inheritDoc}
-     * @throws NullPointerException if input is null
      * @throws IllegalArgumentException if any of the inputs are out of range of a given month or day number or a date later than the current
      * @see setBirthday(Date)
      */
@@ -314,6 +345,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     /**
      * {@inheritDoc}
      * @throws NullPointerException if input is null
+     * @throws IllegalLengthException if length of input given is equal to 0
      * @see addToNotes(String)
      */
     @Override
@@ -321,18 +353,25 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         if (isNull(note)) {
             throw new NullPointerException("Note sent in is null.");
         }
+        if (note.isEmpty()){
+            throw new IllegalLengthException("Illegal length of notes given.");
+        }
         notes = new StringBuffer(note + "\n");
     }
 
     /**
      * {@inheritDoc}
      * @throws NullPointerException if input is null
+     * @throws IllegalLengthException if length of input given is equal to 0
      * @see setNotes(String)
      */
     @Override
     public void addToNotes(String note) {
         if (isNull(note)) {
             throw new NullPointerException("Note sent in is null.");
+        }
+        if (note.isEmpty()){
+            throw new IllegalLengthException("Illegal length of notes given.");
         }
 
         notes.append(note + "\n");
