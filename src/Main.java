@@ -17,7 +17,8 @@ public class Main implements textColors {
       Runtime.getRuntime().addShutdownHook(new Thread(
               new Runnable() {
                  public void run() {
-                    System.out.println("Thank you for using this program.");
+                    System.out.println(YELLOW_BOLD_BRIGHT + "\nThank you for using this program." + RESET);
+                    scan.close();
                  }
               }
               ));
@@ -28,6 +29,17 @@ public class Main implements textColors {
     * @param args Used for nothing
     */
    public static void main(String[] args) {
+      addContact(new Contact("Johanna", "Martinez"));
+      addContact(new Contact("Michael", "Benno"));
+      addContact(new Contact("Stevie", "Wonder"));
+      addContact(new Contact("Alex", "Benno"));
+      addContact(new Contact("Tegan", "Marie"));
+      addContact(new Contact("Jessie", "Burkes"));
+      addContact(new Contact("Annie", "Burkes"));
+      addContact(new Contact("Emma", "Watson"));
+      addContact(new Contact("Emma", "Roland"));
+      addContact(new Contact("Carter", "Wilkie"));
+      printListNames();
       while (true) {
          int input = -1;
          System.out.println(YELLOW_BOLD_BRIGHT + "What would you like to do with your contact list?\n" +
@@ -35,9 +47,10 @@ public class Main implements textColors {
                  "2. Remove a contact\n" +
                  "3. Edit a contact\n" +
                  "4. Print the entire contact list\n" +
-                 "5. Print contacts in range of 2 letters\n" +
-                 "6. Clear all of the contacts\n" +
-                 "7. Exit/Leave" + RESET);
+                 "5. Print a contact\n" +
+                 "6. Print contacts in range of 2 letters\n" +
+                 "7. Clear all of the contacts\n" +
+                 "8. Exit/Leave" + RESET);
          try {
             input = scan.nextInt();
          }
@@ -45,51 +58,23 @@ public class Main implements textColors {
             System.out.println(RED_BOLD_BRIGHT + "***Invalid input.***\n" + RESET);
             scan.nextLine();
          }
-      
+
          switch (input) {
-            case 1:
-               add();
-               break;
-         
-            case 2:
-               remove();
-               break;
-         
-            case 3:
-               edit();
-               break;
-         
-            case 4:
-               printContacts();
-               break;
-         
-            case 5:
-               range();
-               break;
-         
-            case 6:
+            case 1 -> add();
+            case 2 -> remove();
+            case 3 -> edit();
+            case 4 -> printContacts();
+            case 5 -> printSingleContact();
+            case 6 -> range();
+            case 7 -> {
                contactList.clear();
                System.out.println(GREEN_BRIGHT + "Contact list has been cleared." + RESET);
-               break;
-         
-            case 7:
-               System.exit(0);
-            
-            default:
-               System.out.println(RED_UNDERLINED + "Invalid input." + RESET);
-               break;
+            }
+            case 8 -> System.exit(0);
+            default -> System.out.println(RED_UNDERLINED + "Invalid input." + RESET);
          }
       }
    }
-
-   /*
-   methods ideas:
-   return all contacts
-   return contacts within a certain alphabetical range
-   return a specific contact
-   add(check if the added contact already exists and then asks user if they want to still add it anyway)/remove/edit contacts
-    */
-
 
    /**
     * Method to handle the add choice.
@@ -99,7 +84,7 @@ public class Main implements textColors {
       System.out.println();
       while (true) {
          int input = -1;
-         System.out.println("What would you like to add to the contact?\n" +
+         System.out.println("What would you like to add to the contact?\n" + YELLOW_BOLD_BRIGHT +
                  "1. Add First and Last Name\n" +
                  "2. Add First Name\n" +
                  "3. Add Last Name\n" +
@@ -107,8 +92,8 @@ public class Main implements textColors {
                  "5. Add Phone Number\n" +
                  "6. Add Birthday\n" +
                  "7. Add note about the contact\n" +
-                 "8. Add contact to list\n" +
-                 "9. Cancel adding a contact");
+                 GREEN_BRIGHT + "8. Add contact to list\n" +
+                 RED_UNDERLINED + "9. Cancel adding a contact" + RESET);
          try {
             input = scan.nextInt();
          }
@@ -258,6 +243,7 @@ public class Main implements textColors {
          return;
       }
       //in check length of the name, use the Illegal length exception created
+      //create a list with the names of each contact and list them with numbers then ask which one to edit
       System.out.println(GREEN_BRIGHT + "Edit method." + RESET);
    }
 
@@ -269,14 +255,25 @@ public class Main implements textColors {
          System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to remove.\n" + RESET);
          return;
       }
-      System.out.println(GREEN_BRIGHT + "Remove method." + RESET);
+      System.out.println(GREEN_BRIGHT + "\nWhich contact would you like to remove? Enter the number." + RESET);
+      printListNames();
+      int num;
+      try {
+         num = scan.nextInt();
+         if (num < 1 || num > contactList.size()) {
+            throw new IllegalArgumentException();
+         }
+      }
+      catch (Exception e) {
+         System.out.println(RED_BOLD_BRIGHT + "\nInvalid input.\n" + RESET);
+         return;
+      }
+      contactList.remove(--num);
+      System.out.println(GREEN_BOLD_BRIGHT + "Contact successfully removed from list.\n");
    }
 
    /**
     * Method to handle the range choice.
-    */
-   /*
-   ********finish method
     */
    private static void range() {
       if (contactList.isEmpty()) {
@@ -288,19 +285,18 @@ public class Main implements textColors {
          Character start;
          Character end;
          try {
-            System.out.println("What letter would you like to begin your range in? (Press 1 to escape)");
+            System.out.println("\nWhat letter would you like to begin your range in? (Press 1 to escape)");
             start = scan.nextLine().trim().toUpperCase().charAt(0);
             if (start.equals('1')) {
+               System.out.println("Exiting.");
                return;
             }
 
             System.out.println("What letter would you like to end your range in? (Press 1 to escape)");
             end = scan.nextLine().trim().toUpperCase().charAt(0);
             if (end.equals('1')) {
+               System.out.println("Exiting.");
                return;
-            }
-            if (Character.isDigit(start) || Character.isDigit(end)) {
-               throw new InputMismatchException("Input cannot be a number, unless it is 1.");
             }
             if (start.compareTo(end) > 0) {
                throw new InputMismatchException("Starting point cannot be before end point.\n");
@@ -310,7 +306,13 @@ public class Main implements textColors {
             System.out.println(RED_BOLD_BRIGHT + e.toString() + "\n" + RESET);
             continue;
          }
-         printInRange(start, end);
+         try {
+            printInRange(start, end);
+         }
+         catch (Exception e) {
+            System.out.println(e.toString());
+            continue;
+         }
          break;
       }
    }
@@ -319,56 +321,57 @@ public class Main implements textColors {
     * Prints all of the contacts within the given char range by last name.
     * @param start Beginning of range
     * @param end End of the range
+    * @throws IllegalArgumentException if either of the inputted chars are a digit or end is before starting point
     */
-   private static void printInRange(char start, char end) {
-      //check if both chars are numbers or actual chars using the try catch
-      //use check if the start is actually before the end
-      System.out.println("Characters are: " + start + " and " + end);
-      System.out.println(GREEN_BRIGHT + "printInRange method." + RESET);
+   private static void printInRange(Character start, Character end) {
+      if (Character.isDigit(start) || Character.isDigit(end)) {
+         throw new IllegalArgumentException("Input cannot be a number, unless it is 1.");
+      }
+      if (start.compareTo(end) > 0) {
+         throw new IllegalArgumentException("Starting point cannot be after end point.\n");
+      }
+      if (contactList.isEmpty()) {
+         System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to print.\n" + RESET);
+         return;
+      }
+
+      for (int i = 0; i < contactList.size(); i++) {
+         Character lastNameInitial = contactList.get(i).getLastName().charAt(0);
+         if (lastNameInitial.compareTo(end) > 0) {
+            break;
+         }
+         if (lastNameInitial.compareTo(start) >= 0 && lastNameInitial.compareTo(end) <= 0) {
+            System.out.println("\n==========================================");
+            System.out.println(contactList.get(i));
+            System.out.println("==========================================");
+         }
+      }
+      System.out.println();
    }
 
    /**
-    * Returns contact(s) by first or last name. Returns null if there's no contact or contacts found.
-    * @param nameType First or last name to be checked for the name.
-    * @param name First/Last name requested to be return with contacts with said name.
-    * @return Contacts with given first or last name.
-    * @throws IllegalArgumentException if nameType parameter is invalid, (not first or last name)
-    * @throws NullPointerException if input is null
+    * Method to run the print single contact option.
     */
-   private static ArrayList<Contact> returnContact(String nameType, String name) {
-      if (isNull(nameType) || isNull(name)) {
-         throw new NullPointerException("nameType or name given is null.");
-      }
+   private static void printSingleContact() {
+      scan.nextLine();
       if (contactList.isEmpty()) {
-         return null;
+         System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to print.\n" + RESET);
+         return;
       }
 
-      nameType = nameType.toLowerCase();
-      ArrayList<Contact> returnList = new ArrayList<Contact>(0);
-      if (nameType.equalsIgnoreCase("first") || nameType.contains("first")) {
-         for (Contact contact : contactList) {
-            if (contact.getFirstName().equalsIgnoreCase(name)) {
-               returnList.add(contact);
-            }
+         System.out.println("What's the last name?");
+         String lastName = scan.nextLine();
+
+         System.out.println("What's the first name?");
+         String firstName = scan.nextLine();
+
+      for (Contact contact : contactList) {
+         if (firstName.equalsIgnoreCase(contact.getFirstName()) && lastName.equalsIgnoreCase(contact.getLastName())) {
+            System.out.println(contact + "\n");
+            return;
          }
       }
-      else if (nameType.equalsIgnoreCase("last") || nameType.contains("last")) {
-         for (Contact contact : contactList) {
-            if (contact.getLastName().equalsIgnoreCase(name)) {
-               returnList.add(contact);
-            }
-         }
-      }
-      else {
-         throw new IllegalArgumentException("Invalid name type.");
-      }
-   
-      if (returnList.size() == 0) {
-         return null;
-      }
-      else {
-         return returnList;
-      }
+      System.out.println(RED_BOLD_BRIGHT + "Contact not found in contact list.\n" + RESET);
    }
 
    /**
@@ -396,6 +399,21 @@ public class Main implements textColors {
          if (contactList.get(i).isContactEmpty()) {
             contactList.remove(i);
          }
+      }
+   }
+
+   /**
+    * Prints the contact list as a list with the names only.
+    */
+   private static void printListNames() {
+      if (contactList.isEmpty()) {
+         System.out.println(RED_UNDERLINED + "\nContact list is empty.\n" + RESET);
+         return;
+      }
+
+      int count = 1;
+      for (Contact contact : contactList) {
+         System.out.println(count++ + ". " + contact.getName());
       }
    }
 

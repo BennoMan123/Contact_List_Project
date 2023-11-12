@@ -399,7 +399,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     @Override
     public int compareTo(Contact o) {
         if (String.CASE_INSENSITIVE_ORDER.compare(this.lastName, o.getLastName()) == 0) {
-            return String.CASE_INSENSITIVE_ORDER.compare(this.firstName, o.getFirstName());
+            return String.CASE_INSENSITIVE_ORDER.compare(this.firstName, o.firstName);
         }
         else {
             return String.CASE_INSENSITIVE_ORDER.compare(this.lastName, o.getLastName());
@@ -459,7 +459,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      */
     @Override
     public String toString() {
-        return String.format("%sName: %s\nPhone Number: %s\nAddress: %s\nBirthday: %s\n%s%s",
-                GREEN_BRIGHT, getName() + GREEN_BRIGHT, getPhoneNum() + GREEN_BRIGHT, getAddress() + GREEN_BRIGHT, getBirthday() + GREEN_BRIGHT, getNotes(), RESET);
+        return String.format("%sName: %s\nPhone Number: %s\nAddress: %s\nBirthday: %s\n%s\nCreated on %s%s",
+                GREEN_BRIGHT, getName() + GREEN_BRIGHT, getPhoneNum() + GREEN_BRIGHT, getAddress() + GREEN_BRIGHT,
+                getBirthday() + GREEN_BRIGHT, getNotes(), getCreationTime().toString(), RESET);
     }
 }

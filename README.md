@@ -177,3 +177,15 @@
 * Updated javadocs folder.
 * Renamed package name.
 * Added better funcationality to the setPhoneNumber method in contact class.
+
+11/11/23 Part 1:
+* Changes the compare to method in contact class to look more at the variables, not the methods.
+* Added creation time in the toString method in contact.
+* Added color to the println in the closing thread and closed the scanner too in main class.
+* Added an option to print a contact and implemented the method for it.
+  * Changed the method with the arraylist return to only print the one contact instead.
+* Updated the switch and enhanced it.
+* Added/removed some comments.
+* Implemented the remove method.
+* Moved the check to see if the characters given from the user in the range method are digits or not into the other range method.
+* Updated Javadocs folder.
