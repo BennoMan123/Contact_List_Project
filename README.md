@@ -176,7 +176,7 @@
 * Fixed up some javadocs comments.
 * Updated javadocs folder.
 * Renamed package name.
-* Added better funcationality to the setPhoneNumber method in contact class.
+* Added better functionality to the setPhoneNumber method in contact class.
 
 11/11/23 Part 1:
 * Changes the compare to method in contact class to look more at the variables, not the methods.

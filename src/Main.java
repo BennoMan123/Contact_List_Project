@@ -29,17 +29,6 @@ public class Main implements textColors {
     * @param args Used for nothing
     */
    public static void main(String[] args) {
-      addContact(new Contact("Johanna", "Martinez"));
-      addContact(new Contact("Michael", "Benno"));
-      addContact(new Contact("Stevie", "Wonder"));
-      addContact(new Contact("Alex", "Benno"));
-      addContact(new Contact("Tegan", "Marie"));
-      addContact(new Contact("Jessie", "Burkes"));
-      addContact(new Contact("Annie", "Burkes"));
-      addContact(new Contact("Emma", "Watson"));
-      addContact(new Contact("Emma", "Roland"));
-      addContact(new Contact("Carter", "Wilkie"));
-      printListNames();
       while (true) {
          int input = -1;
          System.out.println(YELLOW_BOLD_BRIGHT + "What would you like to do with your contact list?\n" +
