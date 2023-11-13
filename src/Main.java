@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * Client class to run the project and to be add to the list of contacts.
+ * Client class to run the project and to be able to maintain to the list of contacts.
  */
 public class Main implements textColors {
    /**
@@ -47,7 +47,7 @@ public class Main implements textColors {
             System.out.println(RED_BOLD_BRIGHT + "***Invalid input.***\n" + RESET);
             scan.nextLine();
          }
-
+      
          switch (input) {
             case 1 -> add();
             case 2 -> remove();
@@ -71,6 +71,7 @@ public class Main implements textColors {
    private static void add() {
       Contact contact = new Contact();
       System.out.println();
+      cleanList();
       while (true) {
          int input = -1;
          System.out.println("What would you like to add to the contact?\n" + YELLOW_BOLD_BRIGHT +
@@ -100,7 +101,7 @@ public class Main implements textColors {
                String[] name = scan.nextLine().split(" ");
                if (name.length != 2) {
                   throw new IllegalLengthException("Incorrect length of name; Only 2 words allowed for name.");
-
+               
                }
                contact.setName(name[0], name[1]);
                System.out.println(GREEN_BRIGHT + "First and last name added to contact.\n" + RESET);
@@ -173,7 +174,7 @@ public class Main implements textColors {
                System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
             }
          }
-
+         
          else if (input == 7) {
             System.out.println("Enter note about contact:");
             try {
@@ -185,11 +186,11 @@ public class Main implements textColors {
                System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
             }
          }
-
+         
          else if (input == 8) {
             break;
          }
-
+         
          else if (input == 9) {
             System.out.println("Cancelled adding a contact.\n");
             return;
@@ -199,7 +200,7 @@ public class Main implements textColors {
             System.out.println(RED_BOLD_BRIGHT + "Invalid input." + RESET);
          }
       }
-
+   
       if (contact.isContactEmpty()) {
          System.out.println(RED_BOLD_BRIGHT + "Contact not added to list since no input was given for the contact.\n" + RESET);
       }
@@ -231,6 +232,7 @@ public class Main implements textColors {
          System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to edit.\n" + RESET);
          return;
       }
+      cleanList();
       //in check length of the name, use the Illegal length exception created
       //create a list with the names of each contact and list them with numbers then ask which one to edit
       System.out.println(GREEN_BRIGHT + "Edit method." + RESET);
@@ -244,6 +246,7 @@ public class Main implements textColors {
          System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to remove.\n" + RESET);
          return;
       }
+      cleanList();
       System.out.println(GREEN_BRIGHT + "\nWhich contact would you like to remove? Enter the number." + RESET);
       printListNames();
       int num;
@@ -269,7 +272,10 @@ public class Main implements textColors {
          System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to print.\n" + RESET);
          return;
       }
+
       scan.nextLine();
+      cleanList();
+
       while (true) {
          Character start;
          Character end;
@@ -280,7 +286,7 @@ public class Main implements textColors {
                System.out.println("Exiting.");
                return;
             }
-
+         
             System.out.println("What letter would you like to end your range in? (Press 1 to escape)");
             end = scan.nextLine().trim().toUpperCase().charAt(0);
             if (end.equals('1')) {
@@ -323,7 +329,8 @@ public class Main implements textColors {
          System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to print.\n" + RESET);
          return;
       }
-
+      cleanList();
+   
       for (int i = 0; i < contactList.size(); i++) {
          Character lastNameInitial = contactList.get(i).getLastName().charAt(0);
          if (lastNameInitial.compareTo(end) > 0) {
@@ -347,13 +354,13 @@ public class Main implements textColors {
          System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to print.\n" + RESET);
          return;
       }
-
-         System.out.println("What's the last name?");
-         String lastName = scan.nextLine();
-
-         System.out.println("What's the first name?");
-         String firstName = scan.nextLine();
-
+      cleanList();
+      System.out.println("What's the last name?");
+      String lastName = scan.nextLine();
+   
+      System.out.println("What's the first name?");
+      String firstName = scan.nextLine();
+   
       for (Contact contact : contactList) {
          if (firstName.equalsIgnoreCase(contact.getFirstName()) && lastName.equalsIgnoreCase(contact.getLastName())) {
             System.out.println(contact + "\n");
@@ -371,7 +378,8 @@ public class Main implements textColors {
          System.out.println(RED_UNDERLINED + "\nContact list is empty.\n" + RESET);
          return;
       }
-
+   
+      cleanList();
       for (Contact contact : contactList) {
          System.out.println("\n==========================================");
          System.out.println(contact);
@@ -399,7 +407,8 @@ public class Main implements textColors {
          System.out.println(RED_UNDERLINED + "\nContact list is empty.\n" + RESET);
          return;
       }
-
+   
+      cleanList();
       int count = 1;
       for (Contact contact : contactList) {
          System.out.println(count++ + ". " + contact.getName());

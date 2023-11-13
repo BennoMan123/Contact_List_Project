@@ -189,3 +189,7 @@
 * Implemented the remove method.
 * Moved the check to see if the characters given from the user in the range method are digits or not into the other range method.
 * Updated Javadocs folder.
+
+11/13/23 Part 1:
+* Added a cleanList call in each method in main class.
+* Renamed package the project is in.
