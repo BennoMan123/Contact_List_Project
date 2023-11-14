@@ -29,6 +29,17 @@ public class Main implements textColors {
     * @param args Used for nothing
     */
    public static void main(String[] args) {
+      /*addContact(new Contact("Johanna", "Martinez"));
+      addContact(new Contact("Michael", "Benno"));
+      addContact(new Contact("Stevie", "Wonder"));
+      addContact(new Contact("Alex", "Benno"));
+      addContact(new Contact("Tegan", "Marie"));
+      addContact(new Contact("Jessie", "Burkes"));
+      addContact(new Contact("Annie", "Burkes"));
+      addContact(new Contact("Emma", "Watson"));
+      addContact(new Contact("Emma", "Roland"));
+      addContact(new Contact("Carter", "Wilkie"));
+      printListNames();*/
       while (true) {
          int input = -1;
          System.out.println(YELLOW_BOLD_BRIGHT + "What would you like to do with your contact list?\n" +
@@ -57,7 +68,7 @@ public class Main implements textColors {
             case 6 -> range();
             case 7 -> {
                contactList.clear();
-               System.out.println(GREEN_BRIGHT + "Contact list has been cleared." + RESET);
+               System.out.println(GREEN_BRIGHT + "Contact list has been cleared.\n" + RESET);
             }
             case 8 -> System.exit(0);
             default -> System.out.println(RED_UNDERLINED + "Invalid input." + RESET);
@@ -82,7 +93,7 @@ public class Main implements textColors {
                  "5. Add Phone Number\n" +
                  "6. Add Birthday\n" +
                  "7. Add note about the contact\n" +
-                 GREEN_BRIGHT + "8. Add contact to list\n" +
+                 GREEN_UNDERLINED + "8. Add contact to list\n" +
                  RED_UNDERLINED + "9. Cancel adding a contact" + RESET);
          try {
             input = scan.nextInt();
@@ -107,7 +118,7 @@ public class Main implements textColors {
                System.out.println(GREEN_BRIGHT + "First and last name added to contact.\n" + RESET);
             }
             catch (IllegalArgumentException | NullPointerException e) {
-               System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
+               System.out.println(RED_BOLD_BRIGHT + e.getMessage() + RESET);
             }
          }
          
@@ -119,7 +130,7 @@ public class Main implements textColors {
                System.out.println(GREEN_BRIGHT + "First name added to contact.\n" + RESET);
             }
             catch (IllegalArgumentException | NullPointerException e) {
-               System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
+               System.out.println(RED_BOLD_BRIGHT + e.getMessage() + RESET);
             }
          }
          
@@ -131,7 +142,7 @@ public class Main implements textColors {
                System.out.println(GREEN_BRIGHT + "Last name added to contact.\n" + RESET);
             }
             catch (IllegalArgumentException | NullPointerException e) {
-               System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
+               System.out.println(RED_BOLD_BRIGHT + e.getMessage() + RESET);
             }
          }
          
@@ -143,7 +154,7 @@ public class Main implements textColors {
                System.out.println(GREEN_BRIGHT + "Address added to contact.\n" + RESET);
             }
             catch (IllegalArgumentException | NullPointerException e) {
-               System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
+               System.out.println(RED_BOLD_BRIGHT + e.getMessage() + RESET);
             }
          }
          
@@ -155,7 +166,7 @@ public class Main implements textColors {
                System.out.println(GREEN_BRIGHT + "Phone number added to contact.\n" + RESET);
             }
             catch (IllegalArgumentException | NullPointerException e) {
-               System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
+               System.out.println(RED_BOLD_BRIGHT + e.getMessage() + RESET);
             }
          }
          
@@ -171,7 +182,7 @@ public class Main implements textColors {
                System.out.println(GREEN_BRIGHT + "Birthday added to contact.\n" + RESET);
             }
             catch (InputMismatchException | IllegalArgumentException e) {
-               System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
+               System.out.println(RED_BOLD_BRIGHT + e.getMessage() + RESET);
             }
          }
          
@@ -183,7 +194,7 @@ public class Main implements textColors {
                System.out.println(GREEN_BRIGHT + "Note added to contact.\n" + RESET);
             }
             catch (Exception e) {
-               System.out.println(RED_BOLD_BRIGHT + e.toString() + RESET);
+               System.out.println(RED_BOLD_BRIGHT + e.getMessage() + RESET);
             }
          }
          
@@ -232,10 +243,116 @@ public class Main implements textColors {
          System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to edit.\n" + RESET);
          return;
       }
-      cleanList();
-      //in check length of the name, use the Illegal length exception created
-      //create a list with the names of each contact and list them with numbers then ask which one to edit
-      System.out.println(GREEN_BRIGHT + "Edit method." + RESET);
+   
+      while (true) {
+         cleanList();
+         System.out.println();
+         printListNames();
+
+         System.out.println(GREEN_BRIGHT + "\nWhich contact would you like to edit? Press 0 to exit." + RESET);
+         int num;
+         try {
+            num = scan.nextInt();
+            if (num == 0) {
+               System.out.println(GREEN_BOLD_BRIGHT + "Exiting.\n" + RESET);
+               return;
+            }
+            if (num < 0 || num > contactList.size()) {
+               throw new IllegalArgumentException("Number is not in range.");
+            }
+         
+            System.out.println("\n==========================================");
+            System.out.println(contactList.get(--num));
+            System.out.println("==========================================\n");
+            System.out.println("What would you like to edit about the contact?\n" +
+                    "1. Edit First and Last Name\n" +
+                    "2. Edit First Name\n" +
+                    "3. Edit Last Name\n" +
+                    "4. Edit address\n" +
+                    "5. Edit Phone Number\n" +
+                    "6. Edit Birthday\n" +
+                    "7. Edit note about the contact\n" +
+                    "8. Add note about the contact\n" +
+                    GREEN_UNDERLINED + "9. Exit out of editing" + RESET);
+            int input = scan.nextInt();
+         
+            if (input == 1) {
+               System.out.println("Enter name:");
+               scan.nextLine();
+               String[] name = scan.nextLine().split(" ");
+               if (name.length != 2) {
+                  throw new IllegalLengthException("Incorrect length of name; Only 2 words allowed for name.");
+               }
+               contactList.get(num).setName(name[0], name[1]);
+               System.out.println(GREEN_BRIGHT + "First and last name edited in contact.\n" + RESET);
+            }
+            
+            else if (input == 2) {
+               System.out.println("Enter first name:");
+               scan.nextLine();
+               contactList.get(num).setFirstName(scan.nextLine());
+               System.out.println(GREEN_BRIGHT + "First name edited in contact.\n" + RESET);
+            }
+            
+            else if (input == 3) {
+               System.out.println("Enter last name:");
+               scan.nextLine();
+               contactList.get(num).setLastName(scan.nextLine());
+               System.out.println(GREEN_BRIGHT + "Last name edited in contact.\n" + RESET);
+            }
+            
+            else if (input == 4) {
+               System.out.println("Enter address:");
+               scan.nextLine();
+               contactList.get(num).setAddress(scan.nextLine());
+               System.out.println(GREEN_BRIGHT + "Address edited in contact.\n" + RESET);
+            }
+            
+            else if (input == 5) {
+               System.out.println("Enter phone number:");
+               scan.nextLine();
+               contactList.get(num).setPhoneNum(scan.nextLine());
+               System.out.println(GREEN_BRIGHT + "Phone number edited in contact.\n" + RESET);
+            }
+            
+            else if (input == 6) {
+               System.out.println("Enter month of the birthday:");
+               int month = scan.nextInt();
+               System.out.println("Enter day of the birthday:");
+               int day = scan.nextInt();
+               System.out.println("Enter year of the birthday:");
+               int year = scan.nextInt();
+               contactList.get(num).setBirthday(month, day, year);
+               System.out.println(GREEN_BRIGHT + "Birthday edited in contact.\n" + RESET);
+            }
+            
+            else if (input == 7) {
+               System.out.println("Enter note about contact:");
+               scan.nextLine();
+               contactList.get(num).setNotes(scan.nextLine());
+               System.out.println(GREEN_BRIGHT + "Note edited in contact.\n" + RESET);
+            }
+            
+            else if (input == 8) {
+               System.out.println("Add note about contact:");
+               scan.nextLine();
+               contactList.get(num).addToNotes(scan.nextLine());
+               System.out.println(GREEN_BRIGHT + "Note edited in contact.\n" + RESET);
+            }
+            
+            else if (input == 9) {
+               System.out.println("Exiting out of editing.\n");
+               return;
+            }
+            
+            else {
+               System.out.println(RED_BOLD_BRIGHT + "Invalid input." + RESET);
+            }
+         }
+         catch (Exception e) {
+            System.out.println(RED_BOLD_BRIGHT + e.getMessage() + "\n" + RESET);
+         }
+      }
    }
 
    /**
@@ -272,10 +389,10 @@ public class Main implements textColors {
          System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to print.\n" + RESET);
          return;
       }
-
+   
       scan.nextLine();
       cleanList();
-
+   
       while (true) {
          Character start;
          Character end;
@@ -283,29 +400,29 @@ public class Main implements textColors {
             System.out.println("\nWhat letter would you like to begin your range in? (Press 1 to escape)");
             start = scan.nextLine().trim().toUpperCase().charAt(0);
             if (start.equals('1')) {
-               System.out.println("Exiting.");
+               System.out.println(GREEN_BOLD_BRIGHT + "Exiting.\n" + RESET);
                return;
             }
          
             System.out.println("What letter would you like to end your range in? (Press 1 to escape)");
             end = scan.nextLine().trim().toUpperCase().charAt(0);
             if (end.equals('1')) {
-               System.out.println("Exiting.");
+               System.out.println(GREEN_BOLD_BRIGHT + "Exiting.\n" + RESET);
                return;
             }
             if (start.compareTo(end) > 0) {
-               throw new InputMismatchException("Starting point cannot be before end point.\n");
+               throw new InputMismatchException("Starting point cannot be before end point.");
             }
          }
          catch (InputMismatchException e) {
-            System.out.println(RED_BOLD_BRIGHT + e.toString() + "\n" + RESET);
+            System.out.println(RED_BOLD_BRIGHT + e.getMessage() + "\n" + RESET);
             continue;
          }
          try {
             printInRange(start, end);
          }
          catch (Exception e) {
-            System.out.println(e.toString());
+            System.out.println(RED_BOLD_BRIGHT + e.getMessage() + RESET);
             continue;
          }
          break;
@@ -323,7 +440,7 @@ public class Main implements textColors {
          throw new IllegalArgumentException("Input cannot be a number, unless it is 1.");
       }
       if (start.compareTo(end) > 0) {
-         throw new IllegalArgumentException("Starting point cannot be after end point.\n");
+         throw new IllegalArgumentException("Starting point cannot be after end point.");
       }
       if (contactList.isEmpty()) {
          System.out.println(RED_BOLD_BRIGHT + "\nContact list is empty, no contacts to print.\n" + RESET);
@@ -392,6 +509,10 @@ public class Main implements textColors {
     * Removes any contacts with nothing defined in each instance.
     */
    private static void cleanList() {
+      if (contactList.isEmpty()) {
+         return;
+      }
+
       for (int i = 0; i < contactList.size(); i++) {
          if (contactList.get(i).isContactEmpty()) {
             contactList.remove(i);

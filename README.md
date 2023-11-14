@@ -193,3 +193,12 @@
 11/13/23 Part 1:
 * Added a cleanList call in each method in main class.
 * Renamed package the project is in.
+
+11/14/23 Part 1:
+* Replaced a few conditions in contact class to be more universal.
+* Updated the aesthetics of some of the prints.
+* Added functionality to edit method in the main class.
+* Removed unused variables in the textColors Class.
+* Updated javadocs folder.
+* Changed all e.toString() to e.getMessage() (in try catches for the Exceptions).
+* 

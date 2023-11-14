@@ -384,7 +384,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     public String getNotes() {
         String Notes = "Notes:\n";
 
-        if (notes.isEmpty()) {
+        if (notes.length() == 0) {
             return Notes + "No notes entered.";
         }
 
@@ -410,7 +410,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * {@inheritDoc}
      */
     public boolean isContactEmpty() {
-        return (address.equals("N/A") && phoneNum.equals("N/A") && notes.isEmpty() && firstName.equals("") && lastName.equals("") && isNull(birthday));
+        return (address.equals("N/A") && phoneNum.equals("N/A") && notes.length() == 0 && firstName.equals("") && lastName.equals("") && isNull(birthday));
     }
 
     /**
