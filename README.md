@@ -201,4 +201,6 @@
 * Removed unused variables in the textColors Class.
 * Updated javadocs folder.
 * Changed all e.toString() to e.getMessage() (in try catches for the Exceptions).
-* 
+
+11/15/23 Part 1:
+* Removed unneeded comments.
