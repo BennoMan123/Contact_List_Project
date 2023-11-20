@@ -92,8 +92,7 @@ public class Main implements textColors {
             scan.nextLine();
             continue;
          }
-      
-      
+
          if (input == 1) {
             try {
                System.out.println("Enter name:");
@@ -101,7 +100,6 @@ public class Main implements textColors {
                String[] name = scan.nextLine().split(" ");
                if (name.length != 2) {
                   throw new IllegalLengthException("Incorrect length of name; Only 2 words allowed for name.");
-               
                }
                contact.setName(name[0], name[1]);
                System.out.println(GREEN_BRIGHT + "First and last name added to contact.\n" + RESET);
@@ -212,14 +210,14 @@ public class Main implements textColors {
 
    /**
     * Adds contact to arraylist and sorts it.
-    * @param x Contact to be added to contact list
+    * @param contact Contact to be added to contact list
     * @throws NullPointerException if input is null
     */
-   private static void addContact(Contact x) {
-      if (isNull(x)) {
+   private static void addContact(Contact contact) {
+      if (isNull(contact)) {
          throw new NullPointerException("Contact given is null.");
       }
-      contactList.add(x);
+      contactList.add(contact);
       cleanList();
       Collections.sort(contactList);
    }

@@ -204,3 +204,8 @@
 
 11/15/23 Part 1:
 * Removed unneeded comments.
+
+11/19/23 Part 1:
+* Removed unneeded lines of code.
+* Fixed a parameter.
+* Updated javadocs folder.
