@@ -17,8 +17,9 @@ public class Main implements textColors {
       Runtime.getRuntime().addShutdownHook(new Thread(
               new Runnable() {
                  public void run() {
-                    System.out.println(YELLOW_BOLD_BRIGHT + "\nThank you for using this program." + RESET);
                     scan.close();
+                    contactList.clear();
+                    System.out.println(YELLOW_BOLD_BRIGHT + "\nThank you for using this program." + RESET);
                  }
               }
               ));
@@ -60,7 +61,7 @@ public class Main implements textColors {
                System.out.println(GREEN_BRIGHT + "Contact list has been cleared.\n" + RESET);
             }
             case 8 -> System.exit(0);
-            default -> System.out.println(RED_UNDERLINED + "Invalid input." + RESET);
+            default -> System.out.println(RED_UNDERLINED + "Invalid input.\n" + RESET);
          }
       }
    }
@@ -70,11 +71,10 @@ public class Main implements textColors {
     */
    private static void add() {
       Contact contact = new Contact();
-      System.out.println();
       cleanList();
       while (true) {
          int input = -1;
-         System.out.println("What would you like to add to the contact?\n" + YELLOW_BOLD_BRIGHT +
+         System.out.println("\nWhat would you like to add to the contact?\n" + YELLOW_BOLD_BRIGHT +
                  "1. Add First and Last Name\n" +
                  "2. Add First Name\n" +
                  "3. Add Last Name\n" +

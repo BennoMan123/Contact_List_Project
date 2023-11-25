@@ -209,3 +209,6 @@
 * Removed unneeded lines of code.
 * Fixed a parameter.
 * Updated javadocs folder.
+
+11/24/23 Part 1:
+* Moved some and/or added some "\n" in needed places in main class.
