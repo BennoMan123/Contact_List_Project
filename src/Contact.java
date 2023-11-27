@@ -48,7 +48,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
 
 
     /**
-     * Default constructor; sets most to null or "" or "N/A".
+     * Default constructor; sets most to null, "", or "N/A".
      */
     public Contact() {
     }
@@ -271,17 +271,22 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     /**
      * {@inheritDoc}
      * @see setBirthday(int, int, int)
+     * @throws NullPointerException if given input is null.
      */
     @Override
     public void setBirthday(Date birthdayDate) {
         if (!isNull(birthdayDate)) {
             this.birthday = birthdayDate;
         }
+        else {
+            throw new NullPointerException("Date provided is null.");
+        }
     }
 
     /**
      * {@inheritDoc}
      * @throws IllegalArgumentException if any of the inputs are out of range of a given month or day number or a date later than the current
+     * @throws NullPointerException if input is null
      * @see setBirthday(Date)
      */
     public void setBirthday(int month, int day, int year) {

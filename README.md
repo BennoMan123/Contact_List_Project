@@ -212,3 +212,6 @@
 
 11/24/23 Part 1:
 * Moved some and/or added some "\n" in needed places in main class.
+
+11/26/23 Part 1:
+* Added a throw null exception in set date.
