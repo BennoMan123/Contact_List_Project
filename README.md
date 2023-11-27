@@ -215,3 +215,8 @@
 
 11/26/23 Part 1:
 * Added a throw null exception in set date.
+
+11/26/23 Part 2:
+* Made some methods that are universal public in main class and contact class.
+* Removed unneeded comments in the contact class.
+* Updated javadocs folder.

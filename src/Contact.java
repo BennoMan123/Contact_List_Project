@@ -246,8 +246,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
         if (phoneNum.length() < 1) {
             throw new IllegalLengthException("Illegal length of phone number.");
         }
-        //check if it contains dashes and also if the length of the number is 10 to add dashes
-        //check if it contains the dashes, if not, add them by changing string to char array and adding them in
         if (phoneNum.length() == 10) {
             char[] number = phoneNum.toCharArray();
             char[] finalNumber = new char[12];
@@ -423,7 +421,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * @param str The word to have the first letter be turned to uppercase
      * @return String with the first letter turned to an uppercase, returns null if the string is null, returns "" if empty
      */
-    private static String firstCharToUpper(String str) {
+    public static String firstCharToUpper(String str) {
         if (isNull(str)) {
             return null;
         }
@@ -442,7 +440,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * @param year Year to be checked for leap year or not
      * @return True if a leap year, false if not
      */
-    private static boolean isLeapYear(int year) {
+    public static boolean isLeapYear(int year) {
         return (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0);
     }
 
@@ -454,7 +452,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
      * @param o Any object
      * @return If it is null or not
      */
-    private static boolean isNull(Object o) {
+    public static boolean isNull(Object o) {
         return Objects.isNull(o);
     }
 

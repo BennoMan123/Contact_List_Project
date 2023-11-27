@@ -531,7 +531,7 @@ public class Main implements textColors {
     * @param o Any object
     * @return If it is null or not
     */
-   private static boolean isNull(Object o) {
+   public static boolean isNull(Object o) {
       return Objects.isNull(o);
    }
 }
