@@ -434,6 +434,7 @@ public class Main implements textColors {
          return;
       }
       cleanList();
+      Collections.sort(contactList);
    
       for (int i = 0; i < contactList.size(); i++) {
          Character lastNameInitial = contactList.get(i).getLastName().charAt(0);
@@ -459,6 +460,7 @@ public class Main implements textColors {
          return;
       }
       cleanList();
+      Collections.sort(contactList);
       System.out.println("What's the last name?");
       String lastName = scan.nextLine();
    
@@ -484,6 +486,8 @@ public class Main implements textColors {
       }
    
       cleanList();
+      Collections.sort(contactList);
+
       for (Contact contact : contactList) {
          System.out.println("\n==========================================");
          System.out.println(contact);
@@ -500,11 +504,7 @@ public class Main implements textColors {
          return;
       }
 
-      for (int i = 0; i < contactList.size(); i++) {
-         if (contactList.get(i).isContactEmpty()) {
-            contactList.remove(i);
-         }
-      }
+      contactList.removeIf(Contact::isContactEmpty);
    }
 
    /**
@@ -517,6 +517,7 @@ public class Main implements textColors {
       }
    
       cleanList();
+      Collections.sort(contactList);
       int count = 1;
       for (Contact contact : contactList) {
          System.out.println(count++ + ". " + contact.getName());

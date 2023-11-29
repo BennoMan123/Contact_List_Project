@@ -220,3 +220,10 @@
 * Made some methods that are universal public in main class and contact class.
 * Removed unneeded comments in the contact class.
 * Updated javadocs folder.
+
+11/28/23 Part 1:
+* Fixed the clean list method/handling in main class.
+* Fixed the is empty contact method in contact class.
+  * Implemented boolean that turns to false if something has been added to the contact.
+* Updated Javadocs folder.
+* Made sure that the list sorts in each method that need to print the list in main.
