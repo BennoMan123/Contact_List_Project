@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 /**
- * Client class to run the project, interact with the user, and to be able to maintain to the list of contacts.
+ * Client class to run the project, interact with the user, and to be able to maintain to the list of contacts..
  */
 public class Main implements textColors {
    /**
