@@ -1,7 +1,6 @@
 import java.util.Collections;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.InputMismatchException;
 
 /**
@@ -9,11 +8,11 @@ import java.util.InputMismatchException;
  */
 public class Main implements textColors {
    /**
-    * Scanner to scan in input from user.
+    * Scanner to get input from user.
     */
    private static final Scanner scan = new Scanner(System.in);
    /**
-    * Arraylist to store all of the contacts.
+    * Arraylist to store the contacts.
     */
    private static final ArrayList<Contact> contactList = new ArrayList<Contact>();
 
@@ -218,9 +217,7 @@ public class Main implements textColors {
     * @throws NullPointerException if input is null
     */
    private static void addContact(Contact contact) {
-      if (isNull(contact)) {
-         throw new NullPointerException("Contact given is null.");
-      }
+      Contact.ensureNotNull(contact, "Contact given is null.");
       contactList.add(contact);
       cleanList();
       Collections.sort(contactList);
@@ -526,17 +523,5 @@ public class Main implements textColors {
       for (Contact contact : contactList) {
          System.out.println(count++ + ". " + contact.getName());
       }
-   }
-
-   /**
-    * <pre>
-    * Returns if the object given is null or not.
-    * See similar: {@link Objects#isNull(Object)}
-    * </pre>
-    * @param o Any object
-    * @return If it is null or not
-    */
-   public static boolean isNull(Object o) {
-      return Objects.isNull(o);
    }
 }

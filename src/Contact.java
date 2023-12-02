@@ -8,12 +8,12 @@ import java.util.Objects;
 /**
  * <pre>
  * Class to hold information about a contact.
- * Holds information of:
+ * Information stored:
  * * First and last name
  * * Address
  * * Phone number
  * * Birthday
- * * Any notes about the contact, if any
+ * * Any notes about the contact
  * </pre>
  */
 public class Contact implements contactsInterface, Comparable<Contact>, textColors {
@@ -22,11 +22,11 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     */
    private final Date creationTime = new Date();
    /**
-    * First name of contact.
+    * First name of the contact.
     */
    private String firstName = "";
    /**
-    * Last name of contact.
+    * Last name of the contact.
     */
    private String lastName = "";
    /**
@@ -46,13 +46,13 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     */
    private String address = "N/A";
    /**
-    * True if there's nothing in the contact, false otherwise.
+    * True if there's nothing set in the contact, false otherwise.
     */
    private boolean isEmpty = true;
 
 
    /**
-    * Default constructor; sets most to null, "", or "N/A".
+    * Default constructor; sets variables to null, "", or "N/A".
     */
    public Contact() {
    }
@@ -74,7 +74,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
    }
 
    /**
-    * Sets first and last name and the birthday given year, month, and day.
+    * Sets first and last name and the birthday given month, day, and year.
     * @param firstName First name of contact
     * @param lastName Last name of contact
     * @param birthdayMonth Birthday month of contact
@@ -91,7 +91,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
    }
 
    /**
-    * Sets first and last name, notes about the contact, and the birthday given year, month, and day.
+    * Sets first and last name, notes about the contact, and the birthday given month, day, and year.
     * @param firstName First name of contact
     * @param lastName Last name of contact
     * @param birthdayMonth Birthday month of contact

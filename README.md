@@ -239,3 +239,9 @@
   * Checks if the object given is null. If it is, it'll throw an exception with given error message.
   * Implemented the method into the rest of the class.
 * Updated javadocs folder.
+
+12/2/23 Part 3:
+* Removed isNull Method in main class since it is only used once.
+  * Used the ensureInRange method in contacts instead for the only use of isNull in main.
+* Updated comments in classes.
+* Updated javadocs.

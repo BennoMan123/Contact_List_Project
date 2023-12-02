@@ -12,7 +12,7 @@ public interface contactsInterface {
 
     /**
      * Returns the address of the contact.
-     * @return Address of the contact in string form
+     * @return Address of the contact
      */
     public String getAddress();
 
@@ -73,12 +73,12 @@ public interface contactsInterface {
 
     /**
      * Sets the birthday of the contact.
-     * @param birthdayDate Birthday date of the contact in date form
+     * @param birthdayDate Birthdate of the contact
      */
     public void setBirthday(Date birthdayDate);
 
     /**
-     * Sets the birthday of the contact given the year, month, and day.
+     * Sets the birthday of the contact given the month, day, and year.
      * @param month Month of the birthdate
      * @param day Day of the birthdate
      * @param year Year of the birthdate
@@ -98,21 +98,21 @@ public interface contactsInterface {
     public void setNotes(String note);
 
     /**
-     * Adds to the notes about the contact.
+     * Adds the note about the contact to the notes that are already there.
      * @param note Notes to be added about the contact
      * @see setNotes(String)
      */
     public void addToNotes(String note);
 
     /**
-     * Returns the notes about the contact.
+     * Returns the notes about the contact, N/A if there is no notes.
      * @return Returns the notes about the contact
      */
     public String getNotes();
 
     /**
      * Checks to make sure that the contact created has nothing set in the instance.
-     * @return true if nothing was set in the contact, false if something is set
+     * @return true if nothing was set in the contact, false otherwise
      */
     public boolean isContactEmpty();
 }
