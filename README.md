@@ -232,3 +232,10 @@
 * Fixed some comments in main and contact classes.
   * Updated javadocs folder.
 * Fixed imports in main class.
+
+12/2/23 Part 2:
+* Fixed compareTo method in contact class to sort by creation time if the 2 contacts have the same first and last name.
+* Changed isNull method to ensureNotNull.
+  * Checks if the object given is null. If it is, it'll throw an exception with given error message.
+  * Implemented the method into the rest of the class.
+* Updated javadocs folder.

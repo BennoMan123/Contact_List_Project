@@ -239,7 +239,7 @@ public class Main implements textColors {
          cleanList();
          System.out.println();
          printListNames();
-
+      
          System.out.println(GREEN_BRIGHT + "\nWhich contact would you like to edit? Press 0 to exit." + RESET);
          int num;
          try {
@@ -491,7 +491,7 @@ public class Main implements textColors {
    
       cleanList();
       Collections.sort(contactList);
-
+   
       for (Contact contact : contactList) {
          System.out.println("\n==========================================");
          System.out.println(contact);
@@ -507,7 +507,7 @@ public class Main implements textColors {
       if (contactList.isEmpty()) {
          return;
       }
-
+   
       contactList.removeIf(Contact::isContactEmpty);
    }
 
