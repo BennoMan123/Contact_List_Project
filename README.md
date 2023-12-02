@@ -227,3 +227,8 @@
   * Implemented boolean that turns to false if something has been added to the contact.
 * Updated Javadocs folder.
 * Made sure that the list sorts in each method that need to print the list in main.
+
+12/2/23 Part 1:
+* Fixed some comments in main and contact classes.
+  * Updated javadocs folder.
+* Fixed imports in main class.

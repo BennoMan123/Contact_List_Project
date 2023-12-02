@@ -86,7 +86,7 @@ public interface contactsInterface {
     public void setBirthday(int month, int day, int year);
 
     /**
-     * Returns the birthday of the contact in MM/dd/yyyy form.
+     * Returns the birthday of the contact in M/dd/yyyy form.
      * @return Birthdate of the contact in string form
      */
     public String getBirthday();
