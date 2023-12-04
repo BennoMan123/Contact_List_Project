@@ -245,3 +245,6 @@
   * Used the ensureInRange method in contacts instead for the only use of isNull in main.
 * Updated comments in classes.
 * Updated javadocs.
+
+12/4/23 Part 1:
+* Fixed thread to shorten it in main class (shutdown thread).

@@ -18,14 +18,12 @@ public class Main implements textColors {
 
    static {
       Runtime.getRuntime().addShutdownHook(new Thread(
-              new Runnable() {
-                 public void run() {
-                    scan.close();
-                    contactList.clear();
-                    System.out.println(YELLOW_BOLD_BRIGHT + "\nThank you for using this program." + RESET);
-                 }
+              () -> {
+                 scan.close();
+                 contactList.clear();
+                 System.out.println(YELLOW_BOLD_BRIGHT + "\nThank you for using this program." + RESET);
               }
-              ));
+         ));
    }
 
    /**
@@ -95,7 +93,7 @@ public class Main implements textColors {
             scan.nextLine();
             continue;
          }
-
+      
          if (input == 1) {
             try {
                System.out.println("Enter name:");
