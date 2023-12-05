@@ -248,3 +248,7 @@
 
 12/4/23 Part 1:
 * Fixed thread to shorten it in main class (shutdown thread).
+
+12/4/23 Part 2:
+* Realigned the contacts interface and the exception class.
+* Removed some unneeded lines in all of the files.
