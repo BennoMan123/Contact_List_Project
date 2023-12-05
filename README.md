@@ -257,5 +257,9 @@
 * Made messages to user more clear on the instructions on handling and inputting/editing their contacts in the main class.
 * Added in the range method to say there aren't any contacts in that range if there aren't any.
 * Updated the setPhoneNumber method to add dashes to the phone number when it is certain lengths in contact class.
-  * Specifically for when it is length 6, 7, 8, and 9. (on top of when it is length 10)
+  * Specifically for when it is length 6, 7, 8, and 9 (on top of when it is length 10).
 * Fixed compareTo method in contact class to compare the creation dates more properly.
+
+12/5/23 Part 2:
+* Changed condition in setPhoneNumber method to check the length to see if it is also bigger than 10.
+  * Throws exception if it is.

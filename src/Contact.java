@@ -259,8 +259,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
    public void setPhoneNum(String phoneNum) {
       ensureNotNull(phoneNum, "Phone number given is null.");
    
-      if (phoneNum.length() < 1) {
-         throw new IllegalLengthException("Illegal length of phone number.");
+      if (phoneNum.length() < 1 || phoneNum.length() > 10) {
+         throw new IllegalLengthException("Illegal length of phone number; Must be between 1 and 10.");
       }
       if ((phoneNum.length() == 10 || phoneNum.length() == 9) && !phoneNum.contains("-")) {
          char[] number = phoneNum.toCharArray();
