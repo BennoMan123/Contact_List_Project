@@ -263,3 +263,7 @@
 12/5/23 Part 2:
 * Changed condition in setPhoneNumber method to check the length to see if it is also bigger than 10.
   * Throws exception if it is.
+
+12/5/23 Part 3:
+* Added a pdf file to explain how to use the project.
+* Modified phase 2 doc to update the methods used in project.
