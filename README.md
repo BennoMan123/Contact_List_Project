@@ -268,6 +268,6 @@
 * Added a pdf file to explain how to use the project.
 * Modified phase 2 doc to update the methods used in project.
 
-12/5/23 Part 3:
+12/5/23 Part 4:
 * Fixed a javadoc comment (made the link in colorText interface open in new tab).
 * Updated javadocs folder.
