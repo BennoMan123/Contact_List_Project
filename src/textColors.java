@@ -1,6 +1,6 @@
 /**
  * See
- * <a href="https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println">this website</a>
+ * <a href="https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println" target="_blank">this website</a>
  * to see where I got the code from.
  */
 public interface textColors {
