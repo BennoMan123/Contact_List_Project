@@ -33,7 +33,7 @@ public class Main implements textColors {
    public static void main(String[] args) {
       while (true) {
          int input = -1;
-         System.out.println(YELLOW_BOLD_BRIGHT + "What would you like to do with your contact list?\n" +
+         System.out.println(YELLOW_BOLD_BRIGHT + "What would you like to do with your contact list? (Enter the number)\n" +
                  "1. Add contact\n" +
                  "2. Remove a contact\n" +
                  "3. Edit a contact\n" +
@@ -75,7 +75,7 @@ public class Main implements textColors {
       cleanList();
       while (true) {
          int input = -1;
-         System.out.println("\nWhat would you like to add to the contact?\n" + YELLOW_BOLD_BRIGHT +
+         System.out.println("\nWhat would you like to add to the contact? (Enter the number)\n(Press 8 to add contact and 9 to cancel)\n" + YELLOW_BOLD_BRIGHT +
                  "1. Add First and Last Name\n" +
                  "2. Add First Name\n" +
                  "3. Add Last Name\n" +
@@ -96,7 +96,7 @@ public class Main implements textColors {
       
          if (input == 1) {
             try {
-               System.out.println("Enter name:");
+               System.out.println("Enter first and last name (must be two words):");
                scan.nextLine();
                String[] name = scan.nextLine().split(" ");
                if (name.length != 2) {
@@ -147,7 +147,7 @@ public class Main implements textColors {
          }
          
          else if (input == 5) {
-            System.out.println("Enter phone number:");
+            System.out.println("Enter phone number (with or without dashes):");
             try {
                scan.nextLine();
                contact.setPhoneNum(scan.nextLine());
@@ -159,7 +159,7 @@ public class Main implements textColors {
          }
          
          else if (input == 6) {
-            System.out.println("Enter month of the birthday:");
+            System.out.println("Enter the number of month of the birthday:");
             try {
                int month = scan.nextInt();
                System.out.println("Enter day of the birthday:");
@@ -235,7 +235,7 @@ public class Main implements textColors {
          System.out.println();
          printListNames();
       
-         System.out.println(GREEN_BRIGHT + "\nWhich contact would you like to edit? Press 0 to exit." + RESET);
+         System.out.println(GREEN_BRIGHT + "\nWhich contact would you like to edit? Enter the number of the contact or press 0 to exit." + RESET);
          int num;
          try {
             num = scan.nextInt();
@@ -250,7 +250,7 @@ public class Main implements textColors {
             System.out.println("\n==========================================");
             System.out.println(contactList.get(--num));
             System.out.println("==========================================\n");
-            System.out.println("What would you like to edit about the contact?\n" +
+            System.out.println("What would you like to edit about the contact? (Enter the number)\n" +
                     "1. Edit First and Last Name\n" +
                     "2. Edit First Name\n" +
                     "3. Edit Last Name\n" +
@@ -263,7 +263,7 @@ public class Main implements textColors {
             int input = scan.nextInt();
          
             if (input == 1) {
-               System.out.println("Enter name:");
+               System.out.println("Enter first and last name (must be two words):");
                scan.nextLine();
                String[] name = scan.nextLine().split(" ");
                if (name.length != 2) {
@@ -295,14 +295,14 @@ public class Main implements textColors {
             }
             
             else if (input == 5) {
-               System.out.println("Enter phone number:");
+               System.out.println("Enter phone number (with or without dashes):");
                scan.nextLine();
                contactList.get(num).setPhoneNum(scan.nextLine());
                System.out.println(GREEN_BRIGHT + "Phone number edited in contact.\n" + RESET);
             }
             
             else if (input == 6) {
-               System.out.println("Enter month of the birthday:");
+               System.out.println("Enter number of the month of the birthday:");
                int month = scan.nextInt();
                System.out.println("Enter day of the birthday:");
                int day = scan.nextInt();
@@ -383,14 +383,14 @@ public class Main implements textColors {
          Character start;
          Character end;
          try {
-            System.out.println("\nWhat letter would you like to begin your range in? (Press 1 to escape)");
+            System.out.println("\nWhat letter would you like to begin your range in? (Press 1 to exit)\nNote: It will search by last name.");
             start = scan.nextLine().trim().toUpperCase().charAt(0);
             if (start.equals('1')) {
                System.out.println(GREEN_BOLD_BRIGHT + "Exiting.\n" + RESET);
                return;
             }
          
-            System.out.println("What letter would you like to end your range in? (Press 1 to escape)");
+            System.out.println("What letter would you like to end your range in? (Press 1 to exit)\nNote: It will search by last name.");
             end = scan.nextLine().trim().toUpperCase().charAt(0);
             if (end.equals('1')) {
                System.out.println(GREEN_BOLD_BRIGHT + "Exiting.\n" + RESET);
@@ -434,17 +434,26 @@ public class Main implements textColors {
       }
       cleanList();
       Collections.sort(contactList);
+      Integer total = null;
    
       for (int i = 0; i < contactList.size(); i++) {
          Character lastNameInitial = contactList.get(i).getLastName().charAt(0);
          if (lastNameInitial.compareTo(end) > 0) {
             break;
          }
+         if (total == null) {
+            total = 0;
+         }
          if (lastNameInitial.compareTo(start) >= 0 && lastNameInitial.compareTo(end) <= 0) {
             System.out.println("\n==========================================");
             System.out.println(contactList.get(i));
             System.out.println("==========================================");
+            total++;
          }
+      }
+   
+      if (total != null && total == 0) {
+         System.out.println(RED_BOLD_BRIGHT + "No contacts found in range." + RESET);
       }
       System.out.println();
    }

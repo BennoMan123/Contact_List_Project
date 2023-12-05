@@ -262,19 +262,18 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       if (phoneNum.length() < 1) {
          throw new IllegalLengthException("Illegal length of phone number.");
       }
-      if (phoneNum.length() == 10) {
+      if ((phoneNum.length() == 10 || phoneNum.length() == 9) && !phoneNum.contains("-")) {
          char[] number = phoneNum.toCharArray();
-         char[] finalNumber = new char[12];
-         int indexOfnumber = 0;
+         char[] finalNumber = new char[phoneNum.length() + 2];
+         int indexOfNumber = 0;
          for (int i  = 0; i < finalNumber.length; i++) {
             if (i == 3 || i == 7) {
                finalNumber[i] = '-';
             }
             else {
-               finalNumber[i] = number[indexOfnumber];
-               indexOfnumber++;
+               finalNumber[i] = number[indexOfNumber];
+               indexOfNumber++;
             }
-         
          }
          this.phoneNum = new String(finalNumber);
          if (isEmpty) {
@@ -282,6 +281,45 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
          }
          return;
       }
+      else if ((phoneNum.length() == 7 || phoneNum.length() == 6) && !phoneNum.contains("-")) {
+         char[] number = phoneNum.toCharArray();
+         char[] finalNumber = new char[phoneNum.length() + 1];
+         int indexOfNumber = 0;
+         for (int i  = 0; i < finalNumber.length; i++) {
+            if (i == 3) {
+               finalNumber[i] = '-';
+            }
+            else {
+               finalNumber[i] = number[indexOfNumber];
+               indexOfNumber++;
+            }
+         }
+         this.phoneNum = new String(finalNumber);
+         if (isEmpty) {
+            isEmpty = false;
+         }
+         return;
+      }
+      else if (phoneNum.length() == 8 && !phoneNum.contains("-")) {
+         char[] number = phoneNum.toCharArray();
+         char[] finalNumber = new char[9];
+         int indexOfNumber = 0;
+         for (int i  = 0; i < finalNumber.length; i++) {
+            if (i == 4) {
+               finalNumber[i] = '-';
+            }
+            else {
+               finalNumber[i] = number[indexOfNumber];
+               indexOfNumber++;
+            }
+         }
+         this.phoneNum = new String(finalNumber);
+         if (isEmpty) {
+            isEmpty = false;
+         }
+         return;
+      }
+   
       this.phoneNum = phoneNum;
       if (isEmpty) {
          isEmpty = false;
@@ -400,7 +438,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
          throw new IllegalLengthException("Illegal length of notes given.");
       }
    
-      notes.append(note + "\n");
+      notes.append(note).append("\n");
       if (isEmpty) {
          isEmpty = false;
       }
@@ -429,7 +467,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
    public int compareTo(Contact o) {
       if (String.CASE_INSENSITIVE_ORDER.compare(this.lastName, o.lastName) == 0) {
          if (String.CASE_INSENSITIVE_ORDER.compare(this.firstName, o.firstName) == 0) {
-            return String.CASE_INSENSITIVE_ORDER.compare(this.creationTime.toString(), o.creationTime.toString());
+            return creationTime.compareTo(o.creationTime);
          }
          return String.CASE_INSENSITIVE_ORDER.compare(this.firstName, o.firstName);
       }
