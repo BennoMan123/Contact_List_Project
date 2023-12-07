@@ -434,16 +434,14 @@ public class Main implements textColors {
       }
       cleanList();
       Collections.sort(contactList);
-      Integer total = null;
+      Integer total = 0;
    
       for (int i = 0; i < contactList.size(); i++) {
          Character lastNameInitial = contactList.get(i).getLastName().charAt(0);
          if (lastNameInitial.compareTo(end) > 0) {
             break;
          }
-         if (total == null) {
-            total = 0;
-         }
+
          if (lastNameInitial.compareTo(start) >= 0 && lastNameInitial.compareTo(end) <= 0) {
             System.out.println("\n==========================================");
             System.out.println(contactList.get(i));
@@ -452,7 +450,7 @@ public class Main implements textColors {
          }
       }
    
-      if (total != null && total == 0) {
+      if (total == 0) {
          System.out.println(RED_BOLD_BRIGHT + "No contacts found in range." + RESET);
       }
       System.out.println();

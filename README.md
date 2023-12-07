@@ -271,3 +271,7 @@
 12/5/23 Part 4:
 * Fixed a javadoc comment (made the link in colorText interface open in new tab).
 * Updated javadocs folder.
+
+12/7/23 Part 1:
+* Enhanced the range method.
+* Added the gitignore
