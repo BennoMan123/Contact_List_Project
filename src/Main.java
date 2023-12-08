@@ -46,8 +46,9 @@ public class Main implements textColors {
             input = scan.nextInt();
          }
          catch (InputMismatchException e) {
-            System.out.println(RED_BOLD_BRIGHT + "***Invalid input.***\n" + RESET);
+            System.out.println(RED_BOLD_BRIGHT + "Invalid input; Input must be a number.\n" + RESET);
             scan.nextLine();
+            continue;
          }
       
          switch (input) {
@@ -62,7 +63,7 @@ public class Main implements textColors {
                System.out.println(GREEN_BRIGHT + "Contact list has been cleared.\n" + RESET);
             }
             case 8 -> System.exit(0);
-            default -> System.out.println(RED_UNDERLINED + "Invalid input.\n" + RESET);
+            default -> System.out.println(RED_BOLD_BRIGHT + "Invalid input; Number must be in the range of 1 and 8.\n" + RESET);
          }
       }
    }
@@ -196,7 +197,7 @@ public class Main implements textColors {
          }
          
          else {
-            System.out.println(RED_BOLD_BRIGHT + "Invalid input." + RESET);
+            System.out.println(RED_BOLD_BRIGHT + "Invalid input; Number must be in the range of 1 through 9." + RESET);
          }
       }
    
@@ -244,7 +245,7 @@ public class Main implements textColors {
                return;
             }
             if (num < 0 || num > contactList.size()) {
-               throw new IllegalArgumentException("Number is not in range.");
+               throw new IllegalArgumentException(String.format("\nInvalid input. Number not in the range of 1 and %d.\n", contactList.size()));
             }
          
             System.out.println("\n==========================================");
@@ -332,7 +333,7 @@ public class Main implements textColors {
             }
             
             else {
-               System.out.println(RED_BOLD_BRIGHT + "Invalid input." + RESET);
+               System.out.println(RED_BOLD_BRIGHT + "Invalid input; Number must be in the range of 1 through 9." + RESET);
             }
          }
          catch (Exception e) {
@@ -360,7 +361,7 @@ public class Main implements textColors {
          }
       }
       catch (Exception e) {
-         System.out.println(RED_BOLD_BRIGHT + "\nInvalid input.\n" + RESET);
+         System.out.println(RED_BOLD_BRIGHT + String.format("\nInvalid input. Number not in the range of 1 and %d.\n", contactList.size()) + RESET);
          return;
       }
       contactList.remove(--num);

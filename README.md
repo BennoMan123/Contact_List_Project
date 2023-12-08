@@ -275,3 +275,6 @@
 12/7/23 Part 1:
 * Enhanced the range method.
 * Added the gitignore
+
+12/7/23 Part 2:
+* Fixed invalid input statements in main class to specify that the input must be numbers or in range of the menu numbers.
