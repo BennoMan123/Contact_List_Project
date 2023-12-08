@@ -2,6 +2,7 @@ import java.util.Collections;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Objects;
 
 /**
  * Client class to run the project, interact with the user, and to be able to maintain to the list of contacts.
@@ -216,7 +217,7 @@ public class Main implements textColors {
     * @throws NullPointerException if input is null
     */
    private static void addContact(Contact contact) {
-      Contact.ensureNotNull(contact, "Contact given is null.");
+      Objects.requireNonNull(contact, "Contact given is null.");
       contactList.add(contact);
       cleanList();
       Collections.sort(contactList);

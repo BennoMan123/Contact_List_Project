@@ -278,3 +278,7 @@
 
 12/7/23 Part 2:
 * Fixed invalid input statements in main class to specify that the input must be numbers or in range of the menu numbers.
+
+12/7/23 Part 3:
+* Deleted the ensureNotNull method in contact class and replaced all uses of it in program with 'Objects.requireNonNull'.
+* Updated javadocs folder.

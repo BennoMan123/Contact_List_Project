@@ -64,8 +64,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @throws NullPointerException if first or last name is null
     */
    public Contact(String firstName, String lastName) {
-      ensureNotNull(firstName, "First name given is null.");
-      ensureNotNull(lastName, "Last name given is null.");
+      Objects.requireNonNull(firstName, "First name given is null.");
+      Objects.requireNonNull(lastName, "Last name given is null.");
       setFirstName(firstName);
       setLastName(lastName);
       if (isEmpty) {
@@ -133,9 +133,9 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @throws IllegalLengthException if there's an empty string given
     */
    public void setAddress(String address) {
-      ensureNotNull(address, "Address given is null.");
+      Objects.requireNonNull(address, "Address given is null.");
       if (address.isEmpty()){
-         throw new IllegalLengthException("Illegal length of address.");
+         throw new IllegalLengthException("Illegal length of address; No address is given.");
       }
       this.address = address;
       if (isEmpty) {
@@ -159,7 +159,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @see setName(String, String)
     */
    public void setFirstName(String firstName) {
-      ensureNotNull(firstName, "First Name given is null.");
+      Objects.requireNonNull(firstName, "First Name given is null.");
    
       if (firstName.isEmpty()) {
          this.firstName = "";
@@ -192,7 +192,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @see setName(String, String)
     */
    public void setLastName(String lastName) {
-      ensureNotNull(lastName, "Last Name given is null.");
+      Objects.requireNonNull(lastName, "Last Name given is null.");
    
       if (lastName.isEmpty()) {
          this.lastName = "";
@@ -218,8 +218,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @see setLastName(String)
     */
    public void setName(String firstName, String lastName) {
-      ensureNotNull(firstName, "First name given is null.");
-      ensureNotNull(lastName, "Last name given is null.");
+      Objects.requireNonNull(firstName, "First name given is null.");
+      Objects.requireNonNull(lastName, "Last name given is null.");
    
       setFirstName(firstName);
       setLastName(lastName);
@@ -257,7 +257,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @throws IllegalLengthException if length of input given is equal to 0
     */
    public void setPhoneNum(String phoneNum) {
-      ensureNotNull(phoneNum, "Phone number given is null.");
+      Objects.requireNonNull(phoneNum, "Phone number given is null.");
    
       if (phoneNum.length() < 1 || phoneNum.length() > 10) {
          throw new IllegalLengthException("Illegal length of phone number; Must be between 1 and 10.");
@@ -333,7 +333,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     */
    @Override
    public void setBirthday(Date birthdayDate) {
-      ensureNotNull(birthdayDate, "Date given is null.");
+      Objects.requireNonNull(birthdayDate, "Date given is null.");
    
       this.birthday = birthdayDate;
       if (isEmpty) {
@@ -413,7 +413,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     */
    @Override
    public void setNotes(String note) {
-      ensureNotNull(note, "Note given is null.");
+      Objects.requireNonNull(note, "Note given is null.");
    
       if (note.isEmpty()){
          throw new IllegalLengthException("Illegal length of notes given.");
@@ -432,7 +432,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     */
    @Override
    public void addToNotes(String note) {
-      ensureNotNull(note, "Note given is null.");
+      Objects.requireNonNull(note, "Note given is null.");
    
       if (note.isEmpty()){
          throw new IllegalLengthException("Illegal length of notes given.");
@@ -509,18 +509,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     */
    public static boolean isLeapYear(int year) {
       return (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0);
-   }
-
-   /**
-    * Checks if the object given is null or not. Throws exception if the object is null, does nothing otherwise.
-    * @param o Any object
-    * @param errorMessage error message if and when error is thrown
-    * @throws NullPointerException if object is null
-    */
-   public static void ensureNotNull(Object o, String errorMessage) {
-      if (Objects.isNull(o)) {
-         throw new NullPointerException(errorMessage);
-      }
    }
 
    /**
