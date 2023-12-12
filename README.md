@@ -289,3 +289,6 @@
 
 12/12/23 Part 2:
 * Removed unneeded @Override in Contact class
+
+12/12/23 Part 3:
+* Created a file and added it to gitignore since it is not needed for the public eye.
