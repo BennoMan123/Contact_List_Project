@@ -288,7 +288,10 @@
 * Added in a condition in the set names to see if the first letter of the first and last names were letters in contact class.
 
 12/12/23 Part 2:
-* Removed unneeded @Override in Contact class
+* Removed unneeded @Override in Contact class.
 
 12/12/23 Part 3:
 * Created a file and added it to gitignore since it is not needed for the public eye.
+
+12/12/23 Part 4:
+* Updated gitignore and some project docs.
