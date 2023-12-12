@@ -285,4 +285,7 @@
 
 12/12/23 Part 1:
 * Updated the phase 2 doc.
-* Added in a condition in the set names to see if the first letter of the first and last names were letters.
+* Added in a condition in the set names to see if the first letter of the first and last names were letters in contact class.
+
+12/12/23 Part 2:
+* Removed unneeded @Override in Contact class

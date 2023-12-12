@@ -233,7 +233,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @see getFirstName
     * @see getLastName
     */
-   @Override
    public String getName() {
       if (firstName.equals("") && lastName.equals("")) {
          return RED_BOLD_BRIGHT + "No name given." + RESET;
@@ -331,7 +330,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @see setBirthday(int, int, int)
     * @throws NullPointerException if given input is null.
     */
-   @Override
    public void setBirthday(Date birthdayDate) {
       Objects.requireNonNull(birthdayDate, "Date given is null.");
    
@@ -396,7 +394,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * {@inheritDoc}
     * Returns N/A if there's no birthday given
     */
-   @Override
    public String getBirthday() {
       if (Objects.isNull(birthday)) {
          return RED_BOLD_BRIGHT + "N/A" + RESET;
@@ -411,7 +408,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @throws IllegalLengthException if length of input given is equal to 0
     * @see addToNotes(String)
     */
-   @Override
    public void setNotes(String note) {
       Objects.requireNonNull(note, "Note given is null.");
    
@@ -430,7 +426,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @throws IllegalLengthException if length of input given is equal to 0
     * @see setNotes(String)
     */
-   @Override
    public void addToNotes(String note) {
       Objects.requireNonNull(note, "Note given is null.");
    
@@ -447,7 +442,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
    /**
     * {@inheritDoc}
     */
-   @Override
    public String getNotes() {
       String Notes = "Notes:\n";
    
