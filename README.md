@@ -282,3 +282,7 @@
 12/7/23 Part 3:
 * Deleted the ensureNotNull method in contact class and replaced all uses of it in program with 'Objects.requireNonNull'.
 * Updated javadocs folder.
+
+12/12/23 Part 1:
+* Updated the phase 2 doc.
+* Added in a condition in the set names to see if the first letter of the first and last names were letters.

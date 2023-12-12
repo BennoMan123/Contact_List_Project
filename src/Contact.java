@@ -165,8 +165,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
          this.firstName = "";
          return;
       }
-   
-      if (!Character.isUpperCase(firstName.charAt(0))) {
+
+      if (Character.isLetter(firstName.charAt(0)) && !Character.isUpperCase(firstName.charAt(0))) {
          firstName = firstCharToUpper(firstName);
       }
    
@@ -199,7 +199,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
          return;
       }
    
-      if (!Character.isUpperCase(lastName.charAt(0))) {
+      if (Character.isLetter(lastName.charAt(0)) && !Character.isUpperCase(lastName.charAt(0))) {
          lastName = firstCharToUpper(lastName);
       }
    
