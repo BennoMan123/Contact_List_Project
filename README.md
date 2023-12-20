@@ -295,3 +295,8 @@
 
 12/12/23 Part 4:
 * Updated gitignore and some project docs.
+
+12/20/23 Part 1:
+* Made the requireNonNull method into the method call in main class instead of being two lines.
+* Adjusted some javadocs comments in contact class.
+  * Updated javadocs folder.

@@ -81,6 +81,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @param birthdayDay Birthday day of contact
     * @param birthdayYear Birthday year of contact
     * @throws NullPointerException if first or last name is null
+    * @throws IllegalArgumentException if any of the int inputs are out of range
     */
    public Contact(String firstName, String lastName, int birthdayMonth, int birthdayDay, int birthdayYear) {
       this(firstName, lastName);
@@ -99,6 +100,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @param birthdayYear Birthday year of contact
     * @param note Notes about the contact
     * @throws NullPointerException if first or last name is null or notes is null
+    * @throws IllegalArgumentException if any of the int inputs are out of range
     * @throws IllegalLengthException if there's no notes given.
     */
    public Contact(String firstName, String lastName, int birthdayMonth, int birthdayDay, int birthdayYear, String note) {

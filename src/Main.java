@@ -217,8 +217,7 @@ public class Main implements textColors {
     * @throws NullPointerException if input is null
     */
    private static void addContact(Contact contact) {
-      Objects.requireNonNull(contact, "Contact given is null.");
-      contactList.add(contact);
+      contactList.add(Objects.requireNonNull(contact, "Contact given is null."));
       cleanList();
       Collections.sort(contactList);
    }
