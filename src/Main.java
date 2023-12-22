@@ -27,6 +27,8 @@ public class Main implements textColors {
          ));
    }
 
+   private Main(){}
+
    /**
     * Main method to run the program.
     * @param args Used for nothing
