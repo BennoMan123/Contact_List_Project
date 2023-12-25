@@ -54,8 +54,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
    /**
     * Default constructor; sets variables to null, "", or "N/A".
     */
-   public Contact() {
-   }
+   public Contact() {}
 
    /**
     * Sets first and last name; sets rest to default.
@@ -64,13 +63,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @throws NullPointerException if first or last name is null
     */
    public Contact(String firstName, String lastName) {
-      Objects.requireNonNull(firstName, "First name given is null.");
-      Objects.requireNonNull(lastName, "Last name given is null.");
-      setFirstName(firstName);
-      setLastName(lastName);
-      if (isEmpty) {
-         isEmpty = false;
-      }
+      setName(firstName, lastName);
    }
 
    /**
@@ -86,9 +79,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
    public Contact(String firstName, String lastName, int birthdayMonth, int birthdayDay, int birthdayYear) {
       this(firstName, lastName);
       setBirthday(birthdayMonth, birthdayDay, birthdayYear);
-      if (isEmpty) {
-         isEmpty = false;
-      }
    }
 
    /**
@@ -106,9 +96,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
    public Contact(String firstName, String lastName, int birthdayMonth, int birthdayDay, int birthdayYear, String note) {
       this(firstName, lastName, birthdayMonth, birthdayDay, birthdayYear);
       setNotes(note);
-      if (isEmpty) {
-         isEmpty = false;
-      }
    }
 
    /**
@@ -140,9 +127,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
          throw new IllegalLengthException("Illegal length of address; No address is given.");
       }
       this.address = address;
-      if (isEmpty) {
+      if (isEmpty)
          isEmpty = false;
-      }
    }
 
    /**
@@ -173,9 +159,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       }
    
       this.firstName = firstName;
-      if (isEmpty) {
+      if (isEmpty)
          isEmpty = false;
-      }
    }
 
    /**
@@ -206,9 +191,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       }
    
       this.lastName = lastName;
-      if (isEmpty) {
+      if (isEmpty)
          isEmpty = false;
-      }
    }
 
    /**
@@ -225,9 +209,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
    
       setFirstName(firstName);
       setLastName(lastName);
-      if (isEmpty) {
-         isEmpty = false;
-      }
    }
 
    /**
@@ -277,9 +258,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
             }
          }
          this.phoneNum = new String(finalNumber);
-         if (isEmpty) {
+         if (isEmpty)
             isEmpty = false;
-         }
          return;
       }
       else if ((phoneNum.length() == 7 || phoneNum.length() == 6) && !phoneNum.contains("-")) {
@@ -296,9 +276,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
             }
          }
          this.phoneNum = new String(finalNumber);
-         if (isEmpty) {
+         if (isEmpty)
             isEmpty = false;
-         }
          return;
       }
       else if (phoneNum.length() == 8 && !phoneNum.contains("-")) {
@@ -315,16 +294,14 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
             }
          }
          this.phoneNum = new String(finalNumber);
-         if (isEmpty) {
+         if (isEmpty)
             isEmpty = false;
-         }
          return;
       }
    
       this.phoneNum = phoneNum;
-      if (isEmpty) {
+      if (isEmpty)
          isEmpty = false;
-      }
    }
 
    /**
@@ -333,12 +310,9 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @throws NullPointerException if given input is null.
     */
    public void setBirthday(Date birthdayDate) {
-      Objects.requireNonNull(birthdayDate, "Date given is null.");
-   
-      this.birthday = birthdayDate;
-      if (isEmpty) {
+      this.birthday = Objects.requireNonNull(birthdayDate, "Date given is null.");
+      if (isEmpty)
          isEmpty = false;
-      }
    }
 
    /**
@@ -400,7 +374,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       if (Objects.isNull(birthday)) {
          return RED_BOLD_BRIGHT + "N/A" + RESET;
       }
-   
       return new SimpleDateFormat("M/dd/yyyy").format(birthday);
    }
 
@@ -417,9 +390,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
          throw new IllegalLengthException("Illegal length of notes given.");
       }
       notes = new StringBuffer(note + "\n");
-      if (isEmpty) {
+      if (isEmpty)
          isEmpty = false;
-      }
    }
 
    /**
@@ -436,9 +408,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       }
    
       notes.append(note).append("\n");
-      if (isEmpty) {
+      if (isEmpty)
          isEmpty = false;
-      }
    }
 
    /**

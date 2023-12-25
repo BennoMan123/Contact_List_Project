@@ -300,3 +300,6 @@
 * Made the requireNonNull method into the method call in main class instead of being two lines.
 * Adjusted some javadocs comments in contact class.
   * Updated javadocs folder.
+
+12/24/23 Part 1:
+* Removed unneeded code and condensed other spots that could be condensed.
