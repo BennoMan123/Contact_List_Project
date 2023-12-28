@@ -303,3 +303,10 @@
 
 12/24/23 Part 1:
 * Removed unneeded code and condensed other spots that could be condensed.
+
+12/28/23 Part 1:
+* setPhoneNumber method in Contact class:
+  * Simplified code.
+  * Added a check to see if it contains letters and non-dash punctuation. If so, throws an exception.
+  * Updated javadocs comment.
+* Updated javadocs folder.

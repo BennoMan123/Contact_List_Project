@@ -4,6 +4,7 @@ import java.time.Year;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 /**
  * <pre>
@@ -237,6 +238,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * {@inheritDoc}
     * @throws NullPointerException if input is null
     * @throws IllegalLengthException if length of input given is equal to 0
+    * @throws IllegalArgumentException if the phone number contains a letter or a punctuaiton mark that's not a dash
     */
    public void setPhoneNum(String phoneNum) {
       Objects.requireNonNull(phoneNum, "Phone number given is null.");
@@ -244,6 +246,11 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       if (phoneNum.length() < 1 || phoneNum.length() > 10) {
          throw new IllegalLengthException("Illegal length of phone number; Must be between 1 and 10.");
       }
+
+      if ((phoneNum.matches(".*[a-zA-Z]+.*")) || (Pattern.matches("\\p{Punct}", phoneNum) && !phoneNum.contains("-"))) {
+         throw new IllegalArgumentException("Phone number can't contain letters or non-dash punctuation; It can only be numbers and dashes.");
+      }
+
       if ((phoneNum.length() == 10 || phoneNum.length() == 9) && !phoneNum.contains("-")) {
          char[] number = phoneNum.toCharArray();
          char[] finalNumber = new char[phoneNum.length() + 2];
@@ -258,9 +265,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
             }
          }
          this.phoneNum = new String(finalNumber);
-         if (isEmpty)
-            isEmpty = false;
-         return;
       }
       else if ((phoneNum.length() == 7 || phoneNum.length() == 6) && !phoneNum.contains("-")) {
          char[] number = phoneNum.toCharArray();
@@ -276,9 +280,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
             }
          }
          this.phoneNum = new String(finalNumber);
-         if (isEmpty)
-            isEmpty = false;
-         return;
       }
       else if (phoneNum.length() == 8 && !phoneNum.contains("-")) {
          char[] number = phoneNum.toCharArray();
@@ -294,12 +295,11 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
             }
          }
          this.phoneNum = new String(finalNumber);
-         if (isEmpty)
-            isEmpty = false;
-         return;
       }
-   
-      this.phoneNum = phoneNum;
+      else {
+         this.phoneNum = phoneNum;
+      }
+
       if (isEmpty)
          isEmpty = false;
    }
