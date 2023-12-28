@@ -238,7 +238,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * {@inheritDoc}
     * @throws NullPointerException if input is null
     * @throws IllegalLengthException if length of input given is equal to 0
-    * @throws IllegalArgumentException if the phone number contains a letter or a punctuaiton mark that's not a dash
+    * @throws IllegalArgumentException if the phone number contains a letter or a punctuation mark that's not a dash. Also thrown if the first or last characters are dashes.
     */
    public void setPhoneNum(String phoneNum) {
       Objects.requireNonNull(phoneNum, "Phone number given is null.");
@@ -247,8 +247,19 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
          throw new IllegalLengthException("Illegal length of phone number; Must be between 1 and 10.");
       }
 
-      if ((phoneNum.matches(".*[a-zA-Z]+.*")) || (Pattern.matches("\\p{Punct}", phoneNum) && !phoneNum.contains("-"))) {
+      if (phoneNum.matches(".*[a-zA-Z]+.*")) {
          throw new IllegalArgumentException("Phone number can't contain letters or non-dash punctuation; It can only be numbers and dashes.");
+      }
+
+      if (phoneNum.charAt(0) == '-' || phoneNum.charAt(phoneNum.length() - 1) == '-') {
+         throw new IllegalArgumentException("Dash can't be the first and/or last character of the phone number.");
+      }
+
+      for (int i = 0; i < phoneNum.length(); i++) {
+         String str = "" + phoneNum.charAt(i);
+         if (Pattern.matches("[\\p{Punct}\\p{IsPunctuation}]", str) && !str.equals("-")) {
+            throw new IllegalArgumentException("Phone number can't contain letters or non-dash punctuation; It can only be numbers and dashes.");
+         }
       }
 
       if ((phoneNum.length() == 10 || phoneNum.length() == 9) && !phoneNum.contains("-")) {
@@ -419,7 +430,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       String Notes = "Notes:\n";
    
       if (notes.length() == 0) {
-         return Notes + "No notes entered.";
+         return Notes + RED_BOLD_BRIGHT + "No notes entered." + RESET;
       }
    
       return Notes + notes.toString().trim();
@@ -486,6 +497,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
    public String toString() {
       return String.format("%sName: %s\nPhone Number: %s\nAddress: %s\nBirthday: %s\n%s\nCreated on %s%s",
              GREEN_BRIGHT, getName() + GREEN_BRIGHT, getPhoneNum() + GREEN_BRIGHT, getAddress() + GREEN_BRIGHT,
-             getBirthday() + GREEN_BRIGHT, getNotes(), getCreationTime().toString(), RESET);
+             getBirthday() + GREEN_BRIGHT, getNotes() + GREEN_BRIGHT, getCreationTime().toString(), RESET);
    }
 }

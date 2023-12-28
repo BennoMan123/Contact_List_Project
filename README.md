@@ -310,3 +310,8 @@
   * Added a check to see if it contains letters and non-dash punctuation. If so, throws an exception.
   * Updated javadocs comment.
 * Updated javadocs folder.
+
+12/28/23 Part 2:
+* Fixed problems with the setPhoneNumber method in contact class, specifically checking for punctuation.
+* Also added a check in setPhoneNumber to see if the first and last characters are dashes.
+  * Updated the javadoc comment and folder.
