@@ -315,3 +315,8 @@
 * Fixed problems with the setPhoneNumber method in contact class, specifically checking for punctuation.
 * Also added a check in setPhoneNumber to see if the first and last characters are dashes.
   * Updated the javadoc comment and folder.
+* Fixed getNotes method in contact class to add some color to it.
+  * Updated the toString to accomendate.
+
+12/29/23 Part 1:
+* Touched up some of the code in the Main class.

@@ -100,7 +100,7 @@ public class Main implements textColors {
             try {
                System.out.println("Enter first and last name (must be two words):");
                scan.nextLine();
-               String[] name = scan.nextLine().split(" ");
+               String[] name = scan.nextLine().trim().split(" ");
                if (name.length != 2) {
                   throw new IllegalLengthException("Incorrect length of name; Only 2 words allowed for name.");
                }
@@ -266,7 +266,7 @@ public class Main implements textColors {
             if (input == 1) {
                System.out.println("Enter first and last name (must be two words):");
                scan.nextLine();
-               String[] name = scan.nextLine().split(" ");
+               String[] name = scan.nextLine().trim().split(" ");
                if (name.length != 2) {
                   throw new IllegalLengthException("Incorrect length of name; Only 2 words allowed for name.");
                }
@@ -333,8 +333,11 @@ public class Main implements textColors {
             }
             
             else {
-               System.out.println(RED_BOLD_BRIGHT + "Invalid input; Number must be in the range of 1 through 9." + RESET);
+               System.out.println(RED_BOLD_BRIGHT + "Invalid number; Number must be in the range of 1 through 9." + RESET);
             }
+         }
+         catch (InputMismatchException IMF) {
+            System.out.println(RED_BOLD_BRIGHT + "Input must be a number.\n" + RESET);
          }
          catch (Exception e) {
             System.out.println(RED_BOLD_BRIGHT + e.getMessage() + "\n" + RESET);
