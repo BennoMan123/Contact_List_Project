@@ -316,7 +316,15 @@
 * Also added a check in setPhoneNumber to see if the first and last characters are dashes.
   * Updated the javadoc comment and folder.
 * Fixed getNotes method in contact class to add some color to it.
-  * Updated the toString to accomendate.
+  * Updated the toString to accommodate.
 
 12/29/23 Part 1:
 * Touched up some of the code in the Main class.
+
+10/2/24 Part 1:
+* In contact, added last updated variable and setter and getter for it and added it to every method that sets variables and the toString().
+* Added a date format variable since it is needed across the Contact program now.
+* Added compareDate method to make sure the date given for the birthday isn't after the current one.
+* Enhanced the isLeapYear method.
+* Updated javadocs folder.
+* Made small logistic changes to Main that doesn't affect anything.

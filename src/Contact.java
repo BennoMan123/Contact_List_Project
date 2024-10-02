@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.time.Year;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -19,9 +20,17 @@ import java.util.regex.Pattern;
  */
 public class Contact implements contactsInterface, Comparable<Contact>, textColors {
    /**
+    * Formatting for dates.
+    */
+   private static SimpleDateFormat dateFormat = new SimpleDateFormat("M/dd/yyyy");
+   /**
     * Creation time/date of contact.
     */
    private final Date creationTime = new Date();
+   /**
+    * Time/date of contact being updated.
+    */
+   private final Date updatedTime = new Date(creationTime.getTime());
    /**
     * First name of the contact.
     */
@@ -130,6 +139,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       this.address = address;
       if (isEmpty)
          isEmpty = false;
+      setUpdatedTime();
    }
 
    /**
@@ -162,6 +172,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       this.firstName = firstName;
       if (isEmpty)
          isEmpty = false;
+      setUpdatedTime();
    }
 
    /**
@@ -194,6 +205,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       this.lastName = lastName;
       if (isEmpty)
          isEmpty = false;
+      setUpdatedTime();
    }
 
    /**
@@ -313,6 +325,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
 
       if (isEmpty)
          isEmpty = false;
+      setUpdatedTime();
    }
 
    /**
@@ -321,9 +334,30 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @throws NullPointerException if given input is null.
     */
    public void setBirthday(Date birthdayDate) {
-      this.birthday = Objects.requireNonNull(birthdayDate, "Date given is null.");
+      this.birthday = compareDate(Objects.requireNonNull(birthdayDate, "Date given is null."));
+
       if (isEmpty)
          isEmpty = false;
+      setUpdatedTime();
+   }
+
+   /**
+    * Compares date to current to make sure it is not before the current year.
+    * @param date the date to be checked.
+    * @return the date if good
+    */
+   private static Date compareDate(Date date) {
+      String[] testing = dateFormat.format(Objects.requireNonNull(date)).split("/");
+      String[] current = dateFormat.format(new Date()).split("/");
+
+      if (Integer.parseInt(current[2]) < Integer.parseInt(testing[2])) {
+         throw new IllegalArgumentException("Invalid year given");
+      }
+
+      if (Integer.parseInt(current[2]) == Integer.parseInt(testing[2]) && (Integer.parseInt(current[0]) < Integer.parseInt(testing[0]) || Integer.parseInt(current[1]) < Integer.parseInt(testing[1])))
+         throw new IllegalArgumentException("Invalid month/day given");
+
+      return date;
    }
 
    /**
@@ -333,8 +367,6 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @see setBirthday(Date)
     */
    public void setBirthday(int month, int day, int year) {
-      Calendar myCal = Calendar.getInstance();
-   
       //Checks if the month given is in range
       if (month < 1 || month > 12) {
          throw new IllegalArgumentException("Invalid month inputted; Month given is less than 1 or more than 12.");
@@ -371,6 +403,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       }
    
       //Sets the birthdate
+      Calendar myCal = Calendar.getInstance();
       myCal.set(Calendar.YEAR, year);
       myCal.set(Calendar.MONTH, month-1);
       myCal.set(Calendar.DAY_OF_MONTH, day);
@@ -385,7 +418,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       if (Objects.isNull(birthday)) {
          return RED_BOLD_BRIGHT + "N/A" + RESET;
       }
-      return new SimpleDateFormat("M/dd/yyyy").format(birthday);
+      return dateFormat.format(birthday);
    }
 
    /**
@@ -403,6 +436,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       notes = new StringBuffer(note + "\n");
       if (isEmpty)
          isEmpty = false;
+      setUpdatedTime();
    }
 
    /**
@@ -421,6 +455,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       notes.append(note).append("\n");
       if (isEmpty)
          isEmpty = false;
+      setUpdatedTime();
    }
 
    /**
@@ -434,6 +469,21 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       }
    
       return Notes + notes.toString().trim();
+   }
+
+   /**
+    * Returns the updated date and time of the contact.
+    * @return the date of when the contact was last updated
+    */
+   public Date getUpdatedTime() {
+      return updatedTime;
+   }
+
+   /**
+    * Updates the updated time to current time.
+    */
+   private void setUpdatedTime() {
+      updatedTime.setTime(new Date().getTime());
    }
 
    /**
@@ -486,7 +536,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @return True if a leap year, false if not
     */
    public static boolean isLeapYear(int year) {
-      return (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0);
+      return new GregorianCalendar().isLeapYear(year);
    }
 
    /**
@@ -495,8 +545,8 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     */
    @Override
    public String toString() {
-      return String.format("%sName: %s\nPhone Number: %s\nAddress: %s\nBirthday: %s\n%s\nCreated on %s%s",
+      return String.format("%sName: %s\nPhone Number: %s\nAddress: %s\nBirthday: %s\n%s\nCreated on %s\nLast Updated: %s%s",
              GREEN_BRIGHT, getName() + GREEN_BRIGHT, getPhoneNum() + GREEN_BRIGHT, getAddress() + GREEN_BRIGHT,
-             getBirthday() + GREEN_BRIGHT, getNotes() + GREEN_BRIGHT, getCreationTime().toString(), RESET);
+             getBirthday() + GREEN_BRIGHT, getNotes() + GREEN_BRIGHT, getCreationTime().toString(), getUpdatedTime().toString(), RESET);
    }
 }

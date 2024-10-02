@@ -15,7 +15,7 @@ public class Main implements textColors {
    /**
     * Arraylist to store the contacts.
     */
-   private static final ArrayList<Contact> contactList = new ArrayList<Contact>();
+   private static final ArrayList<Contact> contactList = new ArrayList<Contact>(0);
 
    static {
       Runtime.getRuntime().addShutdownHook(new Thread(
@@ -438,7 +438,7 @@ public class Main implements textColors {
       }
       cleanList();
       Collections.sort(contactList);
-      Integer total = 0;
+      int total = 0;
    
       for (int i = 0; i < contactList.size(); i++) {
          Character lastNameInitial = contactList.get(i).getLastName().charAt(0);
