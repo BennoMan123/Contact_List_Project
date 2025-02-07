@@ -328,3 +328,10 @@
 * Enhanced the isLeapYear method.
 * Updated javadocs folder.
 * Made small logistic changes to Main that doesn't affect anything.
+
+2/6/25 Part 1:
+* Updated setUpdatedTime method to be set directly from the system time.
+* Better checked the last names in print in range method in main.
+* Made Contact class cloneable and implemented a method and private constructor for it.
+* Made date formatter in contact M/d/yyyy instead of M/dd/yyyy.
+* Updated Javadocs folder.

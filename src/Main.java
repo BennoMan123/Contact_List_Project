@@ -21,7 +21,8 @@ public class Main implements textColors {
       Runtime.getRuntime().addShutdownHook(new Thread(
               () -> {
                  scan.close();
-                 contactList.clear();
+                 if (!contactList.isEmpty())
+                    contactList.clear();
                  System.out.println(YELLOW_BOLD_BRIGHT + "\nThank you for using this program." + RESET);
               }
          ));
@@ -437,15 +438,17 @@ public class Main implements textColors {
          return;
       }
       cleanList();
-      Collections.sort(contactList);
       int total = 0;
    
       for (int i = 0; i < contactList.size(); i++) {
+         if (contactList.get(i).getLastName().length() == 0) {
+            continue;
+         }
          Character lastNameInitial = contactList.get(i).getLastName().charAt(0);
          if (lastNameInitial.compareTo(end) > 0) {
             break;
          }
-
+      
          if (lastNameInitial.compareTo(start) >= 0 && lastNameInitial.compareTo(end) <= 0) {
             System.out.println("\n==========================================");
             System.out.println(contactList.get(i));

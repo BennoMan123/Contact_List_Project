@@ -18,11 +18,11 @@ import java.util.regex.Pattern;
  * * Any notes about the contact
  * </pre>
  */
-public class Contact implements contactsInterface, Comparable<Contact>, textColors {
+public class Contact implements contactsInterface, Comparable<Contact>, textColors, Cloneable {
    /**
     * Formatting for dates.
     */
-   private static SimpleDateFormat dateFormat = new SimpleDateFormat("M/dd/yyyy");
+   private static SimpleDateFormat dateFormat = new SimpleDateFormat("M/d/yyyy");
    /**
     * Creation time/date of contact.
     */
@@ -65,6 +65,26 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * Default constructor; sets variables to null, "", or "N/A".
     */
    public Contact() {}
+
+   /**
+    * Used for cloning.
+    * @param firstName first name
+    * @param lastName last name
+    * @param phoneNum phone number
+    * @param birthday birthday
+    * @param notes notes
+    * @param address address
+    * @param isEmpty if contact is empty or not
+    */
+   private Contact(String firstName, String lastName, String phoneNum, Date birthday, StringBuffer notes, String address, boolean isEmpty) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.phoneNum = phoneNum;
+      this.birthday = birthday;
+      this.notes = notes;
+      this.address = address;
+      this.isEmpty = isEmpty;
+   }
 
    /**
     * Sets first and last name; sets rest to default.
@@ -483,7 +503,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * Updates the updated time to current time.
     */
    private void setUpdatedTime() {
-      updatedTime.setTime(new Date().getTime());
+      updatedTime.setTime(System.currentTimeMillis());
    }
 
    /**
@@ -548,5 +568,14 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       return String.format("%sName: %s\nPhone Number: %s\nAddress: %s\nBirthday: %s\n%s\nCreated on %s\nLast Updated: %s%s",
              GREEN_BRIGHT, getName() + GREEN_BRIGHT, getPhoneNum() + GREEN_BRIGHT, getAddress() + GREEN_BRIGHT,
              getBirthday() + GREEN_BRIGHT, getNotes() + GREEN_BRIGHT, getCreationTime().toString(), getUpdatedTime().toString(), RESET);
+   }
+
+   /**
+    * Creates a copy of an instance of Contact with the same attributes.
+    * @return a copy of the contact
+    */
+   @Override
+   public Object clone() {
+      return new Contact(firstName, lastName, phoneNum, birthday, notes, address, isEmpty);
    }
 }
