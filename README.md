@@ -335,3 +335,11 @@
 * Made Contact class cloneable and implemented a method and private constructor for it.
 * Made date formatter in contact M/d/yyyy instead of M/dd/yyyy.
 * Updated Javadocs folder.
+
+2/10/25 Part 1:
+* Made program able to take in contacts from a csv file and also put contacts into the csv file.
+  * Added it into the instantiation block in main.
+* Added getCsvLine() and convertForCSV methods to be able to put each contact into csv file.
+* Fixed some grammatical errors in contacts and Main.
+* Also made notes into one line and end each note with "; ".
+* Updated javadocs.

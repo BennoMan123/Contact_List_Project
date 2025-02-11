@@ -1,8 +1,12 @@
-import java.util.Collections;
-import java.util.Scanner;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Objects;
+import java.util.Scanner;
 
 /**
  * Client class to run the project, interact with the user, and to be able to maintain to the list of contacts.
@@ -20,12 +24,58 @@ public class Main implements textColors {
    static {
       Runtime.getRuntime().addShutdownHook(new Thread(
               () -> {
-                 scan.close();
-                 if (!contactList.isEmpty())
+                 if (!contactList.isEmpty()) {
+                    //Asks user if they want to transfer contact list to csv file
+                    System.out.println("Save contact list to a file? (y/n)");
+                    scan.nextLine();
+                    if (scan.nextLine().toLowerCase().charAt(0) == 'y') { //Transfer list to csv file
+                       try {
+                          File contactFile = new File("Contacts.csv");
+                          if (!contactFile.exists()) {
+                             if (!contactFile.createNewFile())
+                                throw new Exception("Failed to make the file.");
+                          }
+
+                          FileWriter fw = new FileWriter(contactFile, false);
+                          for (int i = 0; i < contactList.size(); i++) {
+                             fw.write(contactList.get(i).getCsvLine());
+                          }
+                          fw.flush();
+                          fw.close();
+                          System.out.println("Contact list copied to csv complete.");
+                       }
+                       catch (Exception e) {
+                          System.out.println(e);
+                       }
+                    }
                     contactList.clear();
+                 }
+                 scan.close();
                  System.out.println(YELLOW_BOLD_BRIGHT + "\nThank you for using this program." + RESET);
               }
          ));
+      //Asks user if they would like to transfer csv data to contact list
+      try {
+         System.out.println("Upload contact list from a file? (y/n)");
+         if (scan.nextLine().toLowerCase().charAt(0) == 'y') { //Uploads csv to list
+            File contactFile = new File("Contacts.csv");
+            if (contactFile.exists()) {
+               Scanner contacts = new Scanner(new FileReader(contactFile));
+               while (contacts.hasNextLine()) {
+                  contactList.add(new csvToContact(contacts.nextLine()).toContact());
+               }
+               Collections.sort(contactList);
+               contacts.close();
+               System.out.println("Upload complete!\n");
+            }
+            else {
+               System.out.println("Contacts.csv doesn't exist.");
+            }
+         }
+      }
+      catch (Exception e) {
+         System.out.println(e);
+      }
    }
 
    /**
@@ -150,7 +200,7 @@ public class Main implements textColors {
          }
          
          else if (input == 5) {
-            System.out.println("Enter phone number (with or without dashes):");
+            System.out.println("Enter phone number (without dashes):");
             try {
                scan.nextLine();
                contact.setPhoneNum(scan.nextLine());
@@ -181,7 +231,7 @@ public class Main implements textColors {
             System.out.println("Enter note about contact:");
             try {
                scan.nextLine();
-               contact.setNotes(scan.nextLine());
+               contact.addToNotes(scan.nextLine());
                System.out.println(GREEN_BRIGHT + "Note added to contact.\n" + RESET);
             }
             catch (Exception e) {
@@ -535,5 +585,52 @@ public class Main implements textColors {
       for (Contact contact : contactList) {
          System.out.println(count++ + ". " + contact.getName());
       }
+   }
+}
+
+/**
+ * @hidden
+ */
+class csvToContact {
+   private String firstName, lastName, phoneNum, address, note;
+   private Date birthday = null;
+
+   csvToContact(String csvLine) {
+      String[] line = csvLine.split(",");
+      if (!line[3].split(" ")[0].equals("N/A"))
+         birthday = new Date(Long.parseLong(line[3].split(" ")[1]));
+      firstName = line[0];
+      lastName = line[1];
+      phoneNum = line[2];
+      note = line[4];
+      address = line[5];
+   }
+
+   Contact toContact() {
+      Contact con = new Contact();
+      if (firstName.length() > 0 && !firstName.equals("N/A")) {
+         con.setFirstName(firstName);
+      }
+      if (lastName.length() > 0 && !lastName.equals("N/A")) {
+         con.setLastName(lastName);
+      }
+      if (phoneNum.length() > 0 && !phoneNum.equals("N/A")) {
+         con.setPhoneNum(phoneNum);
+      }
+      if (note.length() > 0) {
+         con.setNotes(note.trim());
+      }
+      if (address.length() > 0 && !address.equals("N/A")) {
+         con.setAddress(address);
+      }
+      if (!Objects.isNull(birthday)) {
+         con.setBirthday(birthday);
+      }
+      return con;
+   }
+
+   @Override
+   public String toString() {
+      return toContact().toString();
    }
 }

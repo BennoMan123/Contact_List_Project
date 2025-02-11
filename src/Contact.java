@@ -129,6 +129,31 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
    }
 
    /**
+    * For adding to csv file.
+    * In the order of first name,last name,phone number, birthday birthday long, notes, address.
+    * @return a line suitable for csv files
+    */
+   public String getCsvLine() {
+      return String.format("%s,%s,%s,%s %s,%s,%s\n",
+              convertForCSV(firstName),
+              convertForCSV(lastName),
+              convertForCSV(phoneNum),
+              Objects.isNull(birthday) ? "N/A" : getBirthday(),
+              Objects.isNull(birthday) ? Long.toString(Long.MAX_VALUE) : Long.toString(birthday.getTime()),
+              notes.toString().replace("Notes:\n", ""),
+              convertForCSV(address));
+   }
+
+   /**
+    * Internal method that converts a string to a string usable for the csv file.
+    * @param str string to be converted
+    * @return String converted.
+    */
+   private static String convertForCSV(String str) {
+      return Objects.isNull(str) || str.equals("N/A") ? "" : str;
+   }
+
+   /**
     * {@inheritDoc}
     */
    public Date getCreationTime() {
@@ -280,7 +305,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       }
 
       if (phoneNum.matches(".*[a-zA-Z]+.*")) {
-         throw new IllegalArgumentException("Phone number can't contain letters or non-dash punctuation; It can only be numbers and dashes.");
+         throw new IllegalArgumentException("Phone number can't contain letters or punctuation; It can only be numbers and dashes.");
       }
 
       if (phoneNum.charAt(0) == '-' || phoneNum.charAt(phoneNum.length() - 1) == '-') {
@@ -453,7 +478,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
       if (note.isEmpty()){
          throw new IllegalLengthException("Illegal length of notes given.");
       }
-      notes = new StringBuffer(note + "\n");
+      notes = new StringBuffer(note).append(note.endsWith(";") || note.endsWith("; ") ? "" : "; ");
       if (isEmpty)
          isEmpty = false;
       setUpdatedTime();
@@ -462,17 +487,15 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
    /**
     * {@inheritDoc}
     * @throws NullPointerException if input is null
-    * @throws IllegalLengthException if length of input given is equal to 0
     * @see setNotes(String)
     */
    public void addToNotes(String note) {
       Objects.requireNonNull(note, "Note given is null.");
-   
       if (note.isEmpty()){
-         throw new IllegalLengthException("Illegal length of notes given.");
+         return;
       }
    
-      notes.append(note).append("\n");
+      notes.append(note).append(note.endsWith(";") || note.endsWith("; ") ? "" : "; ");
       if (isEmpty)
          isEmpty = false;
       setUpdatedTime();
