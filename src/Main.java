@@ -69,7 +69,7 @@ public class Main implements textColors {
                System.out.println("Upload complete!\n");
             }
             else {
-               System.out.println("Contacts.csv doesn't exist.");
+               System.out.println("Contacts.csv doesn't exist.\n");
             }
          }
       }
@@ -599,11 +599,11 @@ class csvToContact {
       String[] line = csvLine.split(",");
       if (!line[3].split(" ")[0].equals("N/A"))
          birthday = new Date(Long.parseLong(line[3].split(" ")[1]));
-      firstName = line[0];
-      lastName = line[1];
-      phoneNum = line[2];
-      note = line[4];
-      address = line[5];
+      firstName = line[0].trim();
+      lastName = line[1].trim();
+      phoneNum = line[2].trim();
+      note = line[4].trim();
+      address = line[5].trim();
    }
 
    Contact toContact() {

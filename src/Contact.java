@@ -134,7 +134,7 @@ public class Contact implements contactsInterface, Comparable<Contact>, textColo
     * @return a line suitable for csv files
     */
    public String getCsvLine() {
-      return String.format("%s,%s,%s,%s %s,%s,%s\n",
+      return String.format("%s, %s, %s,%s %s, %s, %s\n",
               convertForCSV(firstName),
               convertForCSV(lastName),
               convertForCSV(phoneNum),

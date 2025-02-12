@@ -343,3 +343,6 @@
 * Fixed some grammatical errors in contacts and Main.
 * Also made notes into one line and end each note with "; ".
 * Updated javadocs.
+
+2/11/25 Part 1:
+* Fixed an index out of bounds error when converting a csv file to the contact list.
