@@ -1,4 +1,4 @@
-# final_Project
+# Contact_List_Project
 
 10/17/23 Part 1:
 * Added all files in project.
