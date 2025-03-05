@@ -595,6 +595,10 @@ class csvToContact {
    private String firstName, lastName, phoneNum, address, note;
    private Date birthday = null;
 
+   private csvToContact() {
+      throw new AssertionError("No default csvToContact call for you.");
+   }
+
    csvToContact(String csvLine) {
       String[] line = csvLine.split(",");
       if (!line[3].split(" ")[0].equals("N/A"))

@@ -346,3 +346,6 @@
 
 2/11/25 Part 1:
 * Fixed an index out of bounds error when converting a csv file to the contact list.
+
+3/4/25 Part 1:
+* Added inaccessible default constructor in the csvToContact class to prevent it from being called.
