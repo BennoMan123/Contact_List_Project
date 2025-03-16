@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
  * * Any notes about the contact
  * </pre>
  */
-public class Contact implements contactsInterface, Comparable<Contact>, textColors, Cloneable {
+public class Contact implements Cloneable, Comparable<Contact>, contactsInterface, textColors {
    /**
     * Formatting for dates.
     */
