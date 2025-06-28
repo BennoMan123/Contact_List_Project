@@ -349,3 +349,10 @@
 
 3/4/25 Part 1:
 * Added inaccessible default constructor in the csvToContact class to prevent it from being called.
+
+6/28/25 Part 1:
+* In contacts class:
+  * Made date formatter variable final.
+  * Added and implemented a String comparator for the compare the strings in contacts.
+* In main class, moved things around so that the instantiation block checks to see if there is the csv file with the contacts before asking to upload them.
+* Removed toString method in the csv converter.

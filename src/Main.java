@@ -35,7 +35,7 @@ public class Main implements textColors {
                              if (!contactFile.createNewFile())
                                 throw new Exception("Failed to make the file.");
                           }
-
+                       
                           FileWriter fw = new FileWriter(contactFile, false);
                           for (int i = 0; i < contactList.size(); i++) {
                              fw.write(contactList.get(i).getCsvLine());
@@ -56,10 +56,10 @@ public class Main implements textColors {
          ));
       //Asks user if they would like to transfer csv data to contact list
       try {
-         System.out.println("Upload contact list from a file? (y/n)");
-         if (scan.nextLine().toLowerCase().charAt(0) == 'y') { //Uploads csv to list
-            File contactFile = new File("Contacts.csv");
-            if (contactFile.exists()) {
+         File contactFile = new File("Contacts.csv");
+         if (contactFile.exists()) {
+            System.out.println("Upload contact list from a file? (y/n)");
+            if (scan.nextLine().toLowerCase().charAt(0) == 'y') { //Uploads csv to list
                Scanner contacts = new Scanner(new FileReader(contactFile));
                while (contacts.hasNextLine()) {
                   contactList.add(new csvToContact(contacts.nextLine()).toContact());
@@ -631,10 +631,5 @@ class csvToContact {
          con.setBirthday(birthday);
       }
       return con;
-   }
-
-   @Override
-   public String toString() {
-      return toContact().toString();
    }
 }

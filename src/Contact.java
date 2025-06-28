@@ -1,7 +1,9 @@
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Year;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Objects;
@@ -22,7 +24,11 @@ public class Contact implements Cloneable, Comparable<Contact>, contactsInterfac
    /**
     * Formatting for dates.
     */
-   private static SimpleDateFormat dateFormat = new SimpleDateFormat("M/d/yyyy");
+   private final static SimpleDateFormat dateFormat = new SimpleDateFormat("M/d/yyyy");
+   /**
+    * Used to compare strings.
+    */
+   public final static StringCompare sc = new StringCompare();
    /**
     * Creation time/date of contact.
     */
@@ -536,14 +542,14 @@ public class Contact implements Cloneable, Comparable<Contact>, contactsInterfac
     */
    @Override
    public int compareTo(Contact o) {
-      if (String.CASE_INSENSITIVE_ORDER.compare(this.lastName, o.lastName) == 0) {
-         if (String.CASE_INSENSITIVE_ORDER.compare(this.firstName, o.firstName) == 0) {
+      if (sc.compare(this.lastName, o.lastName) == 0) {
+         if (sc.compare(this.firstName, o.firstName) == 0) {
             return creationTime.compareTo(o.creationTime);
          }
-         return String.CASE_INSENSITIVE_ORDER.compare(this.firstName, o.firstName);
+         return sc.compare(this.firstName, o.firstName);
       }
       else {
-         return String.CASE_INSENSITIVE_ORDER.compare(this.lastName, o.lastName);
+         return sc.compare(this.lastName, o.lastName);
       }
    }
 
@@ -600,5 +606,16 @@ public class Contact implements Cloneable, Comparable<Contact>, contactsInterfac
    @Override
    public Object clone() {
       return new Contact(firstName, lastName, phoneNum, birthday, notes, address, isEmpty);
+   }
+
+   /**
+    * @hidden
+    * Class to compare Strings.
+    */
+   private static class StringCompare implements Comparator<String> {
+      @Override
+      public int compare(String o1, String o2) {
+         return Arrays.compare(o1.toCharArray(), o2.toCharArray());
+      }
    }
 }
