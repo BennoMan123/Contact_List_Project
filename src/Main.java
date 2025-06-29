@@ -68,9 +68,6 @@ public class Main implements textColors {
                contacts.close();
                System.out.println("Upload complete!\n");
             }
-            else {
-               System.out.println("Contacts.csv doesn't exist.\n");
-            }
          }
       }
       catch (Exception e) {
@@ -98,7 +95,7 @@ public class Main implements textColors {
             input = scan.nextInt();
          }
          catch (InputMismatchException e) {
-            System.out.println(RED_BOLD_BRIGHT + "Invalid input; Input must be a number.\n" + RESET);
+            System.out.println(RED_BOLD_BRIGHT + "Invalid input; Input must be a number from 1 to 8.\n" + RESET);
             scan.nextLine();
             continue;
          }

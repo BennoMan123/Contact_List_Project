@@ -26,9 +26,10 @@ public class Contact implements Cloneable, Comparable<Contact>, contactsInterfac
     */
    private final static SimpleDateFormat dateFormat = new SimpleDateFormat("M/d/yyyy");
    /**
+    * @hidden
     * Used to compare strings.
     */
-   public final static StringCompare sc = new StringCompare();
+   private final static StringCompare sc = new StringCompare();
    /**
     * Creation time/date of contact.
     */
@@ -73,6 +74,7 @@ public class Contact implements Cloneable, Comparable<Contact>, contactsInterfac
    public Contact() {}
 
    /**
+    * @hidden
     * Used for cloning.
     * @param firstName first name
     * @param lastName last name
@@ -151,7 +153,8 @@ public class Contact implements Cloneable, Comparable<Contact>, contactsInterfac
    }
 
    /**
-    * Internal method that converts a string to a string usable for the csv file.
+    * @hidden
+    * Internal method that converts a string variable within to a string usable for the csv file.
     * @param str string to be converted
     * @return String converted.
     */
@@ -385,7 +388,7 @@ public class Contact implements Cloneable, Comparable<Contact>, contactsInterfac
     * @throws NullPointerException if given input is null.
     */
    public void setBirthday(Date birthdayDate) {
-      this.birthday = compareDate(Objects.requireNonNull(birthdayDate, "Date given is null."));
+      this.birthday = compareToCurrentDate(Objects.requireNonNull(birthdayDate, "Date given is null."));
 
       if (isEmpty)
          isEmpty = false;
@@ -393,11 +396,11 @@ public class Contact implements Cloneable, Comparable<Contact>, contactsInterfac
    }
 
    /**
-    * Compares date to current to make sure it is not before the current year.
+    * Compares given date to the current date to make sure the date given date isn't after the current date.
     * @param date the date to be checked.
     * @return the date if good
     */
-   private static Date compareDate(Date date) {
+   private static Date compareToCurrentDate(Date date) {
       String[] testing = dateFormat.format(Objects.requireNonNull(date)).split("/");
       String[] current = dateFormat.format(new Date()).split("/");
 

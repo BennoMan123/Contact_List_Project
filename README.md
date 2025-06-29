@@ -34,12 +34,12 @@
 10/26/23 Part 1:
 * Removed a constructor in contact.
 * Removed an unneeded comment in main.java.
-* Updated javadoc folder.
+* Updated the javadocs folder.
 
 10/26/23 Part 2:
 * Added conditions in the set birthday method.
 * Consolidated the boolean in the isLeapYear method.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 
 10/26/23 Part 3:
 * Removed some unneeded comments.
@@ -48,17 +48,17 @@
 * Added comments in the contactsInterface class and added getName() method.
 * Implemented the get name method in the contact class.
 * Switched the format of the return of the birthdate from mm/dd/yy to mm/dd/yyyy in contact class.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 
 10/26/23 Part 5:
 * Added comments in the text colors interface and contact class.
 * Added a check in firstChartoUpper to see if it's null, have it return null and see if string to see if it's empty and return "".
 * Also removed some more unneeded comments.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 
 10/26/23 Part 6:
 * Added comments in main class.
-* Updated javadocs.
+* Updated the javadocs folder.
 
 10/26/23 Part 7:
 * Added phase 2 doc.
@@ -82,7 +82,7 @@
 10/28/23 Part 3:
 * Added @throws in the javadocs in contacts and main classes.
 * Fixed up conditions in returnContact method to look more closely for "first" and "last" in first input.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 * Touched up all the javadocs comments in all classes.
 
 10/28/23 Part 4:
@@ -94,11 +94,11 @@
 10/29/23 Part 1:
 * Removed the sleep method from Main class and adjusted code as such.
 * Updated a few comments in main class as well.
-* Updated the Javadocs folder.
+* Updated the javadocs folder.
 
 10/29/23 Part 2:
 * Fixed comments in contact class to inherit all of the comments from the interface.
-* Updated the Javadocs folder.
+* Updated the javadocs folder.
 
 10/30/23 Part 1:
 * Switched all signatures that had @NotNull in them to not at all and used conditions in those methods to check if they're null.
@@ -111,7 +111,7 @@
 
 10/30/23 Part 3:
 * Removed unneeded lines of comments/code in the textColor interface.
-* Updated the Javadocs folder.
+* Updated the javadocs folder.
 
 10/30/23 Part 4:
 * Removed unneeded lines of comments/code in the textColor interface.
@@ -123,21 +123,21 @@
 * Fixed getName method to return "no name given" if there's no first and last name.
 * Edited code to start taking input from user to see what they would like to do with contact list.
 * Added shut down hook to say thanks for using program.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 
 11/1/23 Part 2:
 * Updated comments in the textClasses interface.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 
 11/2/23 Part 1:
 * Updated comments in the textClasses interface.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 * Added DrawingPanel and added some code to adjust to it for fun.
 * Made scanner and the arraylist final in main class.
 
 11/2/23 Part 2:
 * Removed DrawingPanel and any code associated with it.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 * Added a condition in the remove method to see if the contact list is empty. If true, it returns saying there's no list.
 
 11/2/23 Part 3:
@@ -146,7 +146,7 @@
 * Added a check in edit method in main class to see if the contact list is empty or not. If yes, rejects the user from trying to edit a contact.
 * Added the YELLOW_BOLD_BRIGHT variable in textColors interface and implemented it in the main class in the input message.
 * Removed unneeded printlns in main method in main class.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 
 11/3/23 Part 1:
 * Added functionality to the add contact method in main class.
@@ -161,7 +161,7 @@
   * Added usage of it in the addContact method.
 * Added the isContactEmpty method in contact class to see if all of the variables are not defined.
   * Added in interface as well.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 
 11/4/23 Part 1:
 * Added a condition in range method option to see if the contact list is empty or not. Can't print if there's nothing in the list.
@@ -172,10 +172,10 @@
 11/5/23 Part 1:
 * Added functionality to the range method in main class.
 * Created IllegalLengthException class for when there's an illegal length of input or variables and implemented in the classes.
-  * Updated javadocs to mention the throw.
+  * Updated the javadocs folder to mention the exception throw.
 * Fixed up some javadocs comments.
-* Updated javadocs folder.
-* Renamed package name.
+* Updated the javadocs folder.
+* Renamed the package name.
 * Added better functionality to the setPhoneNumber method in contact class.
 
 11/11/23 Part 1:
@@ -188,7 +188,7 @@
 * Added/removed some comments.
 * Implemented the remove method.
 * Moved the check to see if the characters given from the user in the range method are digits or not into the other range method.
-* Updated Javadocs folder.
+* Updated the javadocs folder.
 
 11/13/23 Part 1:
 * Added a cleanList call in each method in main class.
@@ -199,7 +199,7 @@
 * Updated the aesthetics of some of the prints.
 * Added functionality to edit method in the main class.
 * Removed unused variables in the textColors Class.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 * Changed all e.toString() to e.getMessage() (in try catches for the Exceptions).
 
 11/15/23 Part 1:
@@ -208,7 +208,7 @@
 11/19/23 Part 1:
 * Removed unneeded lines of code.
 * Fixed a parameter.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 
 11/24/23 Part 1:
 * Moved some and/or added some "\n" in needed places in main class.
@@ -219,18 +219,18 @@
 11/26/23 Part 2:
 * Made some methods that are universal public in main class and contact class.
 * Removed unneeded comments in the contact class.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 
 11/28/23 Part 1:
 * Fixed the clean list method/handling in main class.
 * Fixed the is empty contact method in contact class.
   * Implemented boolean that turns to false if something has been added to the contact.
-* Updated Javadocs folder.
+* Updated the javadocs folder.
 * Made sure that the list sorts in each method that need to print the list in main.
 
 12/2/23 Part 1:
 * Fixed some comments in main and contact classes.
-  * Updated javadocs folder.
+  * Updated the javadocs folder.
 * Fixed imports in main class.
 
 12/2/23 Part 2:
@@ -238,13 +238,13 @@
 * Changed isNull method to ensureNotNull.
   * Checks if the object given is null. If it is, it'll throw an exception with given error message.
   * Implemented the method into the rest of the class.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 
 12/2/23 Part 3:
 * Removed isNull Method in main class since it is only used once.
   * Used the ensureInRange method in contacts instead for the only use of isNull in main.
 * Updated comments in classes.
-* Updated javadocs.
+* Updated the javadocs folder.
 
 12/4/23 Part 1:
 * Fixed thread to shorten it in main class (shutdown thread).
@@ -270,7 +270,7 @@
 
 12/5/23 Part 4:
 * Fixed a javadoc comment (made the link in colorText interface open in new tab).
-* Updated javadocs folder.
+* Updated the javadocs folder.
 
 12/7/23 Part 1:
 * Enhanced the range method.
@@ -281,7 +281,7 @@
 
 12/7/23 Part 3:
 * Deleted the ensureNotNull method in contact class and replaced all uses of it in program with 'Objects.requireNonNull'.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 
 12/12/23 Part 1:
 * Updated the phase 2 doc.
@@ -299,7 +299,7 @@
 12/20/23 Part 1:
 * Made the requireNonNull method into the method call in main class instead of being two lines.
 * Adjusted some javadocs comments in contact class.
-  * Updated javadocs folder.
+  * Updated the javadocs folder.
 
 12/24/23 Part 1:
 * Removed unneeded code and condensed other spots that could be condensed.
@@ -308,8 +308,8 @@
 * setPhoneNumber method in Contact class:
   * Simplified code.
   * Added a check to see if it contains letters and non-dash punctuation. If so, throws an exception.
-  * Updated javadocs comment.
-* Updated javadocs folder.
+  * Updated the javadocs folder comment.
+* Updated the javadocs folder.
 
 12/28/23 Part 2:
 * Fixed problems with the setPhoneNumber method in contact class, specifically checking for punctuation.
@@ -326,7 +326,7 @@
 * Added a date format variable since it is needed across the Contact program now.
 * Added compareDate method to make sure the date given for the birthday isn't after the current one.
 * Enhanced the isLeapYear method.
-* Updated javadocs folder.
+* Updated the javadocs folder.
 * Made small logistic changes to Main that doesn't affect anything.
 
 2/6/25 Part 1:
@@ -334,7 +334,7 @@
 * Better checked the last names in print in range method in main.
 * Made Contact class cloneable and implemented a method and private constructor for it.
 * Made date formatter in contact M/d/yyyy instead of M/dd/yyyy.
-* Updated Javadocs folder.
+* Updated the javadocs folder.
 
 2/10/25 Part 1:
 * Made program able to take in contacts from a csv file and also put contacts into the csv file.
@@ -342,7 +342,7 @@
 * Added getCsvLine() and convertForCSV methods to be able to put each contact into csv file.
 * Fixed some grammatical errors in contacts and Main.
 * Also made notes into one line and end each note with "; ".
-* Updated javadocs.
+* Updated the javadocs folder.
 
 2/11/25 Part 1:
 * Fixed an index out of bounds error when converting a csv file to the contact list.
@@ -356,3 +356,9 @@
   * Added and implemented a String comparator for the compare the strings in contacts.
 * In main class, moved things around so that the instantiation block checks to see if there is the csv file with the contacts before asking to upload them.
 * Removed toString method in the csv converter.
+
+6/28/25 Part 2:
+* Made some internal methods private and hid them from the javadocs.
+* Some method renaming and javadocs comments fixing up to better explain the method.
+* Removed unnecessary code and made some output to the user more clear in Main.
+* Updated the javadocs folder.
